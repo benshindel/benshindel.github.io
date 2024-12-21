@@ -1,33 +1,26 @@
 <!DOCTYPE html>
-<!-- The DOCTYPE declaration defines the document type and HTML version -->
 <html lang="en">
-<!-- The <html> element is the root element of the document -->
 <head>
-    <meta charset="UTF-8">
-    <!-- The <meta charset> element specifies the character encoding for the document -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The <meta name="viewport"> element ensures proper rendering on different screen sizes -->
-    <title>My Personal Website</title>
-    <!-- The <title> element defines the title of the document shown in the browser tab -->
-    <link rel="stylesheet" href="style.css">
-    <!-- The <link> element links an external CSS file to style the document -->
-    <style>
-        /* Inline style for the top bar */
-        .top-bar {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.5em;
-        }
-    </style>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ben Shindel</title>
+  <link rel="stylesheet" href="style.css">
+  </head>
 <body>
-    <div class="top-bar">My Personal Website</div>
-    <!-- The top bar displays the website title -->
-    <h1>Welcome to My Personal Website!</h1>
-    <!-- The <h1> element represents the main heading of the page -->
-    <p>This is my first GitHub Pages site.</p>
-    <!-- The <p> element represents a paragraph of text -->
+  <header>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="https://crosshare.org/benshindel">Crosswords</a>
+      </nav>
+  </header>
+
+  <main>
+    <section class="image-grid">
+      <img src="image1.jpg" alt="Image 1 description" title="Image 1 Title (appears on hover)">
+      <img src="image2.jpg" alt="Image 2 description" title="Image 2 Title (appears on hover)">
+      <img src="image3.jpg" alt="Image 3 description" title="Image 3 Title (appears on hover)">
+      </section>
+  </main>
+
 </body>
 </html>
