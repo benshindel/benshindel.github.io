@@ -10,12 +10,15 @@ body {
 header {
   background-color: #f4f4f4; /* Light gray background color */
   padding: 10px 20px; /* Adds space around the header content */
+  margin-left: 10%; /* Adds a 10% margin on the left side */
+  margin-right: 10%; /* Adds a 10% margin on the right side */
 }
 
 /* Navigation bar styles */
 nav {
   display: flex; /* Makes the navigation links align in a row */
   justify-content: space-between; /* Distributes space between navigation items */
+  align-items: center; /* Aligns items vertically within the header */
 }
 
 /* Styles for navigation links */
@@ -23,6 +26,15 @@ nav a {
   text-decoration: none; /* Removes underline from links */
   color: #333; /* Dark gray text color */
   margin: 0 10px; /* Adds horizontal spacing between links */
+}
+
+/* Styles for the home link */
+.home-link {
+  font-weight: bold; /* Makes the home link stand out */
+  font-size: 1.2em; /* Increases the font size */
+  margin-right: auto; /* Pushes the home link to the far left */
+  text-decoration: none; /* Removes underline */
+  color: #333; /* Matches the color of other links */
 }
 
 /* Hover effect for navigation links */
