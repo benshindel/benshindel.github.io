@@ -23,6 +23,12 @@ body.dark-mode {
   color: var(--text-color-dark); /* Uses text color variable for dark mode */
 }
 
+/* Container class for 10% margin */
+.container {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 /* Header styles */
 header {
   background-color: transparent; /* Matches the background color */
@@ -31,7 +37,6 @@ header {
 
 /* Navigation wrapper styles */
 .nav-wrapper {
-  margin: 0 10%; /* Adds a 10% margin on both sides */
   display: flex; /* Ensures links are aligned properly */
   justify-content: space-between; /* Distributes space between navigation items */
   align-items: center; /* Aligns items vertically */
@@ -52,7 +57,6 @@ body.dark-mode .nav-wrapper nav a {
 .home-link {
   font-weight: bold; /* Makes the home link stand out */
   font-size: 1.2em; /* Increases the font size */
-  margin-right: auto; /* Pushes the home link to the far left */
   text-decoration: none; /* Removes underline */
   color: var(--link-color-light); /* Matches the color of other links in light mode */
 }
@@ -73,11 +77,11 @@ body.dark-mode .home-link {
 
 /* Hover effect for navigation links */
 .nav-wrapper nav a:hover {
-  color: var(--link-color-light); /* Changes link color to light mode on hover */
+  color: var(--link-color-light); /* Changes link color in light mode on hover */
 }
 
 body.dark-mode .nav-wrapper nav a:hover {
-  color: var(--link-color-dark); /* Changes link color to dark mode on hover */
+  color: var(--link-color-dark); /* Changes link color in dark mode on hover */
 }
 
 /* Remove visited link styles */
@@ -100,8 +104,6 @@ main.content {
   grid-template-columns: repeat(3, 1fr); /* Creates three equal-width columns */
   gap: 10px; /* Adds spacing between grid items */
   position: relative; /* Ensures positioned children are relative to the grid container */
-  margin-left: 10%; /* Adds a 10% margin on the left side */
-  margin-right: 10%; /* Adds a 10% margin on the right side */
 }
 
 /* Styles for individual image links */
