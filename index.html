@@ -16,7 +16,7 @@
     </div>
   </header>
   
-  <main>
+  <main class="content">
     <section class="image-grid">
       <a href="page1.html">
         <img src="images/DAC" alt="Image 1 description">
@@ -40,17 +40,17 @@
       // Ensure button is properly targeted
       if (modeToggle) {
         modeToggle.addEventListener("click", () => {
-          // Toggle the night mode class on the body
-          document.body.classList.toggle("night-mode");
+          // Toggle the dark mode class on the body
+          document.body.classList.toggle("dark-mode");
 
           // Update the icon and aria-label dynamically
           const icon = modeToggle.querySelector(".toggle-icon");
-          if (document.body.classList.contains("night-mode")) {
-            icon.textContent = "🌙"; // Moon icon for night mode
-            modeToggle.setAttribute("aria-label", "Switch to day mode");
+          if (document.body.classList.contains("dark-mode")) {
+            icon.textContent = "🌙"; // Moon icon for dark mode
+            modeToggle.setAttribute("aria-label", "Switch to light mode");
           } else {
-            icon.textContent = "☀️"; // Sun icon for day mode
-            modeToggle.setAttribute("aria-label", "Switch to night mode");
+            icon.textContent = "☀️"; // Sun icon for light mode
+            modeToggle.setAttribute("aria-label", "Switch to dark mode");
           }
         });
       }
