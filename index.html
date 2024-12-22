@@ -37,6 +37,14 @@
   <script>
     document.getElementById("mode-toggle").addEventListener("click", () => {
       document.body.classList.toggle("night-mode");
+
+      // Change the icon based on the current mode
+      const icon = document.querySelector(".toggle-icon");
+      if (document.body.classList.contains("night-mode")) {
+        icon.textContent = "🌙"; // Moon icon for night mode
+      } else {
+        icon.textContent = "☀️"; // Sun icon for day mode
+      }
     });
   </script>
 </body>
