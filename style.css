@@ -30,7 +30,7 @@ header {
 }
 
 /* Styles for navigation links */
-.nav-wrapper a {
+.nav-wrapper nav a {
   text-decoration: none; /* Removes underline from links */
   color: var(--link-color); /* Uses link color variable */
   margin: 0 10px; /* Adds horizontal spacing between links */
@@ -56,17 +56,17 @@ header {
 }
 
 /* Hover effect for navigation links */
-.nav-wrapper a:hover {
+.nav-wrapper nav a:hover {
   color: var(--link-color); /* Changes link color to blue on hover */
 }
 
 /* Remove visited link styles */
-.nav-wrapper a:visited {
+.nav-wrapper nav a:visited {
   color: var(--link-color); /* Ensures visited links have the same color */
 }
 
 /* Add gap between header and grid */
-.content {
+main {
   margin-top: 20px; /* Adds a gap between the header and the content */
 }
 
