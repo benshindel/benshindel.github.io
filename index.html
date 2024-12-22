@@ -42,8 +42,10 @@
       const icon = document.querySelector(".toggle-icon");
       if (document.body.classList.contains("night-mode")) {
         icon.textContent = "🌙"; // Moon icon for night mode
+        icon.setAttribute("aria-label", "Switch to day mode");
       } else {
         icon.textContent = "☀️"; // Sun icon for day mode
+        icon.setAttribute("aria-label", "Switch to night mode");
       }
     });
   </script>
