@@ -12,6 +12,8 @@ header {
   padding: 10px 20px; /* Adds space around the header content */
   margin-left: 10%; /* Adds a 10% margin on the left side */
   margin-right: 10%; /* Adds a 10% margin on the right side */
+  width: 80%; /* Ensures the header content aligns with the grid layout */
+  margin: 0 auto; /* Centers the header horizontally */
 }
 
 /* Navigation bar styles */
