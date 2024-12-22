@@ -1,8 +1,8 @@
 /* Global styles for the webpage */
 :root {
-  --bg-color: #ffffff; /* Background color for day mode */
-  --text-color: #333333; /* Text color for day mode */
-  --link-color: #007BFF; /* Link color for day mode */
+  --bg-color: #ffffff; /* Background color for light mode */
+  --text-color: #333333; /* Text color for light mode */
+  --link-color: #007BFF; /* Link color for light mode */
 }
 
 body {
@@ -17,7 +17,7 @@ body {
 
 /* Header styles */
 header {
-  background-color: #f4f4f4; /* Light gray background color */
+  background-color: var(--bg-color); /* Matches the background color */
   padding: 10px 0; /* Adds space above and below the header content */
 }
 
@@ -30,11 +30,10 @@ header {
 }
 
 /* Styles for navigation links */
-nav a {
+.nav-wrapper a {
   text-decoration: none; /* Removes underline from links */
   color: var(--link-color); /* Uses link color variable */
   margin: 0 10px; /* Adds horizontal spacing between links */
-  text-decoration-skip-ink: auto; /* Adjusts underline style */
 }
 
 /* Styles for the home link */
@@ -57,8 +56,18 @@ nav a {
 }
 
 /* Hover effect for navigation links */
-nav a:hover {
+.nav-wrapper a:hover {
   color: var(--link-color); /* Changes link color to blue on hover */
+}
+
+/* Remove visited link styles */
+.nav-wrapper a:visited {
+  color: var(--link-color); /* Ensures visited links have the same color */
+}
+
+/* Add gap between header and grid */
+.content {
+  margin-top: 20px; /* Adds a gap between the header and the content */
 }
 
 /* Styles for the image grid layout */
@@ -113,16 +122,16 @@ nav a:hover {
   opacity: 1; /* Makes the text visible on hover */
 }
 
-/* Night mode overrides */
-.night-mode {
-  --bg-color: #121212; /* Background color for night mode */
-  --text-color: #ffffff; /* Text color for night mode */
-  --link-color: #80d8ff; /* Link color for night mode */
+/* Dark mode overrides */
+.dark-mode {
+  --bg-color: #121212; /* Background color for dark mode */
+  --text-color: #ffffff; /* Text color for dark mode */
+  --link-color: #80d8ff; /* Link color for dark mode */
 }
 
-body.night-mode {
-  background-color: var(--bg-color); /* Uses background color variable for night mode */
-  color: var(--text-color); /* Uses text color variable for night mode */
+body.dark-mode {
+  background-color: var(--bg-color); /* Uses background color variable for dark mode */
+  color: var(--text-color); /* Uses text color variable for dark mode */
 }
 
 /* Responsive styles for smaller screens */
