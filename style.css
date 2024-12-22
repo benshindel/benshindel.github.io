@@ -1,168 +1,136 @@
-/* Global styles for the webpage */
 :root {
-  --bg-color-light: #ffffff; /* Background color for light mode */
-  --text-color-light: #333333; /* Text color for light mode */
-  --link-color-light: #007BFF; /* Link color for light mode */
-  --bg-color-dark: #121212; /* Background color for dark mode */
-  --text-color-dark: #ffffff; /* Text color for dark mode */
-  --link-color-dark: #80d8ff; /* Link color for dark mode */
+  --bg-color-light: #ffffff;
+  --text-color-light: #333333;
+  --link-color-light: #007BFF;
+  --bg-color-dark: #121212;
+  --text-color-dark: #ffffff;
+  --link-color-dark: #80d8ff;
 }
 
 body {
-  font-family: Arial, sans-serif; /* Sets the default font for the website */
-  margin: 0; /* Removes default margin */
-  padding: 0; /* Removes default padding */
-  box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
-  background-color: var(--bg-color-light); /* Uses background color variable for light mode */
-  color: var(--text-color-light); /* Uses text color variable for light mode */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode {
-  background-color: var(--bg-color-dark); /* Uses background color variable for dark mode */
-  color: var(--text-color-dark); /* Uses text color variable for dark mode */
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
 }
 
-/* Container class for 10% margin */
 .container {
   margin-left: 10%;
   margin-right: 10%;
 }
 
-/* Header styles */
 header {
-  background-color: transparent; /* Matches the background color */
-  padding: 10px 0; /* Adds space above and below the header content */
+  background-color: transparent;
+  padding: 10px 0;
 }
 
-/* Navigation wrapper styles */
 .nav-wrapper {
-  display: flex; /* Ensures links are aligned properly */
-  justify-content: space-between; /* Distributes space between navigation items */
-  align-items: center; /* Aligns items vertically */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Styles for navigation links */
 .nav-wrapper nav a {
-  text-decoration: none; /* Removes underline from links */
-  color: var(--link-color-light); /* Uses link color variable for light mode */
-  margin: 0 10px; /* Adds horizontal spacing between links */
+  text-decoration: none;
+  color: var(--link-color-light);
+  margin: 0 10px;
 }
 
 body.dark-mode .nav-wrapper nav a {
-  color: var(--link-color-dark); /* Uses link color variable for dark mode */
+  color: var(--link-color-dark);
 }
 
-/* Styles for the home link */
 .home-link {
-  font-weight: bold; /* Makes the home link stand out */
-  font-size: 1.2em; /* Increases the font size */
-  text-decoration: none; /* Removes underline */
-  color: var(--link-color-light); /* Matches the color of other links in light mode */
+  font-weight: bold;
+  font-size: 1.2em;
+  text-decoration: none;
+  color: var(--link-color-light);
 }
 
 body.dark-mode .home-link {
-  color: var(--link-color-dark); /* Matches the color of other links in dark mode */
+  color: var(--link-color-dark);
 }
 
-/* Styles for the toggle button */
 #mode-toggle {
-  margin-left: auto; /* Pushes the button to the far right */
-  background: none; /* Removes default button background */
-  border: none; /* Removes default button border */
-  cursor: pointer; /* Changes cursor to pointer on hover */
-  padding: 10px; /* Adds padding to the button */
-  font-size: 1.2em; /* Increases the font size */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1.2em;
 }
 
-/* Hover effect for navigation links */
 .nav-wrapper nav a:hover {
-  color: var(--link-color-light); /* Changes link color in light mode on hover */
+  color: var(--link-color-light);
 }
 
 body.dark-mode .nav-wrapper nav a:hover {
-  color: var(--link-color-dark); /* Changes link color in dark mode on hover */
+  color: var(--link-color-dark);
 }
 
-/* Remove visited link styles */
 .nav-wrapper nav a:visited {
-  color: var(--link-color-light); /* Ensures visited links have the same color in light mode */
+  color: var(--link-color-light);
 }
 
 body.dark-mode .nav-wrapper nav a:visited {
-  color: var(--link-color-dark); /* Ensures visited links have the same color in dark mode */
+  color: var(--link-color-dark);
 }
 
-/* Add gap between header and grid */
 main.content {
-  margin-top: 20px; /* Adds a gap between the header and the content */
+  margin-top: 20px;
 }
 
-/* Styles for the image grid layout */
 .image-grid {
-  display: grid; /* Uses CSS Grid layout */
-  grid-template-columns: repeat(3, 1fr); /* Creates three equal-width columns */
-  gap: 10px; /* Adds spacing between grid items */
-  position: relative; /* Ensures positioned children are relative to the grid container */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-/* Styles for individual image links */
 .image-grid a {
-  position: relative; /* Prepares for positioning child elements */
-  display: block; /* Makes the entire block clickable */
-  text-decoration: none; /* Removes default tooltip text */
-  cursor: default; /* Ensures a neutral cursor */
+  position: relative;
+  display: block;
+  text-decoration: none;
 }
 
-/* Styles for images in the grid */
 .image-grid img {
-  width: 100%; /* Ensures images fill the grid cell width */
-  height: auto; /* Maintains aspect ratio of images */
-  border-radius: 8px; /* Rounds the corners of the images */
-  transition: opacity 0.3s ease; /* Smooth transition effect for opacity changes */
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
 }
 
-/* Hover effect for images */
 .image-grid a:hover img {
-  opacity: 0.5; /* Makes the image semi-transparent on hover */
+  opacity: 0.5;
 }
 
-/* Styles for overlay text on images */
 .image-grid a span {
-  position: absolute; /* Positions the text relative to its container */
-  top: 50%; /* Centers the text vertically */
-  left: 50%; /* Centers the text horizontally */
-  transform: translate(-50%, -50%); /* Aligns the text perfectly in the center */
-  color: white; /* Sets text color to white */
-  font-size: 1.2em; /* Increases font size */
-  background-color: rgba(0, 0, 0, 0.7); /* Adds a semi-transparent black background */
-  padding: 5px 10px; /* Adds padding around the text */
-  border-radius: 5px; /* Rounds the corners of the background */
-  opacity: 0; /* Hides the text by default */
-  transition: opacity 0.3s ease; /* Smooth transition effect for opacity changes */
-  text-align: center; /* Centers the text within the background */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2em;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
 }
 
-/* Hover effect for overlay text */
 .image-grid a:hover span {
-  opacity: 1; /* Makes the text visible on hover */
+  opacity: 1;
 }
 
-/* Dark mode overrides */
-.dark-mode {
-  --bg-color: #121212; /* Background color for dark mode */
-  --text-color: #ffffff; /* Text color for dark mode */
-  --link-color: #80d8ff; /* Link color for dark mode */
-}
-
-body.dark-mode {
-  background-color: var(--bg-color-dark); /* Uses background color variable for dark mode */
-  color: var(--text-color-dark); /* Uses text color variable for dark mode */
-}
-
-/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .image-grid {
-    grid-template-columns: 1fr; /* Changes grid to a single column layout */
+    grid-template-columns: 1fr;
   }
 }
