@@ -1,17 +1,11 @@
 /* Global styles for the webpage */
-:root {
-  --bg-color: #ffffff; /* Background color for day mode */
-  --text-color: #333333; /* Text color for day mode */
-  --link-color: #007BFF; /* Link color for day mode */
-}
-
 body {
   font-family: Arial, sans-serif; /* Sets the default font for the website */
   margin: 0; /* Removes default margin */
   padding: 0; /* Removes default padding */
   box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
-  background-color: var(--bg-color); /* Uses background color variable */
-  color: var(--text-color); /* Uses text color variable */
+  background-color: #ffffff; /* Default background color */
+  color: #333333; /* Default text color */
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
 }
 
@@ -32,9 +26,8 @@ header {
 /* Styles for navigation links */
 nav a {
   text-decoration: none; /* Removes underline from links */
-  color: var(--link-color); /* Uses link color variable */
+  color: #007BFF; /* Link color */
   margin: 0 10px; /* Adds horizontal spacing between links */
-  text-decoration-skip-ink: auto; /* Adjusts underline style */
 }
 
 /* Styles for the home link */
@@ -43,12 +36,7 @@ nav a {
   font-size: 1.2em; /* Increases the font size */
   margin-right: auto; /* Pushes the home link to the far left */
   text-decoration: none; /* Removes underline */
-  color: var(--link-color); /* Matches the color of other links */
-}
-
-/* Hover effect for navigation links */
-nav a:hover {
-  color: var(--link-color); /* Changes link color to blue on hover */
+  color: #007BFF; /* Matches the color of other links */
 }
 
 /* Styles for the image grid layout */
@@ -61,53 +49,11 @@ nav a:hover {
   margin-right: 10%; /* Adds a 10% margin on the right side */
 }
 
-/* Styles for individual image links */
-.image-grid a {
-  position: relative; /* Prepares for positioning child elements */
-  display: block; /* Makes the entire block clickable */
-  text-decoration: none; /* Removes default tooltip text */
-  cursor: default; /* Ensures a neutral cursor */
-}
-
 /* Styles for images in the grid */
 .image-grid img {
   width: 100%; /* Ensures images fill the grid cell width */
   height: auto; /* Maintains aspect ratio of images */
   border-radius: 8px; /* Rounds the corners of the images */
-  transition: opacity 0.3s ease; /* Smooth transition effect for opacity changes */
-}
-
-/* Hover effect for images */
-.image-grid a:hover img {
-  opacity: 0.5; /* Makes the image semi-transparent on hover */
-}
-
-/* Styles for overlay text on images */
-.image-grid a span {
-  position: absolute; /* Positions the text relative to its container */
-  top: 50%; /* Centers the text vertically */
-  left: 50%; /* Centers the text horizontally */
-  transform: translate(-50%, -50%); /* Aligns the text perfectly in the center */
-  color: white; /* Sets text color to white */
-  font-size: 1.2em; /* Increases font size */
-  background-color: rgba(0, 0, 0, 0.7); /* Adds a semi-transparent black background */
-  padding: 5px 10px; /* Adds padding around the text */
-  border-radius: 5px; /* Rounds the corners of the background */
-  opacity: 0; /* Hides the text by default */
-  transition: opacity 0.3s ease; /* Smooth transition effect for opacity changes */
-  text-align: center; /* Centers the text within the background */
-}
-
-/* Hover effect for overlay text */
-.image-grid a:hover span {
-  opacity: 1; /* Makes the text visible on hover */
-}
-
-/* Night mode overrides */
-.night-mode {
-  --bg-color: #121212; /* Background color for night mode */
-  --text-color: #ffffff; /* Text color for night mode */
-  --link-color: #80d8ff; /* Link color for night mode */
 }
 
 /* Responsive styles for smaller screens */
