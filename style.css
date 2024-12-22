@@ -6,7 +6,6 @@ body {
   box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
   background-color: #ffffff; /* Default background color */
   color: #333333; /* Default text color */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
 }
 
 /* Header styles */
@@ -44,9 +43,6 @@ nav a {
   display: grid; /* Uses CSS Grid layout */
   grid-template-columns: repeat(3, 1fr); /* Creates three equal-width columns */
   gap: 10px; /* Adds spacing between grid items */
-  position: relative; /* Ensures positioned children are relative to the grid container */
-  margin-left: 10%; /* Adds a 10% margin on the left side */
-  margin-right: 10%; /* Adds a 10% margin on the right side */
 }
 
 /* Styles for images in the grid */
