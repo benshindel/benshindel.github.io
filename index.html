@@ -15,6 +15,8 @@
     </div>
   </header>
 
+  <button id=\"mode-toggle\" aria-label=\"Toggle dark mode\"><span class=\"toggle-icon\">☀️</span></button>
+
   <main>
     <section class="image-grid">
       <a href="page1.html">
@@ -31,5 +33,27 @@
       </a>
     </section>
   </main>
+
+  <script>
+    const modeToggle = document.getElementById("mode-toggle");
+
+    // Ensure button is properly targeted
+    if (modeToggle) {
+      modeToggle.addEventListener("click", () => {
+        // Toggle the night mode class on the body
+        document.body.classList.toggle("night-mode");
+
+        // Update the icon and aria-label dynamically
+        const icon = modeToggle.querySelector(".toggle-icon");
+        if (document.body.classList.contains("night-mode")) {
+          icon.textContent = "🌙"; // Moon icon for night mode
+          modeToggle.setAttribute("aria-label", "Switch to day mode");
+        } else {
+          icon.textContent = "☀️"; // Sun icon for day mode
+          modeToggle.setAttribute("aria-label", "Switch to night mode");
+        }
+      });
+    }
+  </script>
 </body>
 </html>
