@@ -5,13 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ben Shindel</title>
   <link rel="stylesheet" href="style.css">
-  </head>
+  <style>
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 768px) {
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
 <body>
   <header>
     <nav>
       <a href="about.html">About</a>
       <a href="https://crosshare.org/benshindel">Crosswords</a>
-      </nav>
+    </nav>
   </header>
 
   <main>
@@ -19,7 +31,7 @@
       <img src="images/DAC" alt="Image 1 description" title="Image 1 Title (appears on hover)">
       <img src="images/sponge" alt="Image 2 description" title="Image 2 Title (appears on hover)">
       <img src="image3.jpg" alt="Image 3 description" title="Image 3 Title (appears on hover)">
-      </section>
+    </section>
   </main>
 
 </body>
