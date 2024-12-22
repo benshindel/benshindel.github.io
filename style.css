@@ -45,6 +45,7 @@ nav a:hover {
   position: relative; /* Prepares for positioning child elements */
   display: block; /* Makes the entire block clickable */
   text-decoration: none; /* Removes default tooltip text */
+  cursor: default; /* Ensures a neutral cursor */
 }
 
 /* Styles for images in the grid */
