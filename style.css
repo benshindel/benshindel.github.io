@@ -1,9 +1,18 @@
 /* Global styles for the webpage */
+:root {
+  --bg-color: #ffffff; /* Background color for day mode */
+  --text-color: #333333; /* Text color for day mode */
+  --link-color: #007BFF; /* Link color for day mode */
+}
+
 body {
   font-family: Arial, sans-serif; /* Sets the default font for the website */
   margin: 0; /* Removes default margin */
   padding: 0; /* Removes default padding */
   box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+  background-color: var(--bg-color); /* Uses background color variable */
+  color: var(--text-color); /* Uses text color variable */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
 }
 
 /* Header styles */
@@ -23,7 +32,7 @@ header {
 /* Styles for navigation links */
 nav a {
   text-decoration: none; /* Removes underline from links */
-  color: #333; /* Dark gray text color */
+  color: var(--link-color); /* Uses link color variable */
   margin: 0 10px; /* Adds horizontal spacing between links */
 }
 
@@ -33,12 +42,12 @@ nav a {
   font-size: 1.2em; /* Increases the font size */
   margin-right: auto; /* Pushes the home link to the far left */
   text-decoration: none; /* Removes underline */
-  color: #333; /* Matches the color of other links */
+  color: var(--link-color); /* Matches the color of other links */
 }
 
 /* Hover effect for navigation links */
 nav a:hover {
-  color: #007BFF; /* Changes link color to blue on hover */
+  color: var(--link-color); /* Changes link color to blue on hover */
 }
 
 /* Styles for the image grid layout */
@@ -91,6 +100,13 @@ nav a:hover {
 /* Hover effect for overlay text */
 .image-grid a:hover span {
   opacity: 1; /* Makes the text visible on hover */
+}
+
+/* Night mode overrides */
+.night-mode {
+  --bg-color: #121212; /* Background color for night mode */
+  --text-color: #ffffff; /* Text color for night mode */
+  --link-color: #80d8ff; /* Link color for night mode */
 }
 
 /* Responsive styles for smaller screens */
