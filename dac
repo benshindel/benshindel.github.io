@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Simple HTML Subpage</h1>
+    </header>
+
+    <main>
+        <p>This is a subpage linked from the main page. It contains some body text and space for a figure.</p>
+
+        <div class="figure-container">
+            <p><strong>Figure 1:</strong> Example figure caption goes here.</p>
+            <img src="example-image.jpg" alt="Example figure" />
+        </div>
+
+        <p>Return to the <a href="index.html">main page</a>.</p>
+    </main>
+</body>
+</html>
