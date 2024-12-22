@@ -36,6 +36,8 @@ nav a:hover {
   grid-template-columns: repeat(3, 1fr); /* Creates three equal-width columns */
   gap: 10px; /* Adds spacing between grid items */
   position: relative; /* Ensures positioned children are relative to the grid container */
+  margin-left: 10%; /* Adds a 10% margin on the left side */
+  margin-right: 10%; /* Adds a 10% margin on the right side */
 }
 
 /* Styles for individual image links */
