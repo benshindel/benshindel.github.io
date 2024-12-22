@@ -1,8 +1,11 @@
 /* Global styles for the webpage */
 :root {
-  --bg-color: #ffffff; /* Background color for light mode */
-  --text-color: #333333; /* Text color for light mode */
-  --link-color: #007BFF; /* Link color for light mode */
+  --bg-color-light: #ffffff; /* Background color for light mode */
+  --text-color-light: #333333; /* Text color for light mode */
+  --link-color-light: #007BFF; /* Link color for light mode */
+  --bg-color-dark: #121212; /* Background color for dark mode */
+  --text-color-dark: #ffffff; /* Text color for dark mode */
+  --link-color-dark: #80d8ff; /* Link color for dark mode */
 }
 
 body {
@@ -10,14 +13,19 @@ body {
   margin: 0; /* Removes default margin */
   padding: 0; /* Removes default padding */
   box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
-  background-color: var(--bg-color); /* Uses background color variable */
-  color: var(--text-color); /* Uses text color variable */
+  background-color: var(--bg-color-light); /* Uses background color variable for light mode */
+  color: var(--text-color-light); /* Uses text color variable for light mode */
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+body.dark-mode {
+  background-color: var(--bg-color-dark); /* Uses background color variable for dark mode */
+  color: var(--text-color-dark); /* Uses text color variable for dark mode */
 }
 
 /* Header styles */
 header {
-  background-color: var(--bg-color); /* Matches the background color */
+  background-color: transparent; /* Matches the background color */
   padding: 10px 0; /* Adds space above and below the header content */
 }
 
@@ -32,8 +40,12 @@ header {
 /* Styles for navigation links */
 .nav-wrapper nav a {
   text-decoration: none; /* Removes underline from links */
-  color: var(--link-color); /* Uses link color variable */
+  color: var(--link-color-light); /* Uses link color variable for light mode */
   margin: 0 10px; /* Adds horizontal spacing between links */
+}
+
+body.dark-mode .nav-wrapper nav a {
+  color: var(--link-color-dark); /* Uses link color variable for dark mode */
 }
 
 /* Styles for the home link */
@@ -42,7 +54,11 @@ header {
   font-size: 1.2em; /* Increases the font size */
   margin-right: auto; /* Pushes the home link to the far left */
   text-decoration: none; /* Removes underline */
-  color: var(--link-color); /* Matches the color of other links */
+  color: var(--link-color-light); /* Matches the color of other links in light mode */
+}
+
+body.dark-mode .home-link {
+  color: var(--link-color-dark); /* Matches the color of other links in dark mode */
 }
 
 /* Styles for the toggle button */
@@ -57,16 +73,24 @@ header {
 
 /* Hover effect for navigation links */
 .nav-wrapper nav a:hover {
-  color: var(--link-color); /* Changes link color to blue on hover */
+  color: var(--link-color-light); /* Changes link color to light mode on hover */
+}
+
+body.dark-mode .nav-wrapper nav a:hover {
+  color: var(--link-color-dark); /* Changes link color to dark mode on hover */
 }
 
 /* Remove visited link styles */
 .nav-wrapper nav a:visited {
-  color: var(--link-color); /* Ensures visited links have the same color */
+  color: var(--link-color-light); /* Ensures visited links have the same color in light mode */
+}
+
+body.dark-mode .nav-wrapper nav a:visited {
+  color: var(--link-color-dark); /* Ensures visited links have the same color in dark mode */
 }
 
 /* Add gap between header and grid */
-main {
+main.content {
   margin-top: 20px; /* Adds a gap between the header and the content */
 }
 
@@ -130,8 +154,8 @@ main {
 }
 
 body.dark-mode {
-  background-color: var(--bg-color); /* Uses background color variable for dark mode */
-  color: var(--text-color); /* Uses text color variable for dark mode */
+  background-color: var(--bg-color-dark); /* Uses background color variable for dark mode */
+  color: var(--text-color-dark); /* Uses text color variable for dark mode */
 }
 
 /* Responsive styles for smaller screens */
