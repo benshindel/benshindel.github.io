@@ -34,6 +34,7 @@ nav a {
   text-decoration: none; /* Removes underline from links */
   color: var(--link-color); /* Uses link color variable */
   margin: 0 10px; /* Adds horizontal spacing between links */
+  text-decoration-skip-ink: auto; /* Adjusts underline style */
 }
 
 /* Styles for the home link */
