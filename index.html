@@ -8,29 +8,36 @@
 </head>
 <body>
   <header>
-    <nav>
+    <div class="nav-wrapper">
       <a href="https://benshindel.github.io" class="home-link">Ben Shindel</a>
       <a href="about.html">About</a>
       <a href="https://crosshare.org/benshindel">Crosswords</a>
-    </nav>
+    </div>
   </header>
+
+  <button id="mode-toggle">Toggle Mode</button>
 
   <main>
     <section class="image-grid">
       <a href="page1.html">
         <img src="images/DAC" alt="Image 1 description" >
-        <span>Link to Page 1</span>
+        <span>Humidity-Driven Carbon Capture</span>
       </a>
       <a href="page2.html">
         <img src="images/sponge" alt="Image 2 description" >
-        <span>Link to Page 2</span>
+        <span>Nanomaterial Sponge Coatings for Heavy Metal Remediation</span>
       </a>
       <a href="page3.html">
         <img src="images/pearl" alt="Image 3 description" >
-        <span>Link to Page 3</span>
+        <span>Nutrient Recovery with the PEARL Membrane</span>
       </a>
     </section>
   </main>
 
+  <script>
+    document.getElementById("mode-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("night-mode");
+    });
+  </script>
 </body>
 </html>
