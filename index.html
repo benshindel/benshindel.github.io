@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ben Shindel</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"> <!-- Sets the character encoding for the document -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive on all devices -->
+  <title>Ben Shindel</title> <!-- Sets the title of the webpage -->
+  <link rel="stylesheet" href="style.css"> <!-- Links the external CSS file for styling -->
 </head>
 <body>
   <header>
     <div class="nav-wrapper">
+      <!-- Home link -->
       <a href="https://benshindel.github.io" class="home-link">Ben Shindel</a>
+      <!-- Navigation links -->
       <nav>
         <a href="about.html">About</a>
         <a href="https://crosshare.org/benshindel">Crosswords</a>
       </nav>
+      <!-- Light/Dark mode toggle button -->
       <button id="mode-toggle" aria-label="Toggle dark mode"><span class="toggle-icon">☀️</span></button>
     </div>
   </header>
   
   <main class="content">
     <section class="image-grid">
+      <!-- Image grid items -->
       <a href="page1.html">
-        <img src="images/DAC" alt="Image 1 description">
-        <span>Humidity-Driven Carbon Capture</span>
+        <img src="images/DAC" alt="Image 1 description"> <!-- Image with alt text for accessibility -->
+        <span>Humidity-Driven Carbon Capture</span> <!-- Description overlay for the image -->
       </a>
       <a href="page2.html">
         <img src="images/sponge" alt="Image 2 description">
@@ -36,13 +40,14 @@
   </main>
 
   <script>
+    // Wait for the DOM to fully load before running the script
     document.addEventListener("DOMContentLoaded", () => {
       const modeToggle = document.getElementById("mode-toggle");
 
-      // Ensure button is properly targeted
+      // Check if the toggle button is found
       if (modeToggle) {
         modeToggle.addEventListener("click", () => {
-          // Toggle the dark mode class on the body
+          // Toggle the dark mode class on the body element
           document.body.classList.toggle("dark-mode");
 
           // Update the icon and aria-label dynamically
