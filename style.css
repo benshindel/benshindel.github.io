@@ -42,6 +42,7 @@ nav a:hover {
 .image-grid a {
   position: relative; /* Prepares for positioning child elements */
   display: block; /* Makes the entire block clickable */
+  text-decoration: none; /* Removes default tooltip text */
 }
 
 /* Styles for images in the grid */
