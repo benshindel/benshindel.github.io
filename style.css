@@ -46,6 +46,16 @@ nav a {
   color: var(--link-color); /* Matches the color of other links */
 }
 
+/* Styles for the toggle button */
+#mode-toggle {
+  margin-left: auto; /* Pushes the button to the far right */
+  background: none; /* Removes default button background */
+  border: none; /* Removes default button border */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  padding: 10px; /* Adds padding to the button */
+  font-size: 1.2em; /* Increases the font size */
+}
+
 /* Hover effect for navigation links */
 nav a:hover {
   color: var(--link-color); /* Changes link color to blue on hover */
@@ -108,6 +118,11 @@ nav a:hover {
   --bg-color: #121212; /* Background color for night mode */
   --text-color: #ffffff; /* Text color for night mode */
   --link-color: #80d8ff; /* Link color for night mode */
+}
+
+body.night-mode {
+  background-color: var(--bg-color); /* Uses background color variable for night mode */
+  color: var(--text-color); /* Uses text color variable for night mode */
 }
 
 /* Responsive styles for smaller screens */
