@@ -9,18 +9,15 @@ body {
 /* Header styles */
 header {
   background-color: #f4f4f4; /* Light gray background color */
-  padding: 10px 20px; /* Adds space around the header content */
-  margin-left: 10%; /* Adds a 10% margin on the left side */
-  margin-right: 10%; /* Adds a 10% margin on the right side */
-  width: 80%; /* Ensures the header content aligns with the grid layout */
-  margin: 0 auto; /* Centers the header horizontally */
+  padding: 10px 0; /* Adds space above and below the header content */
 }
 
-/* Navigation bar styles */
-nav {
-  display: flex; /* Makes the navigation links align in a row */
+/* Navigation wrapper styles */
+.nav-wrapper {
+  margin: 0 10%; /* Adds a 10% margin on both sides */
+  display: flex; /* Ensures links are aligned properly */
   justify-content: space-between; /* Distributes space between navigation items */
-  align-items: center; /* Aligns items vertically within the header */
+  align-items: center; /* Aligns items vertically */
 }
 
 /* Styles for navigation links */
