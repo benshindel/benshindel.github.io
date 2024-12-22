@@ -2,7 +2,7 @@
 :root {
   --bg-color: #ffffff; /* Background color for day mode */
   --text-color: #333333; /* Text color for day mode */
-  --link-color: #007BFF; /* Link color for day mode */ 
+  --link-color: #007BFF; /* Link color for day mode */
 }
 
 body {
