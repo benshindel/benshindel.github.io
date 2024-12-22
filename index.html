@@ -12,48 +12,49 @@
       <a href="https://benshindel.github.io" class="home-link">Ben Shindel</a>
       <a href="about.html">About</a>
       <a href="https://crosshare.org/benshindel">Crosswords</a>
+      <button id="mode-toggle" aria-label="Toggle dark mode"><span class="toggle-icon">☀️</span></button>
     </div>
   </header>
-
-  <button id=\"mode-toggle\" aria-label=\"Toggle dark mode\"><span class=\"toggle-icon\">☀️</span></button>
-
+  
   <main>
     <section class="image-grid">
       <a href="page1.html">
-        <img src="images/DAC" alt="Image 1 description" >
+        <img src="images/DAC" alt="Image 1 description">
         <span>Humidity-Driven Carbon Capture</span>
       </a>
       <a href="page2.html">
-        <img src="images/sponge" alt="Image 2 description" >
+        <img src="images/sponge" alt="Image 2 description">
         <span>Nanomaterial Sponge Coatings for Heavy Metal Remediation</span>
       </a>
       <a href="page3.html">
-        <img src="images/pearl" alt="Image 3 description" >
+        <img src="images/pearl" alt="Image 3 description">
         <span>Nutrient Recovery with the PEARL Membrane</span>
       </a>
     </section>
   </main>
 
   <script>
-    const modeToggle = document.getElementById("mode-toggle");
+    document.addEventListener("DOMContentLoaded", () => {
+      const modeToggle = document.getElementById("mode-toggle");
 
-    // Ensure button is properly targeted
-    if (modeToggle) {
-      modeToggle.addEventListener("click", () => {
-        // Toggle the night mode class on the body
-        document.body.classList.toggle("night-mode");
+      // Ensure button is properly targeted
+      if (modeToggle) {
+        modeToggle.addEventListener("click", () => {
+          // Toggle the night mode class on the body
+          document.body.classList.toggle("night-mode");
 
-        // Update the icon and aria-label dynamically
-        const icon = modeToggle.querySelector(".toggle-icon");
-        if (document.body.classList.contains("night-mode")) {
-          icon.textContent = "🌙"; // Moon icon for night mode
-          modeToggle.setAttribute("aria-label", "Switch to day mode");
-        } else {
-          icon.textContent = "☀️"; // Sun icon for day mode
-          modeToggle.setAttribute("aria-label", "Switch to night mode");
-        }
-      });
-    }
+          // Update the icon and aria-label dynamically
+          const icon = modeToggle.querySelector(".toggle-icon");
+          if (document.body.classList.contains("night-mode")) {
+            icon.textContent = "🌙"; // Moon icon for night mode
+            modeToggle.setAttribute("aria-label", "Switch to day mode");
+          } else {
+            icon.textContent = "☀️"; // Sun icon for day mode
+            modeToggle.setAttribute("aria-label", "Switch to night mode");
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
