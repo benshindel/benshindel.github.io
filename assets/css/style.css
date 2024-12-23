@@ -10,7 +10,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 0 10%;
   box-sizing: border-box;
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
@@ -20,11 +20,6 @@ body {
 body.dark-mode {
   background-color: var(--bg-color-dark);
   color: var(--text-color-dark);
-}
-
-.container {
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
 header {
@@ -130,6 +125,10 @@ main.content {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding: 0 5%;
+  }
+
   .image-grid {
     grid-template-columns: 1fr;
   }
