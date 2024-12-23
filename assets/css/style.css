@@ -80,6 +80,12 @@ header {
   align-items: center;
 }
 
+.nav-wrapper nav {
+  display: flex;
+  flex-direction: row; /* Display menu items in a horizontal row */
+  gap: 10px;
+}
+
 .nav-wrapper nav a {
   text-decoration: none;
   color: var(--link-color-light);
