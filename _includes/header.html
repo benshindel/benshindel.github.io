@@ -4,18 +4,27 @@
     <!-- Home link -->
     <a href="https://benshindel.github.io" class="home-link">Ben Shindel</a>
     
-    <!-- Hamburger Menu Button -->
+    <!-- Desktop Navigation Links -->
+    <nav>
+      <a href="/about/">About</a>
+      <a href="https://benshindel.substack.com/" target="_blank">Blog</a>
+      <a href="https://crosshare.org/benshindel" target="_blank">Crosswords</a>
+      <!-- Light/Dark mode toggle button -->
+      <button id="mode-toggle" aria-label="Toggle dark mode"><span class="toggle-icon">☀️</span></button>
+    </nav>
+    
+    <!-- Hamburger Menu Button (Mobile only) -->
     <button id="menu-toggle" aria-label="Toggle navigation">
       <span class="hamburger-icon">☰</span>
     </button>
     
-    <!-- Navigation links -->
-    <nav id="mobile-menu">
+    <!-- Mobile Menu Links -->
+    <div id="mobile-menu" class="hidden">
       <a href="/about/">About</a>
       <a href="https://benshindel.substack.com/" target="_blank">Blog</a>
       <a href="https://crosshare.org/benshindel" target="_blank">Crosswords</a>
-      <!-- Move Light/Dark mode toggle button into the dropdown menu -->
+      <!-- Light/Dark mode toggle button -->
       <button id="mode-toggle" aria-label="Toggle dark mode"><span class="toggle-icon">☀️</span></button>
-    </nav>
+    </div>
   </div>
 </header>
