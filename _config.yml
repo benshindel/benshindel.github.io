@@ -1,1 +1,56 @@
+# Site Settings
+title: "Ben Shindel"  # Your site title
+description: "Ben Shindel's personal website."  # Short description of your site
+url: "https://benshindel.github.io"  # Your site's base URL (if deployed)
+baseurl: ""  # Leave empty if your site is deployed at the root
 
+# Author Information
+author:
+  name: "Ben Shindel"
+  email: "benshindel@gmail.com"
+
+# Build Settings
+markdown: kramdown  # Default Markdown parser
+theme: # Default theme (optional if using a custom theme)
+permalink: pretty  # Pretty URLs for pages (no .html extensions)
+
+# Plugins
+plugins:
+  - jekyll-feed   # Generate an RSS feed
+  - jekyll-seo-tag  # Add SEO meta tags
+  - jekyll-sitemap  # Generate a sitemap.xml file
+
+# Defaults
+defaults:
+  - scope:
+      path: ""  # Apply to all files
+      type: "posts"  # Only apply to posts
+      values:
+      layout: "default"  # Use the default layout
+
+# Navigation Links
+navigation:
+  - name: "Home"
+    url: "/"
+  - name: "About"
+    url: "/about.html"
+  - name: "Crosswords"
+    url: "https://crosshare.org/benshindel"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Exclusions
+exclude:
+  - README.md  # Exclude README file from the build
+
+# Miscellaneous
+paginate: 5  # Number of posts per page (if using pagination)
+paginate_path: "/page:num/"  # Pagination path
+
+# Custom Variables
+custom_variables:
+  dark_mode_enabled: true  # Example custom variable
