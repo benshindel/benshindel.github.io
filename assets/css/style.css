@@ -30,6 +30,7 @@ body.dark-mode {
   font-size: 1.5em;
   cursor: pointer;
   color: var(--link-color-light);
+  align-self: center; /* Ensure vertical alignment */
 }
 
 body.dark-mode #menu-toggle {
@@ -139,6 +140,7 @@ body.dark-mode .nav-wrapper nav a {
   font-size: 1.2em;
   text-decoration: none;
   color: var(--link-color-light);
+  align-self: center; /* Ensure vertical alignment */
 }
 
 body.dark-mode .home-link {
@@ -151,6 +153,7 @@ body.dark-mode .home-link {
   cursor: pointer;
   padding: 10px;
   font-size: 1.2em;
+  align-self: center; /* Ensure vertical alignment */
 }
 
 .nav-wrapper nav a:hover {
