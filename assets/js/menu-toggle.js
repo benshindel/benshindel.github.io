@@ -1,18 +1,17 @@
-// Toggle Mobile Menu
+// menu-toggle.js (revised for single-nav approach)
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
+  const mainNav = document.getElementById("main-nav");
 
-  if (menuToggle && mobileMenu) {
+  if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
-      const isHidden = mobileMenu.classList.contains("hidden");
+      const isActive = mainNav.classList.contains("active");
 
-      // Toggle visibility
-      mobileMenu.classList.toggle("hidden");
-      mobileMenu.classList.toggle("active");
+      // Toggle the .active class
+      mainNav.classList.toggle("active");
 
       // Update aria-expanded for accessibility
-      menuToggle.setAttribute("aria-expanded", !isHidden);
+      menuToggle.setAttribute("aria-expanded", !isActive);
     });
   }
 });
