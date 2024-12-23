@@ -35,6 +35,15 @@ body.dark-mode {
   display: flex;
   flex-direction: column; /* Stack links vertically for mobile */
   gap: 10px;
+  position: absolute; /* Position dropdown menu */
+  right: 10px; /* Align to the right side */
+  background-color: var(--bg-color-light); /* Set background color */
+  border: 1px solid #ccc; /* Optional: Add border */
+  padding: 10px; /* Optional: Add padding */
+}
+
+#mobile-menu.active {
+  display: flex; /* Show menu when active */
 }
 
 #mobile-menu a {
