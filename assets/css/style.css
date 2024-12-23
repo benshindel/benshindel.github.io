@@ -87,6 +87,21 @@ body.dark-mode #mobile-menu a {
   }
 }
 
+@media (min-width: 769px) {
+  #menu-toggle,
+  #mobile-menu {
+    display: none !important; /* Hide mobile menu on larger screens */
+  }
+
+  nav {
+    display: flex !important; /* Show navigation links horizontally */
+    flex-direction: row;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
 header {
   background-color: transparent;
   padding: 10px 0;
