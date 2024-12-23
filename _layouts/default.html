@@ -1,1 +1,18 @@
-
+<!-- default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "Ben Shindel" }}</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/darkmode.js" defer></script>
+</head>
+<body>
+  {% include header.html %}
+  <main class="content">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+</body>
+</html>
