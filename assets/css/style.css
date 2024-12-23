@@ -29,6 +29,11 @@ body.dark-mode {
   border: none;
   font-size: 1.5em;
   cursor: pointer;
+  color: var(--link-color-light);
+}
+
+body.dark-mode #menu-toggle {
+  color: var(--link-color-dark);
 }
 
 #mobile-menu {
