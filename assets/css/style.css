@@ -1,12 +1,19 @@
+/* ===============================
+   Global Variables (Light & Dark)
+   =============================== */
 :root {
   --bg-color-light: #ffffff;
   --text-color-light: #333333;
   --link-color-light: #9a88fc;
+
   --bg-color-dark: #121212;
   --text-color-dark: #ffffff;
   --link-color-dark: #9a88fc;
 }
 
+/* ===============================
+   Base Styles
+   =============================== */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -22,87 +29,9 @@ body.dark-mode {
   color: var(--text-color-dark);
 }
 
-/* Mobile Menu Styling */
-#menu-toggle {
-  display: none; /* Hidden by default on larger screens */
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-  color: var(--link-color-light);
-  align-self: center; /* Ensure vertical alignment */
-}
-
-body.dark-mode #menu-toggle {
-  color: var(--link-color-dark);
-}
-
-#mobile-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: absolute; /* Ensure it's above other content */
-  top: 50px; /* Adjust as per header height */
-  left: 0;
-  right: 0;
-  background-color: var(--bg-color-light);
-  padding: 15px; /* Add padding for text spacing */
-  z-index: 1000; /* Ensure it appears above other elements */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
-}
-
-body.dark-mode #mobile-menu {
-  background-color: var(--bg-color-dark);
-}
-
-/* Ensure links in mobile menu are readable */
-#mobile-menu a {
-  text-decoration: none;
-  color: var(--link-color-light);
-}
-
-body.dark-mode #mobile-menu a {
-  color: var(--link-color-dark);
-}
-
-#mobile-menu.hidden {
-  display: none; /* Initially hidden */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  nav {
-    display: none; /* Hide navigation links */
-  }
-
-  #menu-toggle {
-    display: block; /* Show hamburger button */
-  }
-
-  #mobile-menu {
-    display: none; /* Initially hidden */
-  }
-
-  #mobile-menu.active {
-    display: flex; /* Show menu when active */
-  }
-}
-
-@media (min-width: 769px) {
-  #menu-toggle,
-  #mobile-menu {
-    display: none !important; /* Hide mobile menu on larger screens */
-  }
-
-  nav {
-    display: flex !important; /* Show navigation links horizontally */
-    flex-direction: row;
-    gap: 20px;
-    justify-content: flex-start;
-    align-items: center;
-  }
-}
-
+/* ===============================
+   Header & Navigation
+   =============================== */
 header {
   background-color: transparent;
   padding: 10px 0;
@@ -114,68 +43,160 @@ header {
   align-items: center;
 }
 
-.nav-wrapper nav {
-  display: flex;
-  flex-direction: row; /* Display menu items in a horizontal row */
-  gap: 20px;
-  justify-content: flex-start; /* Align items to start */
-  align-items: center; /* Center vertically */
-  list-style: none; /* Remove bullets if <li> used */
-  padding: 0; /* Ensure no extra padding */
-  margin: 0; /* Ensure no extra margin */
+/* 
+  Hamburger button (for mobile).
+  We'll hide it on desktop.
+*/
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--link-color-light);
+  align-self: center; /* vertical alignment */
 }
 
-.nav-wrapper nav a {
+body.dark-mode #menu-toggle {
+  color: var(--link-color-dark);
+}
+
+/* 
+  Single nav (for both mobile & desktop).
+  We'll style it differently in media queries.
+*/
+#main-nav {
+  display: flex;            /* default for desktop; changed in media queries below */
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav links */
+#main-nav a {
   text-decoration: none;
   color: var(--link-color-light);
   margin: 0 10px;
 }
 
-body.dark-mode .nav-wrapper nav a {
+body.dark-mode #main-nav a {
   color: var(--link-color-dark);
 }
 
-.home-link {
-  font-weight: bold;
-  font-size: 1.2em;
-  text-decoration: none;
-  color: var(--link-color-light);
-  align-self: center; /* Ensure vertical alignment */
-}
-
-body.dark-mode .home-link {
-  color: var(--link-color-dark);
-}
-
+/* Light/Dark mode toggle button */
 #mode-toggle {
   background: none;
   border: none;
   cursor: pointer;
   padding: 10px;
   font-size: 1.2em;
-  align-self: center; /* Ensure vertical alignment */
+  align-self: center;
 }
 
-.nav-wrapper nav a:hover {
+/* Home link styling */
+.home-link {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-decoration: none;
   color: var(--link-color-light);
+  align-self: center; /* vertical alignment */
 }
 
-body.dark-mode .nav-wrapper nav a:hover {
+body.dark-mode .home-link {
   color: var(--link-color-dark);
 }
 
-.nav-wrapper nav a:visited {
+/* Hover & visited states for nav links */
+#main-nav a:hover {
   color: var(--link-color-light);
 }
 
-body.dark-mode .nav-wrapper nav a:visited {
+body.dark-mode #main-nav a:hover {
   color: var(--link-color-dark);
 }
 
+#main-nav a:visited {
+  color: var(--link-color-light);
+}
+
+body.dark-mode #main-nav a:visited {
+  color: var(--link-color-dark);
+}
+
+/* ===============================
+   Responsive Styles
+   =============================== */
+
+/* 
+  MOBILE: up to 768px 
+  - Show hamburger button
+  - Hide nav by default (toggle with JS)
+*/
+@media (max-width: 768px) {
+  /* Reduce side padding on smaller screens */
+  body {
+    padding: 0 5%;
+  }
+
+  #menu-toggle {
+    display: block; /* show hamburger on mobile */
+  }
+
+  #main-nav {
+    display: none;          /* hidden by default on mobile */
+    flex-direction: column; /* vertical stacking when shown */
+    position: absolute;     
+    top: 60px;              /* below the header, adjust if needed */
+    left: 0;
+    right: 0;
+    background-color: var(--bg-color-light);
+    padding: 15px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  body.dark-mode #main-nav {
+    background-color: var(--bg-color-dark);
+  }
+
+  /* When .active is added via JS, nav is displayed */
+  #main-nav.active {
+    display: flex;
+  }
+}
+
+/*
+  DESKTOP: from 769px and up
+  - Hide hamburger
+  - Show nav horizontally
+*/
+@media (min-width: 769px) {
+  #menu-toggle {
+    display: none;
+  }
+
+  #main-nav {
+    display: flex;         /* show inline on desktop */
+    position: static;      /* not absolute */
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+/* ===============================
+   Main Content
+   =============================== */
 main.content {
   margin-top: 20px;
 }
 
+/* ===============================
+   Image Grid Styles
+   =============================== */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -218,16 +239,19 @@ main.content {
   opacity: 1;
 }
 
+/*
+  Make the image grid single-column
+  on smaller screens
+*/
 @media (max-width: 768px) {
-  body {
-    padding: 0 5%;
-  }
-
   .image-grid {
     grid-template-columns: 1fr;
   }
 }
 
+/* ===============================
+   About Section
+   =============================== */
 .about {
   display: flex;
   flex-direction: column;
@@ -244,11 +268,11 @@ main.content {
 }
 
 .profile-pic {
-  max-width: 100%; /* Ensures the image scales within its container */
-  max-height: 200px; /* Adjust height to your preference */
-  border-radius: 10px; /* Rounded corners (adjust the value for more or less rounding) */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
 }
 
 .about-text {
