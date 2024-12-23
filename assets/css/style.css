@@ -81,10 +81,24 @@ body.dark-mode #mobile-menu a {
 
   #mobile-menu {
     display: none; /* Initially hidden */
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-color-light);
+    padding: 15px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   #mobile-menu.active {
-    display: flex; /* Show menu when active */
+    display: flex;
+  }
+
+  #mobile-menu button#mode-toggle-mobile {
+    margin-top: 10px;
   }
 }
 
@@ -100,6 +114,10 @@ body.dark-mode #mobile-menu a {
     gap: 20px;
     justify-content: flex-start;
     align-items: center;
+  }
+
+  nav button#mode-toggle {
+    margin-left: auto; /* Push toggle to the right */
   }
 }
 
