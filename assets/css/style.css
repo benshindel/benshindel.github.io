@@ -134,7 +134,6 @@ main.content {
   }
 }
 
-
 .about {
   display: flex;
   flex-direction: column;
@@ -145,14 +144,17 @@ main.content {
 }
 
 .profile-container {
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
 .profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  max-width: 100%; /* Ensures the image doesn't exceed its container */
+  max-height: 150px; /* Limits the height of the image */
+  border-radius: 50%; /* Makes the image circular */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover; /* Ensures the image scales nicely */
 }
 
 .about-text {
