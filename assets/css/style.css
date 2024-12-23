@@ -22,6 +22,44 @@ body.dark-mode {
   color: var(--text-color-dark);
 }
 
+/* Mobile Menu Styling */
+#menu-toggle {
+  display: none; /* Hidden by default on larger screens */
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#mobile-menu {
+  display: flex;
+  flex-direction: column; /* Stack links vertically for mobile */
+  gap: 10px;
+}
+
+#mobile-menu.hidden {
+  display: none; /* Initially hidden */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    display: none; /* Hide navigation links */
+  }
+
+  #menu-toggle {
+    display: block; /* Show hamburger button */
+  }
+
+  #mobile-menu {
+    display: none; /* Initially hidden */
+  }
+
+  #mobile-menu.active {
+    display: flex; /* Show menu when active */
+  }
+}
+
 header {
   background-color: transparent;
   padding: 10px 0;
