@@ -150,11 +150,11 @@ main.content {
 }
 
 .profile-pic {
-  max-width: 100%; /* Ensures the image doesn't exceed its container */
-  max-height: 150px; /* Limits the height of the image */
-  border-radius: 50%; /* Makes the image circular */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  object-fit: cover; /* Ensures the image scales nicely */
+  max-width: 100%; /* Ensures the image scales within its container */
+  max-height: 200px; /* Adjust height to your preference */
+  border-radius: 10px; /* Rounded corners (adjust the value for more or less rounding) */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
 }
 
 .about-text {
