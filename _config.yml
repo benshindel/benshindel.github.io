@@ -50,4 +50,4 @@ custom_variables:
   dark_mode_enabled: true  # Example custom variable
 
 # Favicon
-favicon: /assets/images/favicon.ico
+favicon: /assets/images/favicon.png
