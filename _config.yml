@@ -54,3 +54,6 @@ paginate_path: "/page:num/"  # Pagination path
 # Custom Variables
 custom_variables:
   dark_mode_enabled: true  # Example custom variable
+
+# Favicon
+favicon: /assets/images/favicon.ico
