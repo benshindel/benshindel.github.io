@@ -5,7 +5,7 @@ title: Home
 
 <section class="image-grid">
   <a href="dac.html">
-    <img src="/assets/images/DAC" alt="Image 1 description">
+    <img src="/assets/images/dac" alt="Image 1 description">
     <span>Humidity-Driven Carbon Capture</span>
   </a>
   <a href="sponge.html">
