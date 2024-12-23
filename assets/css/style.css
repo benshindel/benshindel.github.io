@@ -37,6 +37,15 @@ body.dark-mode {
   gap: 10px;
 }
 
+#mobile-menu a {
+  text-decoration: none;
+  color: var(--link-color-light);
+}
+
+body.dark-mode #mobile-menu a {
+  color: var(--link-color-dark);
+}
+
 #mobile-menu.hidden {
   display: none; /* Initially hidden */
 }
