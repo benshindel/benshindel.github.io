@@ -33,19 +33,23 @@ body.dark-mode {
 
 #mobile-menu {
   display: flex;
-  flex-direction: column; /* Stack links vertically for mobile */
+  flex-direction: column;
   gap: 10px;
-  position: absolute; /* Position dropdown menu */
-  right: 10px; /* Align to the right side */
-  background-color: var(--bg-color-light); /* Set background color */
-  border: 1px solid #ccc; /* Optional: Add border */
-  padding: 10px; /* Optional: Add padding */
+  position: absolute; /* Ensure it's above other content */
+  top: 50px; /* Adjust as per header height */
+  left: 0;
+  right: 0;
+  background-color: var(--bg-color-light);
+  padding: 15px; /* Add padding for text spacing */
+  z-index: 1000; /* Ensure it appears above other elements */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
 }
 
-#mobile-menu.active {
-  display: flex; /* Show menu when active */
+body.dark-mode #mobile-menu {
+  background-color: var(--bg-color-dark);
 }
 
+/* Ensure links in mobile menu are readable */
 #mobile-menu a {
   text-decoration: none;
   color: var(--link-color-light);
@@ -92,7 +96,12 @@ header {
 .nav-wrapper nav {
   display: flex;
   flex-direction: row; /* Display menu items in a horizontal row */
-  gap: 10px;
+  gap: 20px;
+  justify-content: flex-start; /* Align items to start */
+  align-items: center; /* Center vertically */
+  list-style: none; /* Remove bullets if <li> used */
+  padding: 0; /* Ensure no extra padding */
+  margin: 0; /* Ensure no extra margin */
 }
 
 .nav-wrapper nav a {
