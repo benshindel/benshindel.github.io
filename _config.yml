@@ -29,13 +29,7 @@ defaults:
       layout: "default"  # Use the default layout
 
 # Navigation Links
-navigation:
-  - name: "Home"
-    url: "/"
-  - name: "About"
-    url: "/about.html"
-  - name: "Crosswords"
-    url: "https://crosshare.org/benshindel"
+
 
 # Collections
 collections:
