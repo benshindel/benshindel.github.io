@@ -1,10 +1,10 @@
 :root {
   --bg-color-light: #ffffff;
   --text-color-light: #333333;
-  --link-color-light: #007BFF;
+  --link-color-light: #9a88fc;
   --bg-color-dark: #121212;
   --text-color-dark: #ffffff;
-  --link-color-dark: #80d8ff;
+  --link-color-dark: #9a88fc;
 }
 
 body {
