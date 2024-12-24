@@ -60,6 +60,13 @@ header {
   align-self: center; /* vertical alignment */
 }
 
+.hamburger-icon {
+  display: inline-block;
+  line-height: 1; 
+  vertical-align: middle;
+  font-size: 1.5rem; /* or match your site's heading size */
+}
+
 body.dark-mode #menu-toggle {
   color: var(--link-color-dark);
 }
