@@ -64,7 +64,7 @@ header {
 .hamburger-icon {
   font-size: inherit;
   position: relative;
-  top: -2px;
+  top: -10px;
   line-height: 1;
 }
 
