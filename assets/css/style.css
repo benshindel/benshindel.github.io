@@ -288,3 +288,32 @@ main.content {
 .about-text p {
   margin-bottom: 15px;
 }
+
+/* ===============================
+   Hyperlinks
+   =============================== */
+/* Light mode */
+a {
+  color: var(--link-color-light);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--link-color-light);
+}
+/* Dark mode */
+body.dark-mode a,
+body.dark-mode a:visited {
+  color: var(--link-color-dark);
+  text-decoration: none; /* still no underline by default in dark mode */
+}
+
+body.dark-mode a:hover,
+body.dark-mode a:focus {
+  text-decoration: underline;
+}
