@@ -62,10 +62,8 @@ header {
 }
 
 .hamburger-icon {
-  display: inline-block;
-  line-height: 1; 
-  vertical-align: middle;
-  font-size: 2rem;
+  font-size: inherit; 
+  line-height: 1;
 }
 
 body.dark-mode #menu-toggle {
@@ -112,7 +110,7 @@ body.dark-mode #main-nav a {
   display: inline-flex;
   align-items: center;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.2rem;
   text-decoration: none;
   color: var(--link-color-light);
 }
