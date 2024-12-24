@@ -48,25 +48,24 @@ header {
   We'll hide it on desktop.
 */
 #menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   margin: 0;
   line-height: 1;
-  display: none;
   background: none;
   border: none;
-  font-size: 1.5em;
+  font-size: 1.2em;
   cursor: pointer;
   color: var(--link-color-light);
-  align-self: center; /* vertical alignment */
-  top: -10px; /* or -1px, as needed */
 }
 
 .hamburger-icon {
   display: inline-block;
   line-height: 1; 
   vertical-align: middle;
-  font-size: 1.5rem;
-  top: -10px; /* or -1px, as needed */
+  font-size: 1.2rem;
 }
 
 body.dark-mode #menu-toggle {
@@ -110,11 +109,12 @@ body.dark-mode #main-nav a {
 
 /* Home link styling */
 .home-link {
+  display: inline-flex;
+  align-items: center;
   font-weight: bold;
   font-size: 1.2em;
   text-decoration: none;
   color: var(--link-color-light);
-  align-self: center; /* vertical alignment */
 }
 
 body.dark-mode .home-link {
