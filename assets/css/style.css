@@ -58,6 +58,7 @@ header {
   cursor: pointer;
   color: var(--link-color-light);
   align-self: center; /* vertical alignment */
+  top: -10px; /* or -1px, as needed */
 }
 
 .hamburger-icon {
@@ -65,7 +66,7 @@ header {
   line-height: 1; 
   vertical-align: middle;
   font-size: 1.5rem;
-  top: -2px; /* or -1px, as needed */
+  top: -10px; /* or -1px, as needed */
 }
 
 body.dark-mode #menu-toggle {
