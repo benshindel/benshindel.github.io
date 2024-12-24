@@ -228,7 +228,9 @@ main.content {
   transition: opacity 0.3s ease;
 }
 
-.image-grid a:hover img {
+.image-grid a:hover img,
+.image-grid a:focus img,
+.image-grid a.active img { /* Added .active */
   opacity: 0.5;
 }
 
@@ -245,22 +247,30 @@ main.content {
   opacity: 0;
   transition: opacity 0.3s ease;
   text-align: center;
+  pointer-events: none; /* Allows clicks to pass through */
 }
 
-.image-grid a:hover span {
+.image-grid a:hover span,
+.image-grid a:focus span,
+.image-grid a.active span { /* Added .active */
   opacity: 1;
 }
 
-/*
-  Make the image grid single-column
-  on smaller screens
-*/
+/* Active State for Mobile (toggled via JS) */
+.image-grid a.active img {
+  opacity: 0.5;
+}
+
+.image-grid a.active span {
+  opacity: 1;
+}
+
+/* Make the image grid single-column on smaller screens */
 @media (max-width: 768px) {
   .image-grid {
     grid-template-columns: 1fr;
   }
 }
-
 /* ===============================
    About Section
    =============================== */
