@@ -43,49 +43,41 @@ header {
   align-items: center;
 }
 
-/* Home link: inline-flex for proper vertical centering */
-.home-link {
-  display: inline-flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 1.2rem; /* unify units: using rem everywhere */
-  line-height: 1;
-  text-decoration: none;
-  color: var(--link-color-light);
-}
-
-/* Hamburger button: also inline-flex */
+/* 
+  Hamburger button (for mobile).
+  We'll hide it on desktop.
+*/
 #menu-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   margin: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 1.2rem; /* unify units with .home-link */
   line-height: 1;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
   color: var(--link-color-light);
 }
 
-/* The ☰ icon itself */
 .hamburger-icon {
-  /* We can let the parent (#menu-toggle) control the font-size */
-  font-size: inherit; 
-  line-height: 1;
-  vertical-align: baseline; 
-  /* or remove vertical-align entirely 
-     since inline-flex alignment should do the job */
+  display: inline-block;
+  line-height: 1; 
+  vertical-align: middle;
+  font-size: 2rem;
 }
 
 body.dark-mode #menu-toggle {
   color: var(--link-color-dark);
 }
 
-/* The main nav (desktop) */
+/* 
+  Single nav (for both mobile & desktop).
+  We'll style it differently in media queries.
+*/
 #main-nav {
-  display: flex;
+  display: flex;            /* default for desktop; changed in media queries below */
   flex-direction: row;
   gap: 20px;
   align-items: center;
@@ -105,29 +97,43 @@ body.dark-mode #main-nav a {
   color: var(--link-color-dark);
 }
 
-/* Light/Dark toggle in nav */
+/* Light/Dark mode toggle button */
 #mode-toggle {
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
   padding: 10px;
-  font-size: 1.2rem; /* unify as well if you'd like */
-  line-height: 1;
+  font-size: 1.2rem;
+  align-self: center;
 }
 
-/* Hover states */
+/* Home link styling */
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2rem;
+  text-decoration: none;
+  color: var(--link-color-light);
+}
+
+body.dark-mode .home-link {
+  color: var(--link-color-dark);
+}
+
+/* Hover & visited states for nav links */
 #main-nav a:hover {
   color: var(--link-color-light);
 }
+
 body.dark-mode #main-nav a:hover {
   color: var(--link-color-dark);
 }
+
 #main-nav a:visited {
   color: var(--link-color-light);
 }
+
 body.dark-mode #main-nav a:visited {
   color: var(--link-color-dark);
 }
@@ -135,20 +141,27 @@ body.dark-mode #main-nav a:visited {
 /* ===============================
    Responsive Styles
    =============================== */
+
+/* 
+  MOBILE: up to 768px 
+  - Show hamburger button
+  - Hide nav by default (toggle with JS)
+*/
 @media (max-width: 768px) {
+  /* Reduce side padding on smaller screens */
   body {
     padding: 0 5%;
   }
 
   #menu-toggle {
-    display: inline-flex; /* show hamburger on mobile */
+    display: block; /* show hamburger on mobile */
   }
 
   #main-nav {
-    display: none;         /* hidden by default on mobile */
-    flex-direction: column;
-    position: absolute;
-    top: 60px; /* adjust if needed */
+    display: none;          /* hidden by default on mobile */
+    flex-direction: column; /* vertical stacking when shown */
+    position: absolute;     
+    top: 60px;              /* below the header, adjust if needed */
     left: 0;
     right: 0;
     background-color: var(--bg-color-light);
@@ -156,21 +169,30 @@ body.dark-mode #main-nav a:visited {
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
+
   body.dark-mode #main-nav {
     background-color: var(--bg-color-dark);
   }
+
+  /* When .active is added via JS, nav is displayed */
   #main-nav.active {
     display: flex;
   }
 }
 
+/*
+  DESKTOP: from 769px and up
+  - Hide hamburger
+  - Show nav horizontally
+*/
 @media (min-width: 769px) {
   #menu-toggle {
-    display: none; /* hide hamburger on desktop */
+    display: none;
   }
+
   #main-nav {
-    display: flex;
-    position: static;
+    display: flex;         /* show inline on desktop */
+    position: static;      /* not absolute */
     background-color: transparent;
     box-shadow: none;
     padding: 0;
