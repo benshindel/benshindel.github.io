@@ -257,3 +257,13 @@ permalink: /boggle/
   fetchWordList();
   generateBoggleBoard();
 </script>
+
+1) "New Board" regenerates the board randomly, using the post-2013 Boggle dice configurations
+
+​2) The next button toggles between "Table Mode" for playing face down around a table, and "Upright Mode" for playing off a vertical display
+
+3) If you tap the tiles in order to form a word, you can check with the "Validate" button if it is in a Scrabble dictionary file
+
+4) "Start/Pause" and "Reset/Increment" do exactly those things to the timer (2 min default)
+
+5) Inspired by my boggle friends: Danny, Talia, Hannah, and Emma
