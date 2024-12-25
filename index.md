@@ -9,7 +9,7 @@ title: Home
     <span>Humidity-Driven Carbon Capture</span>
   </a>
   <a href="sponge" aria-haspopup="true" aria-expanded="false">
-    <img src="/assets/images/sponge.jpg" alt="Image 2 description">
+    <img src="/assets/images/sponge" alt="Image 2 description">
     <span>Nanomaterial Sponge Coatings for Heavy Metal Remediation</span>
   </a>
   <a href="pearl" aria-haspopup="true" aria-expanded="false">
