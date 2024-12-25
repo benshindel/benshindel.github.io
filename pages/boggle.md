@@ -37,7 +37,7 @@ permalink: /boggle/
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    background-color: #f5f5f5;
+    /* Removed background-color to keep the website's normal background */
     padding: 20px;
     box-sizing: border-box;
   }
@@ -114,6 +114,8 @@ permalink: /boggle/
     margin-left: 15px;
     margin-right: 15px;
     flex-grow: 1;
+    /* Changed timer text color to black */
+    color: #000;
   }
 
   /* Responsive adjustments */
