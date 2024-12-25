@@ -341,21 +341,38 @@ body.dark-mode a:focus {
 }
 
 /* ===============================
-   Footer Styling
+   Footer
    =============================== */
+
 .site-footer {
   font-size: 0.9em; /* Makes the font smaller */
-  color: var(--link-color); /* Uses the theme's link color */
+  color: var(--link-color-light); /* Sets text color to the theme's link color in light mode */
   text-align: center; /* Centers the text */
-  padding: 20px; /* Adds some padding */
-  background-color: #f8f8f8; /* Optional: Adds a light background */
+  padding: 20px 0; /* Adds vertical padding */
+  margin-top: 40px; /* Adds space above the footer */
+  background-color: transparent; /* Optional: Change if you want a background color */
+}
+
+body.dark-mode .site-footer {
+  color: var(--link-color-dark); /* Sets text color to the theme's link color in dark mode */
+  background-color: transparent; /* Optional: Change if you want a background color in dark mode */
 }
 
 .site-footer a {
-  color: var(--link-color); /* Ensures links use the theme's link color */
+  color: inherit; /* Inherits the footer's text color */
   text-decoration: none; /* Removes underline from links */
+  transition: text-decoration 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .site-footer a:hover {
   text-decoration: underline; /* Underlines links on hover for better UX */
+}
+
+/* Optional: Add a top border to distinguish the footer */
+.site-footer {
+  border-top: 1px solid #e0e0e0; /* Light mode border */
+}
+
+body.dark-mode .site-footer {
+  border-top: 1px solid #333333; /* Dark mode border */
 }
