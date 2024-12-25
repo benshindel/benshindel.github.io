@@ -345,7 +345,7 @@ body.dark-mode a:focus {
    =============================== */
 
 .site-footer {
-  font-size: 0.9em; /* Makes the font smaller */
+  font-size: 0.7em; /* Makes the font smaller */
   color: var(--link-color-light); /* Sets text color to the theme's link color in light mode */
   text-align: center; /* Centers the text */
   padding: 20px 0; /* Adds vertical padding */
