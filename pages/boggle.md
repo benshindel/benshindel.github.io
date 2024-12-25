@@ -4,12 +4,12 @@ title: Boggle Game
 permalink: /boggle/
 ---
 
-<!-- Include Google Fonts -->
+<!-- Include Google Fonts (if not already loaded in default.html) -->
 <link href="https://fonts.googleapis.com/css2?family=Caudex&display=swap" rel="stylesheet">
 
 <!-- Boggle Game Container -->
 <div class="boggle-container">
-  <div id="container">
+  <div id="boggle-wrapper">
     <div id="boggle-board"></div> <!-- Placeholder for the 4x4 Boggle board -->
 
     <div class="top-row">
@@ -20,46 +20,50 @@ permalink: /boggle/
 
     <div class="bottom-row">
       <button onclick="startPauseTimer()">Start/<br>Pause</button> <!-- Start or pause the timer -->
-      <button onclick="resetAndIncrementTimer()">Reset /<br>Increment</button> <!-- Resets and increments the timer -->
+      <button onclick="resetAndIncrementTimer()">Reset/<br>Increment</button> <!-- Resets and increments the timer -->
       <div id="timer">2:00</div> <!-- Displays the remaining time -->
     </div>
-    
-    <!-- Message Display Area -->
-    <div id="message"></div>
   </div>
 </div>
 
 <!-- Inline CSS for Boggle Widget -->
 <style>
-  /* Boggle game specific styles */
+  /* ------------------------------
+     Layout & Container
+     ------------------------------ */
   .boggle-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    background-color: #f5f5f5;
-    padding: 20px;
+    align-items: flex-start; /* Align to top so it doesn't force center across entire screen height */
+    min-height: auto;       /* Let the container adjust automatically rather than forcing full viewport height */
+    margin: 20px auto;      /* Some margin around the main container */
+    padding: 0 10px;        /* Small horizontal padding for mobile */
     box-sizing: border-box;
+    /* No background-color so it inherits the normal background of the website */
   }
 
-  #container {
-    padding: 30px;
-    width: 300px;
-    background-color: #e0c097;
-    border-radius: 0px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  #boggle-wrapper {
+    padding: 20px;
+    width: 320px;          /* Slightly wider default to accommodate 4 tiles horizontally without squishing */
+    background-color: var(--bg-color, transparent); /* Transparent or inherited background */
+    border-radius: 8px;    /* Slight rounding for modern look */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    max-width: 100%;       /* Let it shrink on mobile */
   }
 
+  /* ------------------------------
+     Boggle Board
+     ------------------------------ */
   #boggle-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     padding: 10px;
-    border: 5px solid #5c4033;
-    border-radius: 12px;
-    background-color: #f5deb3;
+    border: 4px solid #5c4033;      /* Dark brown border around the board */
+    border-radius: 8px;            /* Slightly rounded corners for aesthetic effect */
+    background-color: #f5deb3;     /* Light beige background within the board */
     margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
   }
 
   .boggle-tile {
@@ -68,33 +72,36 @@ permalink: /boggle/
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #5c4033;
-    border-radius: 8px;
-    background-color: #d2a679;
+    border: 2px solid #5c4033;     /* Dark brown border */
+    border-radius: 5px;
+    background-color: #d2a679;     /* Warm brown background */
     cursor: pointer;
     font-family: 'Caudex', serif;
     font-size: 32px;
-    color: #3b2f2f;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    color: #3b2f2f;                /* Dark brown text color for contrast */
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
     transition: transform 0.3s;
   }
 
   .boggle-tile.clicked {
-    background-color: #b58969;
+    background-color: #b58969; /* Change color to indicate selection */
   }
 
+  /* ------------------------------
+     Control Rows & Buttons
+     ------------------------------ */
   .top-row, .bottom-row {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 10px;
   }
 
   button {
-    width: 90px;
-    height: 55px;
+    width: 80px;
+    min-height: 45px;
     font-family: 'Caudex', serif;
-    font-size: 16px;
+    font-size: 14px;
     background-color: #4b2e1a;
     color: #fff;
     border: none;
@@ -107,36 +114,48 @@ permalink: /boggle/
     background-color: #5c4033;
   }
 
+  /* ------------------------------
+     Timer
+     ------------------------------ */
   #timer {
     text-align: right;
-    font-size: 32px;
+    font-size: 24px; /* Slightly smaller so it doesn’t overflow on mobile */
     font-family: 'Caudex', serif;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
     flex-grow: 1;
+    color: inherit; /* Inherit text color so it doesn't change in dark mode */
   }
 
-  /* Responsive adjustments */
+  /* ------------------------------
+     Responsive Adjustments
+     ------------------------------ */
   @media (max-width: 600px) {
-    #container {
-      width: 90%;
-      padding: 20px;
+    #boggle-wrapper {
+      width: 100%;
+      padding: 10px;
+    }
+
+    #boggle-board {
+      gap: 6px;
+      padding: 8px;
     }
 
     .boggle-tile {
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       font-size: 24px;
     }
 
     button {
-      width: 70px;
-      height: 45px;
-      font-size: 14px;
+      width: auto;
+      min-width: 60px;
+      font-size: 12px;
+      line-height: 1.2;
     }
 
     #timer {
-      font-size: 24px;
+      font-size: 18px;
     }
   }
 </style>
@@ -185,26 +204,36 @@ permalink: /boggle/
       let randomLetter = die[Math.floor(Math.random() * die.length)];
       if (randomLetter === 'Q') randomLetter = 'Qu';
 
-      const underline = (randomLetter === 'M' || randomLetter === 'W' || randomLetter === 'N' || randomLetter === 'Z') ? 'underline' : 'none';
-      return `<div class="boggle-tile" style="text-decoration: ${underline};" onclick="selectTile(this, '${randomLetter}')">
+      const underline = (randomLetter === 'M' || 
+                         randomLetter === 'W' || 
+                         randomLetter === 'N' || 
+                         randomLetter === 'Z') ? 'underline' : 'none';
+      return `<div class="boggle-tile" style="text-decoration: ${underline};"
+                  onclick="selectTile(this, '${randomLetter}')">
                 ${randomLetter}
               </div>`;
     }).join('');
     document.getElementById('boggle-board').innerHTML = board;
     applyOrientation();
-    document.getElementById('message').innerHTML = ""; // Clear any previous messages
+    // Clear selected word if any
+    resetSelection();
   }
 
   function applyOrientation() {
     document.querySelectorAll('.boggle-tile').forEach(tile => {
-      const rotation = randomOrientation ? [0, 90, 180, 270][Math.floor(Math.random() * 4)] : 0;
+      const rotationDegrees = [0, 90, 180, 270];
+      const rotation = randomOrientation
+        ? rotationDegrees[Math.floor(Math.random() * rotationDegrees.length)]
+        : 0;
       tile.style.transform = `rotate(${rotation}deg)`;
     });
   }
 
   function toggleOrientation() {
     randomOrientation = !randomOrientation;
-    document.getElementById('orientation-button').innerHTML = randomOrientation ? 'Table<br>Mode' : 'Upright<br>Mode';
+    document.getElementById('orientation-button').innerHTML = randomOrientation
+      ? 'Table<br>Mode'
+      : 'Upright<br>Mode';
     applyOrientation();
   }
 
@@ -228,16 +257,17 @@ permalink: /boggle/
 
   function flashRedScreen(times) {
     if (times > 0) {
-      const container = document.getElementById('container');
-      container.style.backgroundColor = 'red';
+      const wrapper = document.getElementById('boggle-wrapper');
+      wrapper.style.backgroundColor = 'red';
       setTimeout(() => {
-        container.style.backgroundColor = '#e0c097';
+        wrapper.style.backgroundColor = 'transparent';
         setTimeout(() => flashRedScreen(times - 1), 200);
       }, 200);
     }
   }
 
   function resetAndIncrementTimer() {
+    // Increment timerValue only if we ended on a clean minute
     timerValue = (remainingTime % 60 === 0) ? timerValue + 1 : Math.ceil(remainingTime / 60);
     if (timerValue > 5) timerValue = 1;
 
@@ -275,7 +305,12 @@ permalink: /boggle/
     document.querySelectorAll('.boggle-tile').forEach(tile => tile.classList.remove('clicked'));
   }
 
-  // Initialize the game
   fetchWordList();
   generateBoggleBoard();
 </script>
+
+1) "New Board" regenerates the board randomly, using the post-2013 Boggle dice configurations
+2) The next button toggles between "Table Mode" for playing face down around a table, and "Upright Mode" for playing off a vertical display
+3) If you tap the tiles in order to form a word, you can check with the "Validate" button if it is in a Scrabble dictionary file
+4) "Start/Pause" and "Reset/Increment" do exactly those things to the timer (2 min default)
+5) Inspired by my boggle friends: Danny, Talia, Hannah, and Emma
