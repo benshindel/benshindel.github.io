@@ -117,30 +117,6 @@ permalink: /boggle/
     /* Changed timer text color to black */
     color: #000;
   }
-
-  /* Responsive adjustments */
-  @media (max-width: 600px) {
-    #container {
-      width: 90%;
-      padding: 20px;
-    }
-
-    .boggle-tile {
-      width: 40px;
-      height: 40px;
-      font-size: 24px;
-    }
-
-    button {
-      width: 70px;
-      height: 45px;
-      font-size: 14px;
-    }
-
-    #timer {
-      font-size: 24px;
-    }
-  }
 </style>
 
 <!-- JavaScript for the Boggle Game -->
