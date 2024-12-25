@@ -4,12 +4,12 @@ title: Boggle Game
 permalink: /boggle/
 ---
 
-<!-- Include Google Fonts (if not already loaded in default.html) -->
+<!-- Include Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Caudex&display=swap" rel="stylesheet">
 
 <!-- Boggle Game Container -->
 <div class="boggle-container">
-  <div id="boggle-wrapper">
+  <div id="container">
     <div id="boggle-board"></div> <!-- Placeholder for the 4x4 Boggle board -->
 
     <div class="top-row">
@@ -20,142 +20,131 @@ permalink: /boggle/
 
     <div class="bottom-row">
       <button onclick="startPauseTimer()">Start/<br>Pause</button> <!-- Start or pause the timer -->
-      <button onclick="resetAndIncrementTimer()">Reset/<br>Increment</button> <!-- Resets and increments the timer -->
+      <button onclick="resetAndIncrementTimer()">Reset /<br>Increment</button> <!-- Resets and increments the timer -->
       <div id="timer">2:00</div> <!-- Displays the remaining time -->
     </div>
+    
+    <!-- Message Display Area -->
+    <div id="message"></div>
   </div>
 </div>
 
 <!-- Inline CSS for Boggle Widget -->
 <style>
-  /* ------------------------------
-     Layout & Container
-     ------------------------------ */
-  .boggle-container {
+  /* Center the entire game interface within the browser window */
+  body {
     display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align to top so it doesn't force center across entire screen height */
-    min-height: auto;       /* Let the container adjust automatically rather than forcing full viewport height */
-    margin: 20px auto;      /* Some margin around the main container */
-    padding: 0 10px;        /* Small horizontal padding for mobile */
-    box-sizing: border-box;
-    /* No background-color so it inherits the normal background of the website */
+    justify-content: center; /* Horizontally center the container */
+    align-items: center; /* Vertically center the container */
+    min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
+    background-color: #f5f5f5; /* Light gray background for a neutral look */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
   }
 
-  #boggle-wrapper {
-    padding: 20px;
-    width: 320px;          /* Slightly wider default to accommodate 4 tiles horizontally without squishing */
-    background-color: var(--bg-color, transparent); /* Transparent or inherited background */
-    border-radius: 8px;    /* Slight rounding for modern look */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-    max-width: 100%;       /* Let it shrink on mobile */
+  /* The main container holding the entire Boggle game */
+  #container {
+    padding: 30px; /* Padding inside the container for breathing room */
+    width: 300px; /* Fixed width to ensure a consistent layout */
+    background-color: #e0c097; /* Light wood-like background color */
+    border-radius: 0px; /* No rounded corners */
   }
 
-  /* ------------------------------
-     Boggle Board
-     ------------------------------ */
+  /* Grid layout for the Boggle board (4x4) */
   #boggle-board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    padding: 10px;
-    border: 4px solid #5c4033;      /* Dark brown border around the board */
-    border-radius: 8px;            /* Slightly rounded corners for aesthetic effect */
-    background-color: #f5deb3;     /* Light beige background within the board */
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: grid; /* CSS Grid layout */
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    gap: 8px; /* Space between each tile */
+    padding: 10px; /* Padding inside the board */
+    border: 5px solid #5c4033; /* Dark brown border around the board */
+    border-radius: 12px; /* Slightly rounded corners for aesthetic effect */
+    background-color: #f5deb3; /* Light beige background within the board */
+    margin-bottom: 20px; /* Space below the board */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth effect */
   }
 
+  /* Individual tile styling on the Boggle board */
   .boggle-tile {
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #5c4033;     /* Dark brown border */
-    border-radius: 5px;
-    background-color: #d2a679;     /* Warm brown background */
-    cursor: pointer;
-    font-family: 'Caudex', serif;
-    font-size: 32px;
-    color: #3b2f2f;                /* Dark brown text color for contrast */
-    box-shadow: 0 0 5px rgba(0,0,0,0.4);
-    transition: transform 0.3s;
+    width: 55px; /* Fixed width */
+    height: 55px; /* Fixed height */
+    display: flex; /* Flexbox to center content inside the tile */
+    align-items: center; /* Vertically center the text */
+    justify-content: center; /* Horizontally center the text */
+    border: 2px solid #5c4033; /* Dark brown border */
+    border-radius: 8px; /* Slightly rounded corners */
+    background-color: #d2a679; /* Warm brown background */
+    cursor: pointer; /* Show pointer cursor to indicate interactivity */
+    font-family: 'Caudex', serif; /* Vintage-style font */
+    font-size: 32px; /* Large font size for easy reading */
+    color: #3b2f2f; /* Dark brown text color for contrast */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); /* Inner shadow for 3D effect */
+    transition: transform 0.3s; /* Smooth transition on rotation */
   }
 
+  /* Styling for tiles that have been clicked (selected) */
   .boggle-tile.clicked {
     background-color: #b58969; /* Change color to indicate selection */
   }
 
-  /* ------------------------------
-     Control Rows & Buttons
-     ------------------------------ */
-  .top-row, .bottom-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
+  /* Layout for the top row of control buttons */
+  .top-row {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Spread buttons evenly across the row */
+    gap: 20px; /* Space between buttons */
+    margin-bottom: 10px; /* Space below the top row */
   }
 
+  /* Layout for the bottom row of timer controls and display */
+  .bottom-row {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Spread buttons and timer evenly */
+    align-items: center; /* Align buttons with the timer vertically */
+    gap: 20px; /* Space between buttons */
+  }
+
+  /* Button styling for all control buttons */
   button {
-    width: 80px;
-    min-height: 45px;
-    font-family: 'Caudex', serif;
-    font-size: 14px;
-    background-color: #4b2e1a;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 90px; /* Fixed width */
+    height: 55px; /* Fixed height */
+    font-family: 'Caudex', serif; /* Matching font with the tiles */
+    font-size: 16px; /* Small font size for labels */
+    background-color: #4b2e1a; /* Dark brown button background */
+    color: #fff; /* White text for contrast */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for interactivity */
   }
 
-  button:hover {
-    background-color: #5c4033;
-  }
-
-  /* ------------------------------
-     Timer
-     ------------------------------ */
+  /* Styling for the timer display */
   #timer {
-    text-align: right;
-    font-size: 24px; /* Slightly smaller so it doesn’t overflow on mobile */
-    font-family: 'Caudex', serif;
-    margin-left: 10px;
-    margin-right: 10px;
-    flex-grow: 1;
-    color: inherit; /* Inherit text color so it doesn't change in dark mode */
+    text-align: right; /* Align text to the right */
+    font-size: 32px; /* Large font for visibility */
+    font-family: 'Caudex', serif; /* Matching font with other elements */
+    margin-left: 15px; /* Space between timer and buttons */
+    margin-right: 15px; /* Space between timer and right edge */
+    flex-grow: 1; /* Pushes the timer to the right */
   }
 
-  /* ------------------------------
-     Responsive Adjustments
-     ------------------------------ */
+  /* Responsive adjustments */
   @media (max-width: 600px) {
-    #boggle-wrapper {
-      width: 100%;
-      padding: 10px;
-    }
-
-    #boggle-board {
-      gap: 6px;
-      padding: 8px;
+    #container {
+      width: 90%;
+      padding: 20px;
     }
 
     .boggle-tile {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       font-size: 24px;
     }
 
     button {
-      width: auto;
-      min-width: 60px;
-      font-size: 12px;
-      line-height: 1.2;
+      width: 70px;
+      height: 45px;
+      font-size: 14px;
     }
 
     #timer {
-      font-size: 18px;
+      font-size: 24px;
     }
   }
 </style>
@@ -204,36 +193,26 @@ permalink: /boggle/
       let randomLetter = die[Math.floor(Math.random() * die.length)];
       if (randomLetter === 'Q') randomLetter = 'Qu';
 
-      const underline = (randomLetter === 'M' || 
-                         randomLetter === 'W' || 
-                         randomLetter === 'N' || 
-                         randomLetter === 'Z') ? 'underline' : 'none';
-      return `<div class="boggle-tile" style="text-decoration: ${underline};"
-                  onclick="selectTile(this, '${randomLetter}')">
+      const underline = (randomLetter === 'M' || randomLetter === 'W' || randomLetter === 'N' || randomLetter === 'Z') ? 'underline' : 'none';
+      return `<div class="boggle-tile" style="text-decoration: ${underline};" onclick="selectTile(this, '${randomLetter}')">
                 ${randomLetter}
               </div>`;
     }).join('');
     document.getElementById('boggle-board').innerHTML = board;
     applyOrientation();
-    // Clear selected word if any
-    resetSelection();
+    document.getElementById('message').innerHTML = ""; // Clear any previous messages
   }
 
   function applyOrientation() {
     document.querySelectorAll('.boggle-tile').forEach(tile => {
-      const rotationDegrees = [0, 90, 180, 270];
-      const rotation = randomOrientation
-        ? rotationDegrees[Math.floor(Math.random() * rotationDegrees.length)]
-        : 0;
+      const rotation = randomOrientation ? [0, 90, 180, 270][Math.floor(Math.random() * 4)] : 0;
       tile.style.transform = `rotate(${rotation}deg)`;
     });
   }
 
   function toggleOrientation() {
     randomOrientation = !randomOrientation;
-    document.getElementById('orientation-button').innerHTML = randomOrientation
-      ? 'Table<br>Mode'
-      : 'Upright<br>Mode';
+    document.getElementById('orientation-button').innerHTML = randomOrientation ? 'Table<br>Mode' : 'Upright<br>Mode';
     applyOrientation();
   }
 
@@ -257,17 +236,16 @@ permalink: /boggle/
 
   function flashRedScreen(times) {
     if (times > 0) {
-      const wrapper = document.getElementById('boggle-wrapper');
-      wrapper.style.backgroundColor = 'red';
+      const container = document.getElementById('container');
+      container.style.backgroundColor = 'red';
       setTimeout(() => {
-        wrapper.style.backgroundColor = 'transparent';
+        container.style.backgroundColor = '#e0c097';
         setTimeout(() => flashRedScreen(times - 1), 200);
       }, 200);
     }
   }
 
   function resetAndIncrementTimer() {
-    // Increment timerValue only if we ended on a clean minute
     timerValue = (remainingTime % 60 === 0) ? timerValue + 1 : Math.ceil(remainingTime / 60);
     if (timerValue > 5) timerValue = 1;
 
@@ -310,7 +288,11 @@ permalink: /boggle/
 </script>
 
 1) "New Board" regenerates the board randomly, using the post-2013 Boggle dice configurations
+
 2) The next button toggles between "Table Mode" for playing face down around a table, and "Upright Mode" for playing off a vertical display
+
 3) If you tap the tiles in order to form a word, you can check with the "Validate" button if it is in a Scrabble dictionary file
+
 4) "Start/Pause" and "Reset/Increment" do exactly those things to the timer (2 min default)
+
 5) Inspired by my boggle friends: Danny, Talia, Hannah, and Emma
