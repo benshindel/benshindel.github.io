@@ -339,3 +339,23 @@ body.dark-mode a:hover,
 body.dark-mode a:focus {
   text-decoration: underline;
 }
+
+/* ===============================
+   Footer Styling
+   =============================== */
+.site-footer {
+  font-size: 0.9em; /* Makes the font smaller */
+  color: var(--link-color); /* Uses the theme's link color */
+  text-align: center; /* Centers the text */
+  padding: 20px; /* Adds some padding */
+  background-color: #f8f8f8; /* Optional: Adds a light background */
+}
+
+.site-footer a {
+  color: var(--link-color); /* Ensures links use the theme's link color */
+  text-decoration: none; /* Removes underline from links */
+}
+
+.site-footer a:hover {
+  text-decoration: underline; /* Underlines links on hover for better UX */
+}
