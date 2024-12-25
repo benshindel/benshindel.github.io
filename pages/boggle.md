@@ -137,7 +137,7 @@ permalink: /boggle/
 
   async function fetchWordList() {
     try {
-      const response = await fetch('https://raw.githubusercontent.com/wordnik/wordlist/refs/heads/main/wordlist-20210729.txt');
+      const response = await fetch('assets/textfiles/wordlist1.txt');
       const text = await response.text();
       text.split('\n').forEach(word => {
         const cleanWord = word.replace(/"/g, '').trim().toLowerCase();
