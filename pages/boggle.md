@@ -31,97 +31,89 @@ permalink: /boggle/
 
 <!-- Inline CSS for Boggle Widget -->
 <style>
-  /* Center the entire game interface within the browser window */
-  body {
+  /* Boggle game specific styles */
+  .boggle-container {
     display: flex;
-    justify-content: center; /* Horizontally center the container */
-    align-items: center; /* Vertically center the container */
-    min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
-    background-color: #f5f5f5; /* Light gray background for a neutral look */
-    margin: 0; /* Remove any default margin */
-    padding: 0; /* Remove any default padding */
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
-  /* The main container holding the entire Boggle game */
   #container {
-    padding: 30px; /* Padding inside the container for breathing room */
-    width: 300px; /* Fixed width to ensure a consistent layout */
-    background-color: #e0c097; /* Light wood-like background color */
-    border-radius: 0px; /* No rounded corners */
+    padding: 30px;
+    width: 300px;
+    background-color: #e0c097;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  /* Grid layout for the Boggle board (4x4) */
   #boggle-board {
-    display: grid; /* CSS Grid layout */
-    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-    gap: 8px; /* Space between each tile */
-    padding: 10px; /* Padding inside the board */
-    border: 5px solid #5c4033; /* Dark brown border around the board */
-    border-radius: 12px; /* Slightly rounded corners for aesthetic effect */
-    background-color: #f5deb3; /* Light beige background within the board */
-    margin-bottom: 20px; /* Space below the board */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth effect */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 10px;
+    border: 5px solid #5c4033;
+    border-radius: 12px;
+    background-color: #f5deb3;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   }
 
-  /* Individual tile styling on the Boggle board */
   .boggle-tile {
-    width: 55px; /* Fixed width */
-    height: 55px; /* Fixed height */
-    display: flex; /* Flexbox to center content inside the tile */
-    align-items: center; /* Vertically center the text */
-    justify-content: center; /* Horizontally center the text */
-    border: 2px solid #5c4033; /* Dark brown border */
-    border-radius: 8px; /* Slightly rounded corners */
-    background-color: #d2a679; /* Warm brown background */
-    cursor: pointer; /* Show pointer cursor to indicate interactivity */
-    font-family: 'Caudex', serif; /* Vintage-style font */
-    font-size: 32px; /* Large font size for easy reading */
-    color: #3b2f2f; /* Dark brown text color for contrast */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); /* Inner shadow for 3D effect */
-    transition: transform 0.3s; /* Smooth transition on rotation */
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #5c4033;
+    border-radius: 8px;
+    background-color: #d2a679;
+    cursor: pointer;
+    font-family: 'Caudex', serif;
+    font-size: 32px;
+    color: #3b2f2f;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
   }
 
-  /* Styling for tiles that have been clicked (selected) */
   .boggle-tile.clicked {
-    background-color: #b58969; /* Change color to indicate selection */
+    background-color: #b58969;
   }
 
-  /* Layout for the top row of control buttons */
-  .top-row {
-    display: flex; /* Flexbox layout */
-    justify-content: space-between; /* Spread buttons evenly across the row */
-    gap: 20px; /* Space between buttons */
-    margin-bottom: 10px; /* Space below the top row */
+  .top-row, .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 10px;
   }
 
-  /* Layout for the bottom row of timer controls and display */
-  .bottom-row {
-    display: flex; /* Flexbox layout */
-    justify-content: space-between; /* Spread buttons and timer evenly */
-    align-items: center; /* Align buttons with the timer vertically */
-    gap: 20px; /* Space between buttons */
-  }
-
-  /* Button styling for all control buttons */
   button {
-    width: 90px; /* Fixed width */
-    height: 55px; /* Fixed height */
-    font-family: 'Caudex', serif; /* Matching font with the tiles */
-    font-size: 16px; /* Small font size for labels */
-    background-color: #4b2e1a; /* Dark brown button background */
-    color: #fff; /* White text for contrast */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor for interactivity */
+    width: 90px;
+    height: 55px;
+    font-family: 'Caudex', serif;
+    font-size: 16px;
+    background-color: #4b2e1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
 
-  /* Styling for the timer display */
+  button:hover {
+    background-color: #5c4033;
+  }
+
   #timer {
-    text-align: right; /* Align text to the right */
-    font-size: 32px; /* Large font for visibility */
-    font-family: 'Caudex', serif; /* Matching font with other elements */
-    margin-left: 15px; /* Space between timer and buttons */
-    margin-right: 15px; /* Space between timer and right edge */
-    flex-grow: 1; /* Pushes the timer to the right */
+    text-align: right;
+    font-size: 32px;
+    font-family: 'Caudex', serif;
+    margin-left: 15px;
+    margin-right: 15px;
+    flex-grow: 1;
   }
 
   /* Responsive adjustments */
@@ -283,6 +275,7 @@ permalink: /boggle/
     document.querySelectorAll('.boggle-tile').forEach(tile => tile.classList.remove('clicked'));
   }
 
+  // Initialize the game
   fetchWordList();
   generateBoggleBoard();
 </script>
