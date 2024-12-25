@@ -16,4 +16,16 @@ title: Home
     <img src="/assets/images/pearl" alt="Image 3 description">
     <span>Nutrient Recovery with the PEARL Membrane</span>
   </a>
+    <a href="tea" aria-haspopup="true" aria-expanded="false">
+    <img src="/assets/images/tea" alt="Image 4 description">
+    <span>The Metal-Remediating Benefits of Tea Preparation</span>
+  </a>
+    <a href="nitrates" aria-haspopup="true" aria-expanded="false">
+    <img src="/assets/images/nitrates" alt="Image 5 description">
+    <span>Nutrient Recovery with the PEARL Membrane</span>
+  </a>
+    <a href="nanoplastics" aria-haspopup="true" aria-expanded="false">
+    <img src="/assets/images/nanoplastics" alt="Image 6 description">
+    <span>Quantification and Remediation of Nanoplastics</span>
+  </a>
 </section>
