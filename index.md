@@ -18,7 +18,7 @@ title: Home
   </a>
     <a href="tea" aria-haspopup="true" aria-expanded="false">
     <img src="/assets/images/tea" alt="Image 4 description">
-    <span>The Metal-Remediating Benefits of Tea Preparation</span>
+    <span>Investigating the Adsorptive Properties of Tea</span>
   </a>
     <a href="nitrates" aria-haspopup="true" aria-expanded="false">
     <img src="/assets/images/nitrates" alt="Image 5 description">
