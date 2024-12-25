@@ -22,7 +22,7 @@ title: Home
   </a>
     <a href="nitrates" aria-haspopup="true" aria-expanded="false">
     <img src="/assets/images/nitrates" alt="Image 5 description">
-    <span>Nutrient Recovery with the PEARL Membrane</span>
+    <span>Electrochemical Reduction of Nitrates on Functionalized Graphene</span>
   </a>
     <a href="nanoplastics" aria-haspopup="true" aria-expanded="false">
     <img src="/assets/images/nanoplastics" alt="Image 6 description">
