@@ -17,7 +17,7 @@ title: Home
     <span>Nanomaterial Sponge Coatings for Water Remediation</span>
   </a>
   <a href="forecasting" aria-haspopup="true" aria-expanded="false">
-    <img src="/assets/images/pearl" alt="Forecasting Image">
+    <img src="/assets/images/forecasting.jpeg" alt="Forecasting Image">
     <span>Forecasting Work</span>
   </a>
     <a href="nitrates" aria-haspopup="true" aria-expanded="false">
