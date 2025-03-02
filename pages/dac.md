@@ -11,5 +11,5 @@ Our work on developing new sorbents for a moisture-swing modality of carbon capt
 Research on expanding the moisture-swing modality to other material systems, including dual-functional materials for carbon capture and conversion, is currently accepted and due to be published in _Environmental Science & Technology_ in March, 2025. This article will discuss leveraging materials like activated carbon, nanostructured graphite, iron oxide, and alumina nanoparticles for moisture-swing carbon capture. 
 
 <div style="text-align: center;">
-  <img src="/assets/images/estcover.jpg" alt="Cover Image for our First Moisture-Swing Paper." style="max-width: 90%; width: 800px;">
+  <img src="/assets/images/estcover.jpg" alt="Cover Image for our First Moisture-Swing Paper." style="max-width: 90%; width: 500px;">
 </div>
