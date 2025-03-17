@@ -376,3 +376,12 @@ body.dark-mode .site-footer {
 body.dark-mode .site-footer {
   border-top: 1px solid #333333; /* Dark mode border */
 }
+
+/* ===============================
+   Captions
+=============================== */
+
+figcaption {
+  font-size: 0.8em;
+  font-style: italic;
+}
