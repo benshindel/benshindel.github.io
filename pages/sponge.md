@@ -16,4 +16,5 @@ We more recently continued the testing of the PEARL membrane at larger scales to
 
 <div style="text-align: center;">
   <img src="/assets/images/nanoscheme.jpg" alt="Nano-SCHeMe graphical abstract. ACS EST Water 2023, 3, 8, 2120-2129." style="max-width: 90%; width: 500px;">
+  <figcaption>Nano-SCHeMe graphical abstract. Published in ACS ES&T Water 2023, 3, 8, 2120-2129.</figcaption>
 </div>
