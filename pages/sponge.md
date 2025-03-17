@@ -15,6 +15,6 @@ Previously, I had worked under lead author, Stephanie Ribet, on the Phosphate El
 We more recently continued the testing of the PEARL membrane at larger scales to bridge the gap between lab-scale science and field-scale technology.  Working under lead author Kelly Matuszewski, our work on utilizing pH to differentially recover metals and nutrients concurrently from stormwater is published in [_ES&T Water_](https://pubs.acs.org/doi/10.1021/acsestwater.4c01234) and reported on by [Forbes](https://www.forbes.com/sites/lauriewinkless/2025/02/12/specialist-sponge-captures-valuable-minerals-from-polluted-storm-water/).
 
 <div style="text-align: center;">
-  <img src="/assets/images/nanoscheme.jpg" alt="Nano-SCHeMe graphical abstract. ACS EST Water 2023, 3, 8, 2120-2129." style="max-width: 90%; width: 500px;">
+  <img src="/assets/images/nanoscheme.jpeg" alt="Nano-SCHeMe graphical abstract. ACS ES&T Water 2023, 3, 8, 2120-2129." style="max-width: 90%; width: 500px;">
   <figcaption>Nano-SCHeMe graphical abstract. Published in ACS ES&T Water 2023, 3, 8, 2120-2129.</figcaption>
 </div>
