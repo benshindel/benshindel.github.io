@@ -20,12 +20,12 @@ title: Home
     <img src="/assets/images/forecasting.jpeg" alt="Forecasting Image">
     <span>Forecasting Work</span>
   </a>
-    <a href="nitrates" aria-haspopup="true" aria-expanded="false">
-    <img src="/assets/images/nitrates" alt="Nitrates Image">
-    <span>Electrochemical Reduction of Nitrates on Functionalized Graphene</span>
+    <a href="collaborations" aria-haspopup="true" aria-expanded="false">
+    <img src="/assets/images/collaborations" alt="Collaborations Image">
+    <span>Collaborative Scientific Work</span>
   </a>
-    <a href="nanoplastics" aria-haspopup="true" aria-expanded="false">
-    <img src="/assets/images/nanoplastics" alt="Nanoplastics Image">
-    <span>Quantification and Remediation of Nanoplastics</span>
+    <a href="projects" aria-haspopup="true" aria-expanded="false">
+    <img src="/assets/images/mousewriting" alt="Projects Image">
+    <span>Writing and Projects</span>
   </a>
 </section>
