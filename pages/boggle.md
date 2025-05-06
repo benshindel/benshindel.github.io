@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Boggle Game
+title: Boggle
 permalink: /boggle/
 ---
 
