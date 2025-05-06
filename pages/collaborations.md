@@ -1,6 +1,6 @@
 ---
 layout: default
-title: collaborations
+title: Collaborations
 permalink: /collaborations/
 ---
 
