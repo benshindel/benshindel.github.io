@@ -1,6 +1,6 @@
 ---
 layout: default
-title: forecasting
+title: Forecasting
 permalink: /forecasting/
 ---
 
