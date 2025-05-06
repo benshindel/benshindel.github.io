@@ -1,6 +1,6 @@
 # Site Settings
-title: "Ben Shindel"  # Your site title
-description: "Ben Shindel's personal website."  # Short description of your site
+title: "Ben Shindel"
+description: "Ben Shindel's personal website."
 url: "https://benshindel.github.io"  # Your site's base URL (if deployed)
 baseurl: ""  # Leave empty if your site is deployed at the root
 
@@ -8,11 +8,13 @@ baseurl: ""  # Leave empty if your site is deployed at the root
 author:
   name: "Ben Shindel"
   email: "benshindel@gmail.com"
+  twitter_username: "benshindel"
+  github_username: "benshindel"
 
 # Build Settings
 markdown: kramdown  # Default Markdown parser
-theme: # Default theme (optional if using a custom theme)
-permalink: pretty  # Pretty URLs for pages (no .html extensions)
+theme: minima       # Default Jekyll theme
+permalink: pretty   # Pretty URLs for pages (no .html extensions)
 
 # Plugins
 plugins:
@@ -47,7 +49,7 @@ paginate_path: "/page:num/"  # Pagination path
 
 # Custom Variables
 custom_variables:
-  dark_mode_enabled: true  # Example custom variable
+  dark_mode_enabled: true
 
 # Favicon
 favicon: /assets/images/favicon.png
