@@ -1,6 +1,6 @@
 ---
 layout: default
-title: dac
+title: CO2 Capture
 permalink: /dac/
 ---
 
