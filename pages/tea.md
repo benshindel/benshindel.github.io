@@ -1,6 +1,6 @@
 ---
 layout: default
-title: tea
+title: Tea
 permalink: /tea/
 ---
 
