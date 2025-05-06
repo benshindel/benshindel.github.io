@@ -212,7 +212,7 @@ main.content {
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 20px;
 }
 
 .image-grid a {
