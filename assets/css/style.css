@@ -90,7 +90,7 @@ body.dark-mode #menu-toggle {
 #main-nav a {
   text-decoration: none;
   color: var(--link-color-light);
-  margin: 0 10px;
+  margin: 0 0px;
 }
 
 body.dark-mode #main-nav a {
