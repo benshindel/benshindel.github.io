@@ -1,6 +1,6 @@
 ---
 layout: default
-title: projects
+title: Scribblings
 permalink: /projects/
 ---
 
