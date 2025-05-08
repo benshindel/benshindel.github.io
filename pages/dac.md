@@ -11,5 +11,5 @@ Our work on developing new sorbents for a moisture-swing modality of carbon capt
 Research on expanding the moisture-swing modality to other material systems, including dual-functional materials for carbon capture and conversion, was recently published, again in our favorite journal, [_Environmental Science & Technology_](https://pubs.acs.org/doi/10.1021/acs.est.4c11308). This article discusses leveraging materials like activated carbon, nanostructured graphite, iron oxide, and alumina nanoparticles for moisture-swing carbon capture.  You can read Northwestern's [press release](https://news.northwestern.edu/stories/2025/04/carbon-capture-affordable-materials/) on our latest work, or if you enjoy perusing German-language newspapers, you can read coverage of our work in [Die Welt](https://www.welt.de/wissenschaft/article255882080/Emission-Hoffnung-auf-CO-Speicherung-zum-Nullpreis-durch-Luftfeuchtigkeit.html#Comments).
 
 <div style="text-align: center;">
-  <img src="/assets/images/estcover.jpg" alt="Jack's fantastic cover Image for our First Moisture-Swing Paper." style="max-width: 90%; width: 500px;">
+  <img src="/assets/images/estcover.jpg" alt="Jack's fantastic cover Image for our First Moisture-Swing Paper." style="max-width: 90%; width: 400px;">
 </div>
