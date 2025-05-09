@@ -23,4 +23,5 @@ While press coverage can be very flattering, I think the main takeaways from thi
 
 <div style="text-align: center;">
   <img src="/assets/images/teaglamour.png" alt="Me Posing with Teacup." style="max-width: 90%; width: 400px;">
+  <figcaption>Posing on my balcony with a teacup. Despite my best efforts, I couldn't get the press to use this photo in their coverage (probably for good reasons).</figcaption>
 </div>
