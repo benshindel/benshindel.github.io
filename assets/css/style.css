@@ -207,76 +207,70 @@ main.content {
 }
 
 /* ===============================
-   Image Grid Styles
-   =============================== */
+   Image Grid Styles
+   =============================== */
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .image-grid a {
-  position: relative;
-  display: block;
-  text-decoration: none;
+  position: relative;
+  display: block;
+  text-decoration: none;
 }
 
 .image-grid img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: opacity 0.3s ease;
-  display: block; /* From previous fix */
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+  display: block;
 }
 
 .image-grid a:hover img,
 .image-grid a:focus img,
-.image-grid a.active img {
-  opacity: 0.5;
+.image-grid a.active img { /* Added .active */
+  opacity: 0.5;
 }
 
 .image-grid a span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--text-color-light);            /* UPDATED for light mode text */
-  background-color: var(--bg-color-light); /* UPDATED for light mode background */
-  font-size: 1.2em;
-  padding: 5px 10px;
-  border-radius: 5px;
-  opacity: 0;
-  transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease; /* Added color and background-color to transition */
-  text-align: center;
-  pointer-events: none;
-}
-
-/* Styles for the overlay in Dark Mode */
-body.dark-mode .image-grid a span {
-  color: var(--text-color-dark);
-  background-color: var(--bg-color-dark);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2em;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  pointer-events: none; /* Allows clicks to pass through */
 }
 
 .image-grid a:hover span,
 .image-grid a:focus span,
-.image-grid a.active span {
-  opacity: 1;
+.image-grid a.active span { /* Added .active */
+  opacity: 1;
 }
 
 /* Active State for Mobile (toggled via JS) */
 .image-grid a.active img {
-  opacity: 0.5;
+  opacity: 0.5;
 }
 
 .image-grid a.active span {
-  opacity: 1;
+  opacity: 1;
 }
 
 /* Make the image grid single-column on smaller screens */
 @media (max-width: 768px) {
-  .image-grid {
-    grid-template-columns: 1fr;
-  }
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
 }
 /* ===============================
    About Section
