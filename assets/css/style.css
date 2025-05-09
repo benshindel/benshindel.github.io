@@ -2,11 +2,11 @@
    Global Variables (Light & Dark)
    =============================== */
 :root {
-  --bg-color-light: #ffffff;
+  --bg-color-light: #e6e6e6;
   --text-color-light: #333333;
   --link-color-light: #7872f7;
 
-  --bg-color-dark: #121212;
+  --bg-color-dark: #333333;
   --text-color-dark: #e6e6e6;
   --link-color-dark: #7872f7;
 }
