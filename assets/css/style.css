@@ -226,6 +226,7 @@ main.content {
   height: auto;
   border-radius: 8px;
   transition: opacity 0.3s ease;
+  display: block;
 }
 
 .image-grid a:hover img,
@@ -332,12 +333,12 @@ a:visited {
 body.dark-mode a,
 body.dark-mode a:visited {
   color: var(--link-color-dark);
-  text-decoration: none; /* still no underline by default in dark mode */
+  text-decoration: none;
 }
 
 body.dark-mode a:hover,
 body.dark-mode a:focus {
-  text-decoration: underline;
+  text-decoration: ;
 }
 
 /* ===============================
