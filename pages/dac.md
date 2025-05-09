@@ -12,4 +12,5 @@ Research on expanding the moisture-swing modality to other material systems, inc
 
 <div style="text-align: center;">
   <img src="/assets/images/estcover.jpg" alt="Jack's fantastic cover Image for our First Moisture-Swing Paper." style="max-width: 90%; width: 400px;">
+  <figcaption>Jack's fantastic cover Image for our First Moisture-Swing Paper.</figcaption>
 </div>
