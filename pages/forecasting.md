@@ -17,3 +17,8 @@ Some of my favorite Manifold markets that I'm currently running are:
 - Will [autonomous driving rideshares](https://manifold.markets/bens/will-autonomous-driving-rideshares) exceed human-driven rideshares by 2030?
 
 You can [use this link to join Manifold](https://manifold.markets?r=YmVucw), one of the coolest online communities in the world (and I've been in some cool online communities).
+
+<div style="text-align: center;">
+  <img src="/assets/images/metaculus.jpeg" alt="My Metaculus tournament history." style="max-width: 90%; width: 500px;">
+  <figcaption>My best tournament results on Metaculus.</figcaption>
+</div>
