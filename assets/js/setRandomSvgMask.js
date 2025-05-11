@@ -3,15 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const leftSvgFiles = [
     '/assets/images/svg/snail2.svg',
     '/assets/images/svg/snail1.svg',
-    '/assets/images/svg/crane1.svg',
-    // Add more paths for the left side
+    '/assets/images/svg/okapi1.svg',
+    '/assets/images/svg/lizard2.svg',
+    '/assets/images/svg/crow1.svg'
   ];
 
   const rightSvgFiles = [
     '/assets/images/svg/crow2.svg',
-    '/assets/images/svg/crow1.svg',
     '/assets/images/svg/pigeon1.svg'
-    // Add more paths for the right side
+    '/assets/images/svg/crocodile1.svg'
+    '/assets/images/svg/lizard1.svg',
+    '/assets/images/svg/lizard3.svg'
   ];
   
   /**
