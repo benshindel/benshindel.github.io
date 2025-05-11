@@ -269,16 +269,36 @@ main.content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Keeps it perfectly centered */
+
   color: var(--text-color-light); 
   background-color: var(--bg-color-light); 
-  font-size: 1em;
-  padding: 5px 5px;
+  font-size: 1em; /* Your current shrunk text size */
+
+  /* Adjust padding for a good default appearance.
+     This padding contributes to the "small" look when text is short. */
+  padding: 8px 8px; 
+
+  
   border-radius: 5px;
-  opacity: 0;
+  opacity: 0; /* Hidden by default, shown on hover/focus/active */
   transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease; 
   text-align: center;
   pointer-events: none;
+
+  /* --- Sizing and Overflow Control --- */
+  width: auto; /* Allows the box to be as small as its content + padding initially */
+  
+  /* Allow it to stretch to the full width of the parent image container if needed */
+  max-width: 90%; 
+  /* If you want a tiny bit of space from the absolute edges, use something like 98% or calc(100% - 10px)
+     but 100% with box-sizing: border-box will align its padded box with the image edges. */
+
+  box-sizing: border-box; /* Ensures padding is included within the max-width */
+
+  /* Still good to have a max-height and overflow for very long text */
+  max-height: 90%; /* Allow it to use most of the image height if necessary */
+  overflow: hidden;  /* Clips content if it's still too tall after wrapping within the full width */
 }
 
 body.dark-mode .image-grid a span {
