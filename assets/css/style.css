@@ -139,37 +139,34 @@ body.dark-mode #main-nav a:visited {
 }
 
 .toggle-icon {
-  display: inline-block; /* Allows setting width/height */
-  width: 1.5rem;  /* Desired width of the icon, e.g., matches old emoji size */
-  height: 1.5rem; /* Desired height of the icon */
-  
+  display: inline-block;
+  width: 1.5rem; /* Or your chosen size */
+  height: 1.5rem; /* Or your chosen size */
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
-  
-  transition: background-color 0.3s ease; /* Smooth transition for the color change */
+  transition: background-color 0.3s ease;
 
-  -webkit-mask-mode: luminance; /* For WebKit-based browsers */
-  mask-mode: luminance;         /* Standard property */
+  /* Explicitly set mask-mode to luminance */
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
 }
 
 /* Light mode: sun icon */
-/* Applied when body does NOT have .dark-mode class */
 body:not(.dark-mode) .toggle-icon {
-  background-color: var(--text-color-light); /* Should be your dark gray for the sun */
-  -webkit-mask-image: url('/assets/images/svg/sun2.svg');
-  mask-image: url('/assets/images/svg/sun2.svg');
+  background-color: var(--text-color-light); /* Dark Gray - desired for black SVG parts */
+  -webkit-mask-image: url('/assets/images/svg/sun1.svg');
+  mask-image: url('/assets/images/svg/sun1.svg');
 }
 
 /* Dark mode: moon icon */
-/* Applied when body has .dark-mode class */
 body.dark-mode .toggle-icon {
-  background-color: var(--text-color-dark); /* Should be your off-white for the moon */
-  -webkit-mask-image: url('/assets/images/svg/moon2.svg');
-  mask-image: url('/assets/images/svg/moon2.svg');
+  background-color: var(--text-color-dark); /* Off-White - desired for black SVG parts */
+  -webkit-mask-image: url('/assets/images/svg/moon1.svg');
+  mask-image: url('/assets/images/svg/moon1.svg');
 }
 
 /* ===============================
