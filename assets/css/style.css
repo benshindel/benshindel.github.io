@@ -156,15 +156,15 @@ body.dark-mode #main-nav a:visited {
 /* Light mode: sun icon */
 body:not(.dark-mode) .toggle-icon {
   background-color: var(--text-color-light);
-  -webkit-mask-image: url('/assets/images/svg/sun2.svg');
-  mask-image: url('/assets/images/svg/sun2.svg');
+  -webkit-mask-image: url('/assets/images/svg/sun2.png');
+  mask-image: url('/assets/images/svg/sun2.png');
 }
 
 /* Dark mode: moon icon */
 body.dark-mode .toggle-icon {
   background-color: var(--text-color-dark);
-  -webkit-mask-image: url('/assets/images/svg/moon2.svg');
-  mask-image: url('/assets/images/svg/moon2.svg');
+  -webkit-mask-image: url('/assets/images/svg/moon2.png');
+  mask-image: url('/assets/images/svg/moon2.png');
 }
 /* ===============================
    Responsive Styles
