@@ -391,3 +391,52 @@ figcaption {
   font-size: 0.7em;
   font-style: italic;
 }
+
+/* ===============================
+   Footer
+   =============================== */
+
+.site-footer {
+  display: flex; /* Enables flexbox layout */
+  align-items: center; /* Vertically aligns items in the middle */
+  justify-content: space-between; /* Distributes space: left-img, then content, then right-img */
+  font-size: 0.7em;
+  color: var(--text-color-light); /* DEFAULT TEXT COLOR for light mode - SVGs will inherit this! */
+  text-align: center;
+  padding: 20px 10px; /* Adjust padding as needed, added some horizontal for images */
+  margin-top: 40px;
+  background-color: transparent;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-content {
+  flex-grow: 1; /* Allows the text content to take up available space in the middle */
+  padding: 0 10px; /* Optional: adds a little space between text and images */
+}
+
+.footer-deco-img {
+  height: 25px; /* Adjust the size of your decorative images */
+  width: auto;   /* Maintain aspect ratio */
+  flex-shrink: 0; /* Prevents images from shrinking if space is tight */
+}
+
+/* Dark mode adjustments for footer text and SVG color */
+body.dark-mode .site-footer {
+  color: var(--text-color-dark); /* TEXT COLOR for dark mode - SVGs will inherit this! */
+  border-top: 1px solid #333333;
+}
+
+/* Footer links styling (ensure they use link colors, not the general text color) */
+.site-footer a {
+  color: var(--link-color-light); /* Explicitly set link color for light mode */
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+body.dark-mode .site-footer a {
+  color: var(--link-color-dark); /* Explicitly set link color for dark mode */
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
