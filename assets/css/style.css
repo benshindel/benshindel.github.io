@@ -184,7 +184,7 @@ body.dark-mode .toggle-icon {
     position: absolute;
     top: 60px; /* Adjust based on your header's height */
     
-    right: 10%;
+    right: 5%;
     width: auto; /* Let content and padding define initial width */
     max-width: 320px; /* Your desired max-width for the menu */
 
@@ -200,6 +200,10 @@ body.dark-mode .toggle-icon {
 
   body.dark-mode #main-nav {
     background-color: var(--bg-color-dark);
+    /* Option 1: Subtle light shadow for dark mode */
+    box-shadow: -2px 0 5px rgba(255, 255, 255, 0.05); /* Example: very subtle white shadow */
+    /* Or a slightly more noticeable one: */
+    /* box-shadow: -2px 0 5px rgba(255, 255, 255, 0.08); */
   }
 
   /* When .active is added via JS, nav is displayed */
