@@ -434,7 +434,7 @@ body.dark-mode .site-footer {
 
   /* Define minimum and maximum physical sizes */
   min-width: 30px;   /* Won't get smaller than 30px */
-  max-width: 100px;   /* Won't get larger than 100px (adjust as you like) */
+  max-width: 200px;   /* Won't get larger than 100px (adjust as you like) */
   /* min-height and max-height will be handled by aspect-ratio and width constraints */
 
   flex-shrink: 0; /* Prevents these containers from shrinking */
