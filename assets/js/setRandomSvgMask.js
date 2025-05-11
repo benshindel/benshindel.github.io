@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Define separate arrays of SVG file paths for left and right images
   const leftSvgFiles = [
-    '/assets/images/svg/left-set/image1.svg', // Ensure paths are correct from site root
-    '/assets/images/svg/left-set/image2.svg',
-    '/assets/images/svg/left-set/another-left-image.svg'
+    '/assets/images/svg/crow2.svg',
+    '/assets/images/svg/crow1.svg'
     // Add more paths for the left side
   ];
 
   const rightSvgFiles = [
-    '/assets/images/svg/right-set/imageA.svg', // Ensure paths are correct from site root
-    '/assets/images/svg/right-set/imageB.svg',
-    '/assets/images/svg/right-set/another-right-image.svg'
+    '/assets/images/svg/snail2',
+    '/assets/images/svg/snail1'
     // Add more paths for the right side
   ];
 
