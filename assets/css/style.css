@@ -136,6 +136,50 @@ body.dark-mode #main-nav a:visited {
   color: var(--link-color-dark);
 }
 
+#mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* Adjust if necessary for alignment */
+  /* font-size: 1.2rem; /* This sized the emoji; icon size is now controlled by .toggle-icon width/height */
+  align-self: center;
+  /* Added to help center the icon if it's given display:block or inline-block */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-icon {
+  display: inline-block; /* Allows setting width/height */
+  width: 1.2rem;  /* Desired width of the icon, e.g., matches old emoji size */
+  height: 1.2rem; /* Desired height of the icon */
+  
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  
+  transition: background-color 0.3s ease; /* Smooth transition for the color change */
+}
+
+/* Light mode: sun icon */
+/* Applied when body does NOT have .dark-mode class */
+body:not(.dark-mode) .toggle-icon {
+  background-color: var(--text-color-light); /* Should be your dark gray for the sun */
+  -webkit-mask-image: url('/assets/images/svg/sun1.svg');
+  mask-image: url('/assets/images/svg/sun1.svg');
+}
+
+/* Dark mode: moon icon */
+/* Applied when body has .dark-mode class */
+body.dark-mode .toggle-icon {
+  background-color: var(--text-color-dark); /* Should be your off-white for the moon */
+  -webkit-mask-image: url('/assets/images/svg/moon1.svg');
+  mask-image: url('/assets/images/svg/moon1.svg');
+}
+
 /* ===============================
    Responsive Styles
    =============================== */
