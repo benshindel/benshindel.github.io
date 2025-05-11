@@ -266,16 +266,16 @@ body.dark-mode .image-grid a span {
 /* --- Responsive adjustments for the image grid's COLUMN LAYOUT --- */
 
 /* Medium screens (e.g., tablets): 2 columns */
-/* This rule applies for screens wider than 768px AND up to 1024px */
-@media (min-width: 769px) and (max-width: 1024px) { /* Adjust 1024px breakpoint as needed */
+/* This rule applies for screens wider than 600px AND up to 1024px */
+@media (min-width: 601px) and (max-width: 1024px) { /* Adjust 1024px breakpoint as needed */
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Small screens (mobile): 1 column */
-/* This rule applies for screens up to 768px wide */
-@media (max-width: 768px) {
+/* This rule applies for screens up to 600px wide */
+@media (max-width: 600px) {
   .image-grid {
     grid-template-columns: 1fr; /* Single column */
   }
