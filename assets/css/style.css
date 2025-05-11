@@ -414,7 +414,7 @@ figcaption {
 
 body.dark-mode .site-footer {
   color: var(--link-color-dark); /* For footer text in dark mode */
-  border-top: 1px solid var(--bg-color-dark);
+  border-top: 1px solid #e0e0e0;
 }
 
 .footer-content {
@@ -428,13 +428,13 @@ body.dark-mode .site-footer {
 .footer-deco-img {
   /* --- Sizing --- */
   /* Set width as a percentage of viewport width */
-  width: 7vw;
+  width: 10vw;
   /* Maintain a square aspect ratio for the container */
   aspect-ratio: 1 / 1;
 
   /* Define minimum and maximum physical sizes */
   min-width: 30px;   /* Won't get smaller than 30px */
-  max-width: 65px;   /* Won't get larger than 65px (adjust as you like) */
+  max-width: 100px;   /* Won't get larger than 100px (adjust as you like) */
   /* min-height and max-height will be handled by aspect-ratio and width constraints */
 
   flex-shrink: 0; /* Prevents these containers from shrinking */
