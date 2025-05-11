@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
 
   const rightSvgFiles = [
-    '/assets/images/svg/snail2',
-    '/assets/images/svg/snail1'
+    '/assets/images/svg/snail2.svg',
+    '/assets/images/svg/snail1.svg'
     // Add more paths for the right side
   ];
 
