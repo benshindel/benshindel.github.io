@@ -269,31 +269,34 @@ main.content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Keeps it centered */
+  transform: translate(-50%, -50%); /* Keeps it perfectly centered */
 
   color: var(--text-color-light); 
   background-color: var(--bg-color-light); 
   font-size: 1em; /* Your current text size */
 
-  /* Let's use a moderate padding, e.g., 5px horizontally, 8px vertically.
-     If your padding is too large horizontally, it will reduce space for text. */
-  padding: 8px 8px; /* Example: 8px top/bottom, 10px left/right. Adjust as needed. */
+  /* Adjust padding for a good default visual spacing within the overlay.
+     This padding will be inside the calculated width due to box-sizing. */
+  padding: 8px 8px; /* Example: 8px top/bottom, 12px left/right. Adjust as needed. */
   
   border-radius: 5px;
-  opacity: 0;
+  opacity: 0; /* Hidden by default, shown on hover/focus/active */
   transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease; 
-  text-align: center;
+  text-align: center; /* Centers the text lines within the overlay box */
   pointer-events: none;
 
-  /* --- MODIFIED Sizing and Overflow Control --- */
-  width: 90%; /* Force the overlay to take up 90% of the parent <a> tag's width. */
-              /* You can try 95% or even 100% if you want it edge-to-edge. */
-  /* max-width: none; /* Not strictly needed if width is a percentage of parent */
+  /* --- Key Sizing Logic --- */
+  box-sizing: border-box; /* Crucial: padding and border are included in width/height */
   
-  box-sizing: border-box; /* Ensures padding is included within the width: 90% */
+  width: 90%; /* Base width: makes the overlay responsive to the parent image container's width.
+                 This will help it use more space on smaller images to prevent excessive text stacking. */
+  
+  max-width: 280px; /* Absolute cap: The overlay will never get wider than this,
+                       regardless of how wide 90% of the parent image is.
+                       Adjust this pixel value to your preference for the largest comfortable overlay. */
 
-  max-height: 90%; /* Keep a constraint on height */
-  overflow: hidden;  /* Clip content if it's still too tall */
+  max-height: 90%;   /* Safety net: Prevents the overlay from becoming excessively tall. */
+  overflow: hidden;    /* Clips any text that still overflows the max-height. */
 }
 
 body.dark-mode .image-grid a span {
