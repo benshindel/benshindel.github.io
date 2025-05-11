@@ -428,9 +428,9 @@ body.dark-mode .site-footer {
 .footer-deco-img {
   /* --- Sizing --- */
   /* Set width as a percentage of viewport width */
-  width: 10vw;
-  /* Maintain a square aspect ratio for the container */
-  aspect-ratio: 1 / 1;
+  width: 15vw;
+  /* Maintain a particular aspect ratio for the container */
+  aspect-ratio: 2 / 1;
 
   /* Define minimum and maximum physical sizes */
   min-width: 30px;   /* Won't get smaller than 30px */
