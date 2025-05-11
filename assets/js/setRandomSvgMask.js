@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const rightSvgFiles = [
     '/assets/images/svg/crow2.svg',
-    '/assets/images/svg/pigeon1.svg'
-    '/assets/images/svg/crocodile1.svg'
+    '/assets/images/svg/pigeon1.svg',
+    '/assets/images/svg/crocodile1.svg',
     '/assets/images/svg/lizard1.svg',
     '/assets/images/svg/lizard3.svg'
   ];
