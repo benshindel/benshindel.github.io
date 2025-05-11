@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     '/assets/images/svg/lizard2.svg',
     '/assets/images/svg/caterpillar1.svg',
     '/assets/images/svg/caterpillar2.svg',
-    '/assets/images/svg/toad1.svg'
+    '/assets/images/svg/toad1.svg',
+    '/assets/images/svg/shrew1.svg'
   ];
 
   const rightSvgFiles = [
@@ -17,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     '/assets/images/svg/lizard1.svg',
     '/assets/images/svg/lizard3.svg',
     '/assets/images/svg/crab1.svg',
-    '/assets/images/svg/crab2.svg'    
+    '/assets/images/svg/crab2.svg',
+    '/assets/images/svg/mole1.svg'    
   ];
   
   /**
