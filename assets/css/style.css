@@ -399,51 +399,35 @@ figcaption {
 .site-footer {
   display: flex;
   align-items: center;
-  /* This will distribute space evenly around your items (deco-left, content, deco-right)
-     and also between the items and the edges of this footer container. */
   justify-content: space-evenly;
   font-size: 0.7em;
   color: var(--link-color-light); /* For footer text (paragraphs & links) */
   text-align: center;
-  /* Added responsive padding on the sides: 4% of viewport width */
   padding: 20px 4vw;
   margin-top: 40px;
   background-color: transparent;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #808080;
 }
 
 body.dark-mode .site-footer {
   color: var(--link-color-dark); /* For footer text in dark mode */
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #808080;
 }
 
 .footer-content {
-  flex-grow: 0;   /* It won't grow to fill space, takes its content's width */
-  flex-shrink: 1; /* It can shrink if needed, but less eagerly */
-  padding: 0 15px; /* Increased padding slightly for more space around text */
+  flex-grow: 0;
+  flex-shrink: 1;
+  padding: 0 15px;
   /* color is inherited from .site-footer (link color) */
 }
 
-/* These are the DIVs that will have the SVG masks */
 .footer-deco-img {
-  /* --- Sizing --- */
-  /* Set width as a percentage of viewport width */
   width: 15vw;
-  /* Maintain a particular aspect ratio for the container */
   aspect-ratio: 2 / 1;
-
-  /* Define minimum and maximum physical sizes */
-  min-width: 30px;   /* Won't get smaller than 30px */
-  max-width: 200px;   /* Won't get larger than 100px (adjust as you like) */
-  /* min-height and max-height will be handled by aspect-ratio and width constraints */
-
-  flex-shrink: 0; /* Prevents these containers from shrinking */
-
-  /* --- Coloring (for the mask) --- */
-  /* The SVG color in light mode (main dark text color) */
+  min-width: 30px;
+  max-width: 200px;
+  flex-shrink: 0;
   background-color: var(--text-color-light);
-
-  /* --- Mask properties --- */
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -454,7 +438,6 @@ body.dark-mode .site-footer {
 }
 
 body.dark-mode .footer-deco-img {
-  /* The SVG color in dark mode (main light text color) */
   background-color: var(--text-color-dark);
 }
 
@@ -466,4 +449,49 @@ body.dark-mode .footer-deco-img {
 
 .site-footer a:hover {
   text-decoration: underline;
+}
+
+/* ===============================
+   Footer - Mobile Adjustments
+   =============================== */
+@media (max-width: 600px) { /* Your existing breakpoint */
+
+  .site-footer {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;    /* Center items horizontally */
+    /* Change justify-content to allow manual spacing with margins for ordered items.
+       'center' will center the whole block of items vertically if the footer has extra height.
+       'flex-start' would align them to the top of the footer's padding box. */
+    justify-content: center;
+    padding: 20px 5vw;
+  }
+
+  /* --- Define the order and spacing for stacked items --- */
+
+  .footer-deco-img.left-deco { /* Target the specific left image container */
+    order: 1; /* First item in the vertical stack */
+    margin-bottom: 15px; /* Space below the top image */
+  }
+
+  .footer-content {
+    order: 2; /* Second item in the stack */
+    padding: 0 10px;
+    margin: 0 0 15px 0; /* Remove top margin, add 15px space below the text */
+    text-align: center; /* Ensure text is centered */
+    width: 100%; /* Allow text content to use more width if needed */
+  }
+
+  .footer-deco-img.right-deco { /* Target the specific right image container */
+    order: 3; /* Third item in the stack */
+    /* No margin-bottom needed here usually, footer padding handles space below */
+  }
+
+  /* General sizing for .footer-deco-img on mobile (applies to both left and right) */
+  .footer-deco-img {
+    width: 25vw;       /* Your desired mobile width */
+    /* aspect-ratio: 2 / 1; is inherited from base styles */
+    min-width: 60px;   /* Your desired mobile min-width */
+    max-width: 180px;  /* Your desired mobile max-width */
+    /* height will be determined by width and aspect-ratio */
+  }
 }
