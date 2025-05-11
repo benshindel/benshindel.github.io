@@ -272,8 +272,8 @@ main.content {
   transform: translate(-50%, -50%);
   color: var(--text-color-light); 
   background-color: var(--bg-color-light); 
-  font-size: 1.2em;
-  padding: 5px 10px;
+  font-size: 1.1em;
+  padding: 5px 5px;
   border-radius: 5px;
   opacity: 0;
   transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease; 
@@ -295,7 +295,7 @@ body.dark-mode .image-grid a span {
 /* --- Responsive adjustments for the image grid's COLUMN LAYOUT --- */
 
 /* Medium screens (e.g., tablets): 2 columns */
-/* This rule applies for screens wider than 600px AND up to 960px */
+/* This rule applies for screens wider than 480px AND up to 960px */
 @media (min-width: 481px) and (max-width: 960px) { /* Adjust 960px breakpoint as needed */
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -303,7 +303,7 @@ body.dark-mode .image-grid a span {
 }
 
 /* Small screens (mobile): 1 column */
-/* This rule applies for screens up to 600px wide */
+/* This rule applies for screens up to 480px wide */
 @media (max-width: 480px) {
   .image-grid {
     grid-template-columns: 1fr; /* Single column */
