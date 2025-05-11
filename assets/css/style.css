@@ -291,7 +291,7 @@ main.content {
   width: 90%; /* Base width: makes the overlay responsive to the parent image container's width.
                  This will help it use more space on smaller images to prevent excessive text stacking. */
   
-  max-width: 280px; /* Absolute cap: The overlay will never get wider than this,
+  max-width: 200px; /* Absolute cap: The overlay will never get wider than this,
                        regardless of how wide 90% of the parent image is.
                        Adjust this pixel value to your preference for the largest comfortable overlay. */
 
