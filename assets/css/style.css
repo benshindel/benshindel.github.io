@@ -140,30 +140,43 @@ body.dark-mode #main-nav a:visited {
 
 .toggle-icon {
   display: inline-block;
-  width: 1.5rem; /* Or your chosen size */
+  width: 1.5rem;  /* Or your chosen size */
   height: 1.5rem; /* Or your chosen size */
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
   transition: background-color 0.3s ease;
-  /* NO explicit mask-mode here -- let it default */
+
+  /* Common mask properties that will apply to the SVG layer primarily */
+  /* The gradient layer will cover the whole area by default */
+  -webkit-mask-size: auto, contain; /* Layer 1 (gradient) auto, Layer 2 (SVG) contain */
+  mask-size: auto, contain;
+  -webkit-mask-repeat: no-repeat; /* Applies to both layers */
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center; /* Applies to both layers */
+  mask-position: center;
+
+  /* --- Multi-layer mask setup --- */
+  /* Layer 1 mask-mode is alpha, Layer 2 mask-mode is luminance */
+  -webkit-mask-mode: alpha, luminance;
+  mask-mode: alpha, luminance;
+
+  /* Composite operation: Subtract Layer 2 from Layer 1 */
+  -webkit-mask-composite: subtract;
+  mask-composite: subtract;
+  /* 'subtract' should be supported. Older -webkit- might need 'destination-out' or similar,
+     but 'subtract' is generally the one for "Destination - Source". */
 }
 
 /* Light mode: sun icon */
 body:not(.dark-mode) .toggle-icon {
-  background-color: var(--text-color-light); /* Intended icon color for black SVG parts: Dark Gray */
-  -webkit-mask-image: url('/assets/images/svg/sun2.svg');
-  mask-image: url('/assets/images/svg/sun2.svg');
+  background-color: var(--text-color-light); /* Intended icon color: Dark Gray */
+  -webkit-mask-image: linear-gradient(black, black), url('/assets/images/svg/sun2.svg');
+  mask-image: linear-gradient(black, black), url('/assets/images/svg/sun2.svg');
 }
 
 /* Dark mode: moon icon */
 body.dark-mode .toggle-icon {
-  background-color: var(--text-color-dark); /* Intended icon color for black SVG parts: Off-White */
-  -webkit-mask-image: url('/assets/images/svg/moon2.svg');
-  mask-image: url('/assets/images/svg/moon2.svg');
+  background-color: var(--text-color-dark); /* Intended icon color: Off-White */
+  -webkit-mask-image: linear-gradient(black, black), url('/assets/images/svg/moon2.svg');
+  mask-image: linear-gradient(black, black), url('/assets/images/svg/moon2.svg');
 }
 
 /* ===============================
