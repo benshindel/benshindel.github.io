@@ -140,8 +140,8 @@ body.dark-mode #main-nav a:visited {
 
 .toggle-icon {
   display: inline-block;
-  width: 1.5rem;  /* Or your chosen size */
-  height: 1.5rem; /* Or your chosen size */
+  width: 2rem;
+  height: 2rem;
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
