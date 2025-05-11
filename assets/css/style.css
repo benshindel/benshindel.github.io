@@ -34,7 +34,7 @@ body.dark-mode {
    =============================== */
 header {
   background-color: transparent;
-  padding: 10px 0;
+  padding: 20px 0 10px 0; /* top: 15px, right: 0, bottom: 10px, left: 0 */
 }
 
 .nav-wrapper {
@@ -178,11 +178,7 @@ body.dark-mode .toggle-icon {
   - Hide nav by default (toggle with JS)
 */
 @media (max-width: 768px) {
-  /* Reduce side padding on smaller screens */
-  body {
-    padding: 0 5%;
-  }
-
+ 
   #menu-toggle {
     display: block; /* show hamburger on mobile */
   }
