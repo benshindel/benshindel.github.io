@@ -158,15 +158,15 @@ body.dark-mode #main-nav a:visited {
 /* Light mode: sun icon */
 body:not(.dark-mode) .toggle-icon {
   background-color: var(--text-color-light); /* Dark Gray - desired for black SVG parts */
-  -webkit-mask-image: url('/assets/images/svg/sun1.svg');
-  mask-image: url('/assets/images/svg/sun1.svg');
+  -webkit-mask-image: url('/assets/images/svg/sun2.svg');
+  mask-image: url('/assets/images/svg/sun2.svg');
 }
 
 /* Dark mode: moon icon */
 body.dark-mode .toggle-icon {
   background-color: var(--text-color-dark); /* Off-White - desired for black SVG parts */
-  -webkit-mask-image: url('/assets/images/svg/moon1.svg');
-  mask-image: url('/assets/images/svg/moon1.svg');
+  -webkit-mask-image: url('/assets/images/svg/moon2.svg');
+  mask-image: url('/assets/images/svg/moon2.svg');
 }
 
 /* ===============================
