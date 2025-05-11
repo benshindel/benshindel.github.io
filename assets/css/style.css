@@ -168,11 +168,11 @@ body.dark-mode .toggle-icon {
    Responsive Styles
    =============================== */
 
-/* MOBILE: up to 768px 
+/* MOBILE or TABLET: up to 768px 
   - Show hamburger button
   - Hide nav by default (toggle with JS)
 */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
  
   #menu-toggle {
     display: block; /* show hamburger on mobile */
@@ -210,11 +210,11 @@ body.dark-mode .toggle-icon {
 }
 
 /*
-  DESKTOP: from 769px and up
+  DESKTOP: from 1025px and up
   - Hide hamburger
   - Show nav horizontally
 */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   #menu-toggle {
     display: none;
   }
@@ -291,9 +291,6 @@ body.dark-mode .image-grid a span {
 .image-grid a.active span { 
   opacity: 1;
 }
-
-/* The following duplicate rules for ".image-grid a.active img" and ".image-grid a.active span" were removed */
-/* as they were already covered by the rules above. */
 
 /* --- Responsive adjustments for the image grid's COLUMN LAYOUT --- */
 
