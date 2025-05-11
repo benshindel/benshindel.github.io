@@ -157,16 +157,16 @@ body.dark-mode #main-nav a:visited {
 /* Applied when body does NOT have .dark-mode class */
 body:not(.dark-mode) .toggle-icon {
   background-color: var(--text-color-light); /* Should be your dark gray for the sun */
-  -webkit-mask-image: url('/assets/images/svg/sun1.svg');
-  mask-image: url('/assets/images/svg/sun1.svg');
+  -webkit-mask-image: url('/assets/images/svg/sun2.svg');
+  mask-image: url('/assets/images/svg/sun2.svg');
 }
 
 /* Dark mode: moon icon */
 /* Applied when body has .dark-mode class */
 body.dark-mode .toggle-icon {
   background-color: var(--text-color-dark); /* Should be your off-white for the moon */
-  -webkit-mask-image: url('/assets/images/svg/moon1.svg');
-  mask-image: url('/assets/images/svg/moon1.svg');
+  -webkit-mask-image: url('/assets/images/svg/moon2.svg');
+  mask-image: url('/assets/images/svg/moon2.svg');
 }
 
 /* ===============================
