@@ -43,8 +43,7 @@ header {
   align-items: center;
 }
 
-/* 
-  Hamburger button (for mobile).
+/* Hamburger button (for mobile).
   We'll hide it on desktop.
 */
 #menu-toggle {
@@ -72,8 +71,7 @@ body.dark-mode #menu-toggle {
   color: var(--link-color-dark);
 }
 
-/* 
-  Single nav (for both mobile & desktop).
+/* Single nav (for both mobile & desktop).
   We'll style it differently in media queries.
 */
 #main-nav {
@@ -142,8 +140,7 @@ body.dark-mode #main-nav a:visited {
    Responsive Styles
    =============================== */
 
-/* 
-  MOBILE: up to 768px 
+/* MOBILE: up to 768px 
   - Show hamburger button
   - Hide nav by default (toggle with JS)
 */
@@ -211,6 +208,7 @@ main.content {
    =============================== */
 .image-grid {
   display: grid;
+  /* Default: 3 columns for desktop/large screens (screens wider than 1024px) */
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
@@ -231,7 +229,7 @@ main.content {
 
 .image-grid a:hover img,
 .image-grid a:focus img,
-.image-grid a.active img { /* Added .active */
+.image-grid a.active img { 
   opacity: 0.5;
 }
 
@@ -240,13 +238,13 @@ main.content {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--text-color-light); /* CHANGED */
-  background-color: var(--bg-color-light); /* CHANGED */
+  color: var(--text-color-light); 
+  background-color: var(--bg-color-light); 
   font-size: 1.2em;
   padding: 5px 10px;
   border-radius: 5px;
   opacity: 0;
-  transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease; /* UPDATED */
+  transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease; 
   text-align: center;
   pointer-events: none;
 }
@@ -258,23 +256,28 @@ body.dark-mode .image-grid a span {
 
 .image-grid a:hover span,
 .image-grid a:focus span,
-.image-grid a.active span { /* Added .active */
+.image-grid a.active span { 
   opacity: 1;
 }
 
-/* Active State for Mobile (toggled via JS) */
-.image-grid a.active img {
-  opacity: 0.5;
+/* The following duplicate rules for ".image-grid a.active img" and ".image-grid a.active span" were removed */
+/* as they were already covered by the rules above. */
+
+/* --- Responsive adjustments for the image grid's COLUMN LAYOUT --- */
+
+/* Medium screens (e.g., tablets): 2 columns */
+/* This rule applies for screens wider than 768px AND up to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) { /* Adjust 1024px breakpoint as needed */
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.image-grid a.active span {
-  opacity: 1;
-}
-
-/* Make the image grid single-column on smaller screens */
+/* Small screens (mobile): 1 column */
+/* This rule applies for screens up to 768px wide */
 @media (max-width: 768px) {
   .image-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column */
   }
 }
 /* ===============================
@@ -343,7 +346,7 @@ body.dark-mode a:visited {
 
 body.dark-mode a:hover,
 body.dark-mode a:focus {
-  text-decoration: underline;
+  text-decoration: underline; /* This was already correct in the provided artifact */
 }
 
 /* ===============================
@@ -422,9 +425,6 @@ body.dark-mode .footer-deco-img {
   .site-footer {
     flex-direction: column; /* Stack items vertically */
     align-items: center;    /* Center items horizontally */
-    /* Change justify-content to allow manual spacing with margins for ordered items.
-       'center' will center the whole block of items vertically if the footer has extra height.
-       'flex-start' would align them to the top of the footer's padding box. */
     justify-content: center;
     padding: 20px 5vw;
   }
@@ -446,15 +446,13 @@ body.dark-mode .footer-deco-img {
 
   .footer-deco-img.right-deco { /* Target the specific right image container */
     order: 3; /* Third item in the stack */
-    /* No margin-bottom needed here usually, footer padding handles space below */
   }
 
   /* General sizing for .footer-deco-img on mobile (applies to both left and right) */
   .footer-deco-img {
-    width: 30vw;       /* Your desired mobile width */
+    width: 30vw;
     /* aspect-ratio: 3 / 2; is inherited from base styles */
-    min-width: 60px;   /* Your desired mobile min-width */
-    max-width: 300px;  /* Your desired mobile max-width */
-    /* height will be determined by width and aspect-ratio */
+    min-width: 60px;
+    max-width: 300px;
   }
 }
