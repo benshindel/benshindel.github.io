@@ -178,18 +178,50 @@ body.dark-mode .toggle-icon {
     display: block; /* show hamburger on mobile */
   }
 
-  #main-nav {
-    display: none;          /* hidden by default on mobile */
-    flex-direction: column; /* vertical stacking when shown */
-    position: absolute;     
-    top: 60px;              /* below the header, adjust if needed */
-    left: 0;
+#main-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust based on your header's height */
+    
+    /* Option 1: Align to the right with a max-width */
+    right: 0; 
+    width: 280px; /* Or your preferred width */
+    /* max-width: 90vw; /* Optional: ensure it's not wider than viewport if width is fixed, 90vw = 90% of viewport width */
+    
+    /* Option 2: Align to the left with a max-width (more common if hamburger is on left) */
+    /* left: 0; */
+    /* width: 280px; */ /* Or your preferred width */
+    /* max-width: 90vw; */
+
+    /* General recommendation if you want it on one side with a max width: */
+    /* Assuming you want it to appear from the right (common if hamburger is on the right) */
     right: 0;
+    width: auto; /* Let content and padding define initial width */
+    max-width: 320px; /* Set your desired max-width here */
+    /* Ensure you don't have 'left: 0;' active if 'right: 0;' and a width/max-width are set. */
+
     background-color: var(--bg-color-light);
     padding: 15px;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    /* Adjust box-shadow if it's no longer full-width, e.g., if it slides from the right: */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1); 
+    /* If it slides from the left, you might prefer: box-shadow: 2px 0 5px rgba(0,0,0,0.1); */
+    
+    /* Optional: Add a transition for a slide-in effect */
+    /* transform: translateX(100%); */ /* Start off-screen (if anchored to right) */
+    /* transition: transform 0.3s ease-out; */
   }
+
+  /* If you add a transform for sliding in: */
+  /* #main-nav.active {
+    display: flex;
+    transform: translateX(0%);
+  } */
+  /* Otherwise, your existing .active rule is fine: */
+   #main-nav.active {
+     display: flex;
+   }
 
   body.dark-mode #main-nav {
     background-color: var(--bg-color-dark);
