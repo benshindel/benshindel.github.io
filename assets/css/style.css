@@ -191,7 +191,7 @@ body.dark-mode .toggle-icon {
     background-color: var(--bg-color-light);
     padding: 15px;
     z-index: 1000;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1); /* This shadow implies it's on the right */
+    box-shadow: -2px 0 6px rgba(0,0,0,0.1);
   }
    
    #main-nav.active {
@@ -200,10 +200,7 @@ body.dark-mode .toggle-icon {
 
   body.dark-mode #main-nav {
     background-color: var(--bg-color-dark);
-    /* Option 1: Subtle light shadow for dark mode */
-    box-shadow: -2px 0 5px rgba(255, 255, 255, 0.05); /* Example: very subtle white shadow */
-    /* Or a slightly more noticeable one: */
-    /* box-shadow: -2px 0 5px rgba(255, 255, 255, 0.08); */
+    box-shadow: -2px 0 6px rgba(255, 255, 255, 0.1);
   }
 
   /* When .active is added via JS, nav is displayed */
@@ -342,9 +339,7 @@ body.dark-mode .image-grid a span {
 }
 
 body.dark-mode .profile-pic {
-  box-shadow: 0 4px 10px rgba(230, 230, 230, 0.08); /* offsetY 4px, blur 10px, color #e6e6e6 at 8% opacity */  
-  /* Alternative subtle white glow: */
-  /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.07); */
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 .about-text {
