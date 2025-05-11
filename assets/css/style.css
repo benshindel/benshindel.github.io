@@ -149,22 +149,19 @@ body.dark-mode #main-nav a:visited {
   -webkit-mask-position: center;
   mask-position: center;
   transition: background-color 0.3s ease;
-
-  /* Explicitly set mask-mode to luminance */
-  -webkit-mask-mode: luminance;
-  mask-mode: luminance;
+  /* NO explicit mask-mode here -- let it default */
 }
 
 /* Light mode: sun icon */
 body:not(.dark-mode) .toggle-icon {
-  background-color: var(--text-color-dark); /* Dark Gray - desired for black SVG parts */
+  background-color: var(--text-color-light); /* Intended icon color for black SVG parts: Dark Gray */
   -webkit-mask-image: url('/assets/images/svg/sun2.svg');
   mask-image: url('/assets/images/svg/sun2.svg');
 }
 
 /* Dark mode: moon icon */
 body.dark-mode .toggle-icon {
-  background-color: var(--text-color-light); /* Off-White - desired for black SVG parts */
+  background-color: var(--text-color-dark); /* Intended icon color for black SVG parts: Off-White */
   -webkit-mask-image: url('/assets/images/svg/moon2.svg');
   mask-image: url('/assets/images/svg/moon2.svg');
 }
