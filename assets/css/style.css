@@ -385,10 +385,10 @@ body.dark-mode .site-footer {
 }
 
 .footer-deco-img {
-  width: 15vw;
+  width: 10vw;
   aspect-ratio: 3 / 2;
   min-width: 30px;
-  max-width: 400px;
+  max-width: 300px;
   flex-shrink: 0;
   background-color: var(--text-color-light);
   -webkit-mask-size: contain;
@@ -451,8 +451,8 @@ body.dark-mode .footer-deco-img {
 
   /* General sizing for .footer-deco-img on mobile (applies to both left and right) */
   .footer-deco-img {
-    width: 35vw;       /* Your desired mobile width */
-    /* aspect-ratio: 2 / 1; is inherited from base styles */
+    width: 30vw;       /* Your desired mobile width */
+    /* aspect-ratio: 3 / 2; is inherited from base styles */
     min-width: 60px;   /* Your desired mobile min-width */
     max-width: 300px;  /* Your desired mobile max-width */
     /* height will be determined by width and aspect-ratio */
