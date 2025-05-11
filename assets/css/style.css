@@ -399,55 +399,67 @@ figcaption {
 .site-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* This will distribute space evenly around your items (deco-left, content, deco-right)
+     and also between the items and the edges of this footer container. */
+  justify-content: space-evenly;
   font-size: 0.7em;
-  /* All text content (paragraphs and links via inheritance) will use this link color */
-  color: var(--link-color-light);
+  color: var(--link-color-light); /* For footer text (paragraphs & links) */
   text-align: center;
-  padding: 20px 10px; /* Adjusted from your original for a bit of side padding if images are close to edge */
+  /* Added responsive padding on the sides: 4% of viewport width */
+  padding: 20px 4vw;
   margin-top: 40px;
   background-color: transparent;
-  border-top: 1px solid #e0e0e0; /* Light mode border */
+  border-top: 1px solid #e0e0e0;
 }
 
 body.dark-mode .site-footer {
-  /* All text content will use this link color in dark mode */
-  color: var(--link-color-dark);
-  border-top: 1px solid var(--bg-color-dark); /* Using your dark background color for the border, or choose a specific one like #333333 */
+  color: var(--link-color-dark); /* For footer text in dark mode */
+  border-top: 1px solid var(--bg-color-dark);
 }
 
 .footer-content {
-  flex-grow: 1; /* Allows text content to take available space */
-  padding: 0 10px; /* Adds a little space between text and images */
-  /* Text color is inherited from .site-footer, so it will be the link color */
+  flex-grow: 0;   /* It won't grow to fill space, takes its content's width */
+  flex-shrink: 1; /* It can shrink if needed, but less eagerly */
+  padding: 0 15px; /* Increased padding slightly for more space around text */
+  /* color is inherited from .site-footer (link color) */
 }
 
 /* These are the DIVs that will have the SVG masks */
 .footer-deco-img {
-  width: 25px;  /* Set your desired width */
-  height: 25px; /* Set your desired height */
-  flex-shrink: 0; /* Prevents images from shrinking if space is tight */
+  /* --- Sizing --- */
+  /* Set width as a percentage of viewport width */
+  width: 7vw;
+  /* Maintain a square aspect ratio for the container */
+  aspect-ratio: 1 / 1;
 
-  /* The SVG color in light mode (dark text color) */
+  /* Define minimum and maximum physical sizes */
+  min-width: 30px;   /* Won't get smaller than 30px */
+  max-width: 65px;   /* Won't get larger than 65px (adjust as you like) */
+  /* min-height and max-height will be handled by aspect-ratio and width constraints */
+
+  flex-shrink: 0; /* Prevents these containers from shrinking */
+
+  /* --- Coloring (for the mask) --- */
+  /* The SVG color in light mode (main dark text color) */
   background-color: var(--text-color-light);
 
-  /* Mask properties - the mask-image URL will be set by JavaScript */
+  /* --- Mask properties --- */
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
+  /* mask-image is set by JavaScript */
 }
 
 body.dark-mode .footer-deco-img {
-  /* The SVG color in dark mode (light text color) */
+  /* The SVG color in dark mode (main light text color) */
   background-color: var(--text-color-dark);
 }
 
 .site-footer a {
-  /* Links inherit their color from .site-footer, which is set to the link color */
-  color: inherit;
+  color: inherit; /* Inherits link color from .site-footer */
   text-decoration: none;
   transition: text-decoration 0.3s ease;
 }
