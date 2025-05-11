@@ -5,14 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     '/assets/images/svg/snail1.svg',
     '/assets/images/svg/okapi1.svg',
     '/assets/images/svg/lizard2.svg',
-    '/assets/images/svg/crow1.svg'
+    '/assets/images/svg/crow1.svg',
+    '/assets/images/svg/caterpillar1.svg',
+    '/assets/images/svg/caterpillar2.svg',
+    '/assets/images/svg/toad1.svg',
   ];
 
   const rightSvgFiles = [
     '/assets/images/svg/crow2.svg',
     '/assets/images/svg/pigeon1.svg',
     '/assets/images/svg/lizard1.svg',
-    '/assets/images/svg/lizard3.svg'
+    '/assets/images/svg/lizard3.svg',
+    '/assets/images/svg/crab1.svg',
+    '/assets/images/svg/crab2.svg'    
   ];
   
   /**
