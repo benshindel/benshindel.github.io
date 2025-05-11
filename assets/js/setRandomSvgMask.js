@@ -1,19 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Define separate arrays of SVG file paths for left and right images
   const leftSvgFiles = [
-    '/assets/images/svg/snail2.svg',
-    '/assets/images/svg/snail1.svg',
-    '/assets/images/svg/crane1.svg'
+    '/assets/images/svg/crow2.svg',
+    '/assets/images/svg/crow1.svg'
     // Add more paths for the left side
   ];
 
   const rightSvgFiles = [
-    '/assets/images/svg/crow2.svg',
-    '/assets/images/svg/crow1.svg'
-    '/assets/images/svg/pigeon1.svg'
+    '/assets/images/svg/snail2.svg',
+    '/assets/images/svg/snail1.svg'
     // Add more paths for the right side
   ];
-
+  
   /**
    * Sets a random SVG mask on a given container element from a provided array of SVG paths.
    * @param {string} containerId - The ID of the HTML element to apply the mask to.
