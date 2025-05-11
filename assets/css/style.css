@@ -401,33 +401,53 @@ figcaption {
   align-items: center;
   justify-content: space-between;
   font-size: 0.7em;
-  color: var(--link-color-light); /* All text, and SVGs with currentColor, will use this highlight color */
+  /* All text content (paragraphs and links via inheritance) will use this link color */
+  color: var(--link-color-light);
   text-align: center;
-  padding: 20px 10px;
+  padding: 20px 10px; /* Adjusted from your original for a bit of side padding if images are close to edge */
   margin-top: 40px;
   background-color: transparent;
-  border-top: 1px solid #e0e0e0;
-}
-
-.footer-content {
-  flex-grow: 1;
-  padding: 0 10px;
-}
-
-.footer-deco-img {
-  height: 25px;
-  width: auto;
-  flex-shrink: 0;
-  /* SVGs with stroke="currentColor" will inherit the .site-footer's color */
+  border-top: 1px solid #e0e0e0; /* Light mode border */
 }
 
 body.dark-mode .site-footer {
-  color: var(--link-color-dark); /* All text, and SVGs with currentColor, will use this highlight color in dark mode */
-  border-top: 1px solid #333333;
+  /* All text content will use this link color in dark mode */
+  color: var(--link-color-dark);
+  border-top: 1px solid var(--bg-color-dark); /* Using your dark background color for the border, or choose a specific one like #333333 */
+}
+
+.footer-content {
+  flex-grow: 1; /* Allows text content to take available space */
+  padding: 0 10px; /* Adds a little space between text and images */
+  /* Text color is inherited from .site-footer, so it will be the link color */
+}
+
+/* These are the DIVs that will have the SVG masks */
+.footer-deco-img {
+  width: 25px;  /* Set your desired width */
+  height: 25px; /* Set your desired height */
+  flex-shrink: 0; /* Prevents images from shrinking if space is tight */
+
+  /* The SVG color in light mode (dark text color) */
+  background-color: var(--text-color-light);
+
+  /* Mask properties - the mask-image URL will be set by JavaScript */
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+body.dark-mode .footer-deco-img {
+  /* The SVG color in dark mode (light text color) */
+  background-color: var(--text-color-dark);
 }
 
 .site-footer a {
-  color: inherit; /* This will now inherit the --link-color-light/dark from .site-footer */
+  /* Links inherit their color from .site-footer, which is set to the link color */
+  color: inherit;
   text-decoration: none;
   transition: text-decoration 0.3s ease;
 }
