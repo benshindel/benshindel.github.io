@@ -207,75 +207,92 @@ main.content {
 }
 
 /* ===============================
-   Image Grid Styles
-   =============================== */
+   Image Grid Styles
+   =============================== */
+
+/* This is the main container for your grid */
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  display: grid;
+  /* DEFAULT for larger screens (desktop): 3 columns */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
+/* THESE STYLES BELOW ARE FOR THE ITEMS *INSIDE* THE GRID. */
+/* Ensure these (and any others you have for .image-grid children) are still present and correct from your working version. */
 .image-grid a {
-  position: relative;
-  display: block;
-  text-decoration: none;
+  position: relative;
+  display: block;
+  text-decoration: none;
 }
 
 .image-grid img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: opacity 0.3s ease;
-  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+  display: block;
+}
+
+.image-grid a span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-color-light);
+  background-color: var(--bg-color-light);
+  font-size: 1.2em;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  pointer-events: none;
+}
+
+body.dark-mode .image-grid a span {
+  color: var(--text-color-dark);
+  background-color: var(--bg-color-dark);
 }
 
 .image-grid a:hover img,
 .image-grid a:focus img,
-.image-grid a.active img { /* Added .active */
-  opacity: 0.5;
-}
-
-.image-grid a span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--text-color-light); /* CHANGED */
-  background-color: var(--bg-color-light); /* CHANGED */
-  font-size: 1.2em;
-  padding: 5px 10px;
-  border-radius: 5px;
-  opacity: 0;
-  transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease; /* UPDATED */
-  text-align: center;
-  pointer-events: none;
-}
-
-body.dark-mode .image-grid a span {
-  color: var(--text-color-dark);
-  background-color: var(--bg-color-dark);
+.image-grid a.active img {
+  opacity: 0.5;
 }
 
 .image-grid a:hover span,
 .image-grid a:focus span,
-.image-grid a.active span { /* Added .active */
-  opacity: 1;
+.image-grid a.active span {
+  opacity: 1;
 }
 
 /* Active State for Mobile (toggled via JS) */
-.image-grid a.active img {
-  opacity: 0.5;
+.image-grid a.active img { /* This seems to be a duplicate of the rule above */
+  opacity: 0.5;
 }
 
-.image-grid a.active span {
-  opacity: 1;
+.image-grid a.active span { /* This also seems to be a duplicate */
+  opacity: 1;
 }
 
-/* Make the image grid single-column on smaller screens */
+
+/* --- Responsive adjustments for the image grid's COLUMN LAYOUT --- */
+
+/* MEDIUM screens (e.g., tablets): 2 columns */
+/* This applies to screens wider than 768px AND up to 1024px (or your chosen value) */
+@media (min-width: 769px) and (max-width: 1024px) { /* Adjust 1024px as needed */
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* SMALL screens (mobile): 1 column */
+/* This applies to screens up to 768px wide */
 @media (max-width: 768px) {
-  .image-grid {
-    grid-template-columns: 1fr;
-  }
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
 }
 /* ===============================
    About Section
