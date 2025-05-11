@@ -95,16 +95,6 @@ body.dark-mode #main-nav a {
   color: var(--link-color-dark);
 }
 
-/* Light/Dark mode toggle button */
-#mode-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  font-size: 1.2rem;
-  align-self: center;
-}
-
 /* Home link styling */
 .home-link {
   display: inline-flex;
@@ -140,8 +130,7 @@ body.dark-mode #main-nav a:visited {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0; /* Adjust if necessary for alignment */
-  /* font-size: 1.2rem; /* This sized the emoji; icon size is now controlled by .toggle-icon width/height */
+  padding: 0;
   align-self: center;
   /* Added to help center the icon if it's given display:block or inline-block */
   display: inline-flex;
@@ -151,8 +140,8 @@ body.dark-mode #main-nav a:visited {
 
 .toggle-icon {
   display: inline-block; /* Allows setting width/height */
-  width: 1.2rem;  /* Desired width of the icon, e.g., matches old emoji size */
-  height: 1.2rem; /* Desired height of the icon */
+  width: 1.5rem;  /* Desired width of the icon, e.g., matches old emoji size */
+  height: 1.5rem; /* Desired height of the icon */
   
   -webkit-mask-size: contain;
   mask-size: contain;
