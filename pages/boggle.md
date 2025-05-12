@@ -137,7 +137,7 @@ permalink: /boggle/
 
   async function fetchWordList() {
     try {
-      const response = await fetch('https://benshindel.github.io/assets/textfiles/wordlist1.txt')
+      const response = await fetch('https://www.benshindel.com/assets/textfiles/wordlist1.txt')
       const text = await response.text();
       text.split('\n').forEach(word => {
         const cleanWord = word.replace(/"/g, '').trim().toLowerCase();
