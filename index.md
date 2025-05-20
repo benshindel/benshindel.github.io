@@ -24,7 +24,7 @@ title: Home
     <img src="/assets/images/research.png" alt="Collaborations Image">
     <span>collaborative work in the lab</span>
   </a>
-    <a href="projects" aria-haspopup="true" aria-expanded="false">
+    <a href="writing" aria-haspopup="true" aria-expanded="false">
     <img src="/assets/images/scribblings.png" alt="Projects Image">
     <span>miscellaneous writings and projects for your perusal</span>
   </a>
