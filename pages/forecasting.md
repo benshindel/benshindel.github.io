@@ -20,5 +20,5 @@ You can [use this link to join Manifold](https://manifold.markets?r=YmVucw), one
 
 <div style="text-align: center;">
   <img src="/assets/images/tournaments.png" alt="My Metaculus tournament history." style="max-width: 90%; width: 500px;">
-  <figcaption>My best tournament results on Metaculus.</figcaption>
+  <figcaption>My history of tournament results on Metaculus.</figcaption>
 </div>
