@@ -24,4 +24,4 @@ You can also play my Manifest 2025 choose-your-own-adventure story called [You a
 
 I also made a [puzzle game](https://benshindel.github.io/scarynumbers) inspired by the TV show Severance.
 
-I'm working on a methodology for [ranking journals](https://benshindel.github.io/journal-ranking/) through the revealed preference of academics from elite institutions.
+I'm working on a methodology for [ranking journals](https://benshindel.github.io/journal-ranking/) through the revealed preference of academics from elite institutions (WIP).
