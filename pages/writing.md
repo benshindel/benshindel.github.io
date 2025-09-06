@@ -24,4 +24,6 @@ You can also play my Manifest 2025 choose-your-own-adventure story called [You a
 
 I also made a [puzzle game](https://benshindel.github.io/scarynumbers) inspired by the TV show Severance.
 
+I'm a fan of international competitive chess, and I've made a [tracking spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vRCQlKdgUCFgE_VUd8Q5dhMHKxjh0dCXD_WSsbNK70t71RqdCpMJ9P3-6a8EzgRdnAU0sC3ordMQSQg/pubhtml#) for the FIDE 2026 Candidates tournament.
+
 I'm working on a methodology for [ranking journals](https://benshindel.github.io/journal-ranking/) through the revealed preference of academics from elite institutions (WIP).
