@@ -7,6 +7,8 @@ permalink: /writing/
 # Writing and Projects
 
 I write about science, innovation, forecasting, and other things on my blog, [The BS Detector](https://thebsdetector.substack.com/).  I also write a weekly newsletter for Manifold Markets, called [Above the Fold](https://news.manifold.markets/). Some of my favorite things I've written recently are:
+- [Huel is Fine](https://thebsdetector.substack.com/p/huel-is-fine) Oct 2025
+- [My Brush with Superhuman Persuasion](https://thebsdetector.substack.com/p/my-brush-with-superhuman-persuasion) Oct 2025
 - [Government-Funded Alchemy](https://thebsdetector.substack.com/p/government-funded-alchemy) Jul 2025
 - [Manifold vs the World](https://news.manifold.markets/p/manifold-vs-the-world) Jul 2025
 - [The Cognitive Debt of Digging Through Preprints](https://thebsdetector.substack.com/p/the-cognitive-debt-of-digging-through) Jun 2025
