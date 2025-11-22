@@ -215,10 +215,6 @@ body.dark-mode .toggle-icon {
   - Show nav horizontally
 */
 @media (min-width: 961px) {
-  body {
-    padding: 0 22%;
-  }
-
   #menu-toggle {
     display: none;
   }
@@ -258,8 +254,6 @@ main.content {
 .image-grid img {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
   border-radius: 8px;
   transition: opacity 0.3s ease;
   display: block;
