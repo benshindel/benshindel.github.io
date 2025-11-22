@@ -215,6 +215,10 @@ body.dark-mode .toggle-icon {
   - Show nav horizontally
 */
 @media (min-width: 961px) {
+  body {
+    padding: 0 22%;
+  }
+
   #menu-toggle {
     display: none;
   }
@@ -242,9 +246,7 @@ main.content {
   display: grid;
   /* Default: 3 columns for desktop/large screens (screens wider than 1024px) */
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  max-width: 950px;
-  margin: 0 auto;
+  gap: 20px;
 }
 
 .image-grid a {
@@ -255,7 +257,8 @@ main.content {
 
 .image-grid img {
   width: 100%;
-  height: 28vh;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 8px;
   transition: opacity 0.3s ease;
@@ -328,9 +331,6 @@ body.dark-mode .image-grid a span {
 @media (max-width: 480px) {
   .image-grid {
     grid-template-columns: 1fr; /* Single column */
-  }
-  .image-grid img {
-    height: auto;
   }
 }
 /* ===============================
