@@ -17,7 +17,17 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0 10%;
+  /* 
+     Fluid padding logic:
+     - Below 500px: 10% padding.
+     - At 500px: 10% (50px).
+     - Between 500px and 1000px: Grows linearly from 50px to 200px.
+       Formula: 30vw - 100px.
+       Check: 0.3*500 - 100 = 50px (10%).
+       Check: 0.3*1000 - 100 = 200px (20%).
+     - Above 1000px: 20% padding.
+  */
+  padding: 0 clamp(10%, 30vw - 100px, 20%);
   box-sizing: border-box;
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
