@@ -17,9 +17,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-        /* Fluid horizontal padding: min 6%, fluid with viewport, max 20%.
-          Lower the minimum so very small screens don't show excessive gutters. */
-        padding: 0 clamp(6%, 14vw, 20%);
+  padding: 0 10%;
   box-sizing: border-box;
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
