@@ -21,13 +21,13 @@ body {
      Fluid padding logic:
      - Below 500px: 10% padding.
      - At 500px: 10% (50px).
-     - Between 500px and 1000px: Grows linearly from 50px to 200px.
-       Formula: 30vw - 100px.
-       Check: 0.3*500 - 100 = 50px (10%).
-       Check: 0.3*1000 - 100 = 200px (20%).
-     - Above 1000px: 20% padding.
+     - Between 500px and 1500px: Grows linearly from 50px to 375px.
+       Formula: 32.5vw - 112.5px.
+       Check: 0.325*500 - 112.5 = 50px (10%).
+       Check: 0.325*1500 - 112.5 = 375px (25%).
+     - Above 1500px: 25% padding.
   */
-  padding: 0 clamp(10%, 30vw - 100px, 20%);
+  padding: 0 clamp(10%, 32.5vw - 112.5px, 25%);
   box-sizing: border-box;
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
@@ -242,7 +242,7 @@ body.dark-mode .toggle-icon {
    Main Content
    =============================== */
 main.content {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 /* ===============================
@@ -417,7 +417,7 @@ figcaption {
   color: var(--link-color-light); /* For footer text (paragraphs & links) */
   text-align: center;
   padding: 10px 4vw;
-  margin-top: 40px;
+  margin-top: 20px;
   background-color: transparent;
   border-top: 1px solid #808080;
 }
