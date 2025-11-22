@@ -17,9 +17,10 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-    /* Fluid horizontal padding: min 10%, fluid with viewport, max 20%.
-      Increased the preferred value to 10vw to make growth more noticeable. */
-    padding: 0 clamp(10%, 10vw, 20%);
+      /* Fluid horizontal padding: min 10%, fluid with viewport, max 20%.
+        Use a preferred value larger than 10% so the clamp actually grows
+        as the viewport widens (vw vs % are equivalent numerically). */
+      padding: 0 clamp(10%, 14vw, 20%);
   box-sizing: border-box;
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
