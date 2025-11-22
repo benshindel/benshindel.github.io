@@ -242,7 +242,9 @@ main.content {
   display: grid;
   /* Default: 3 columns for desktop/large screens (screens wider than 1024px) */
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 15px;
+  max-width: 950px;
+  margin: 0 auto;
 }
 
 .image-grid a {
@@ -253,7 +255,8 @@ main.content {
 
 .image-grid img {
   width: 100%;
-  height: auto;
+  height: 28vh;
+  object-fit: cover;
   border-radius: 8px;
   transition: opacity 0.3s ease;
   display: block;
@@ -325,6 +328,9 @@ body.dark-mode .image-grid a span {
 @media (max-width: 480px) {
   .image-grid {
     grid-template-columns: 1fr; /* Single column */
+  }
+  .image-grid img {
+    height: auto;
   }
 }
 /* ===============================
