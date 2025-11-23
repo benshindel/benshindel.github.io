@@ -182,7 +182,7 @@ body.dark-mode .toggle-icon {
   - Show hamburger button
   - Hide nav by default (toggle with JS)
 */
-@media (max-width: 960px) {
+@media (max-width: 1160px) {
  
   #menu-toggle {
     display: block; /* show hamburger on mobile */
@@ -224,7 +224,7 @@ body.dark-mode .toggle-icon {
   - Hide hamburger
   - Show nav horizontally
 */
-@media (min-width: 961px) {
+@media (min-width: 1161px) {
   #menu-toggle {
     display: none;
   }
@@ -250,7 +250,6 @@ main.content {
    =============================== */
 .image-grid {
   display: grid;
-  /* Default: 3 columns for desktop/large screens (screens wider than 1024px) */
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
