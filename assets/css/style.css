@@ -21,13 +21,13 @@ body {
      Fluid padding logic:
      - Below 500px: 10% padding.
      - At 500px: 10% (50px).
-     - Between 500px and 1500px: Grows linearly from 50px to 375px.
-       Formula: 32.5vw - 112.5px.
-       Check: 0.325*500 - 112.5 = 50px (10%).
-       Check: 0.325*1500 - 112.5 = 375px (25%).
-     - Above 1500px: 25% padding.
+     - Between 500px and 1800px: Grows linearly from 50px to 450px.
+       Formula: 30.77vw - 103.85px.
+       Check: 0.3077*500 - 103.85 ≈ 50px (10%).
+       Check: 0.3077*1800 - 103.85 ≈ 450px (25%).
+     - Above 1800px: 25% padding.
   */
-  padding: 0 clamp(10%, 32.5vw - 112.5px, 25%);
+  padding: 0 clamp(10%, 30.77vw - 103.85px, 25%);
   box-sizing: border-box;
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
