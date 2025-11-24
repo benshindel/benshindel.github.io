@@ -437,7 +437,7 @@ body.dark-mode .site-footer {
   width: 10vw;
   aspect-ratio: 3 / 2;
   min-width: 60px;
-  max-width: 250px;
+  max-width: 150px;
   flex-shrink: 0;
   background-color: var(--text-color-light);
   -webkit-mask-size: contain;
@@ -499,6 +499,6 @@ body.dark-mode .footer-deco-img {
     width: 30vw;
     /* aspect-ratio: 3 / 2; is inherited from base styles */
     min-width: 60px;
-    max-width: 250px;
+    max-width: 150px;
   }
 }
