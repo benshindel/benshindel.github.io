@@ -415,7 +415,7 @@ figcaption {
   font-size: 0.7em;
   color: var(--link-color-light); /* For footer text (paragraphs & links) */
   text-align: center;
-  padding: 10px 4vw;
+  padding: 10px 2vw;
   margin-top: 20px;
   background-color: transparent;
   border-top: 1px solid #808080;
@@ -434,7 +434,7 @@ body.dark-mode .site-footer {
 }
 
 .footer-deco-img {
-  width: 8vw;
+  width: 10vw;
   aspect-ratio: 3 / 2;
   min-width: 30px;
   max-width: 300px;
@@ -472,7 +472,7 @@ body.dark-mode .footer-deco-img {
     flex-direction: column; /* Stack items vertically */
     align-items: center;    /* Center items horizontally */
     justify-content: center;
-    padding: 10px 5vw;
+    padding: 10px 2vw;
   }
 
   /* --- Define the order and spacing for stacked items --- */
