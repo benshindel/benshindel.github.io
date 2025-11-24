@@ -429,12 +429,12 @@ body.dark-mode .site-footer {
 .footer-content {
   flex-grow: 0;
   flex-shrink: 1;
-  padding: 0 15px;
+  padding: 0 10px;
   /* color is inherited from .site-footer (link color) */
 }
 
 .footer-deco-img {
-  width: 10vw;
+  width: 8vw;
   aspect-ratio: 3 / 2;
   min-width: 30px;
   max-width: 300px;
@@ -479,13 +479,13 @@ body.dark-mode .footer-deco-img {
 
   .footer-deco-img.left-deco { /* Target the specific left image container */
     order: 1; /* First item in the vertical stack */
-    margin-bottom: 15px; /* Space below the top image */
+    margin-bottom: 10px; /* Space below the top image */
   }
 
   .footer-content {
     order: 2; /* Second item in the stack */
-    padding: 0 10px;
-    margin: 0 0 15px 0; /* Remove top margin, add 15px space below the text */
+    padding: 0 8px;
+    margin: 0 0 10px 0; /* Remove top margin, add 10px space below the text */
     text-align: center; /* Ensure text is centered */
     width: 100%; /* Allow text content to use more width if needed */
   }
