@@ -99,6 +99,7 @@ body.dark-mode #menu-toggle {
   text-decoration: none;
   color: var(--link-color-light);
   margin: 0 0px;
+  font-size: 1.2rem;
 }
 
 body.dark-mode #main-nav a {
@@ -110,7 +111,7 @@ body.dark-mode #main-nav a {
   display: inline-flex;
   align-items: center;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-decoration: none;
   color: var(--link-color-light);
 }
