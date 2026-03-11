@@ -4,13 +4,8 @@ title: Cookbook
 permalink: /cookbook/
 ---
 
-<div class="cookbook-grid">
+<ul class="recipe-list">
   {% for recipe in site.recipes %}
-  <a href="{{ recipe.url | relative_url }}" class="cookbook-item">
-    <div class="cookbook-item-icon">
-      <img src="{{ '/assets/images/cookbook/' | append: recipe.svg_icon | relative_url }}" alt="{{ recipe.title }}">
-    </div>
-    <span class="cookbook-item-title">{{ recipe.title }}</span>
-  </a>
+  <li><a href="{{ recipe.url | relative_url }}">{{ recipe.title }}</a></li>
   {% endfor %}
-</div>
+</ul>

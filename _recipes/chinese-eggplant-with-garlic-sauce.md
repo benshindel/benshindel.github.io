@@ -1,8 +1,6 @@
 ---
 layout: recipe
 title: "Chinese Eggplant with Garlic Sauce"
-tags: [dinner, vegetarian, chinese]
-svg_icon: chinese-eggplant-with-garlic-sauce.svg
 source: "Omnivore's Cookbook"
 source_url: "https://omnivorescookbook.com/chinese-eggplant-with-garlic-sauce/"
 ---
