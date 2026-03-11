@@ -27,6 +27,6 @@ source_url: "https://www.alisoneroman.com/recipes/spiced-chickpea-stew-with-coco
 1. Heat oil in a large pot over medium heat. Add garlic, onion, and ginger. Season with salt and pepper. Cook, stirring occasionally, until onion is translucent and slightly browned at edges, 3-5 minutes.
 2. Add turmeric, red pepper flakes, and chickpeas. Season with salt and pepper. Cook, stirring frequently, until chickpeas begin to break down and crisp, 8-10 minutes. Reserve about 1 cup of chickpeas for garnish.
 3. Slightly crush remaining chickpeas with a wooden spoon to release their starches. Add coconut milk and stock. Season with salt and pepper.
-4. Bring to a simmer and cook, stirring occasionally, until thickened, 30-35 minutes.
+4. Bring to a simmer, scraping up any browned bits from the bottom of the pot. Cook, stirring occasionally, until thickened, 30-35 minutes.
 5. Add greens, stir until submerged, and cook until wilted and softened, 3-7 minutes depending on the greens. Season to taste.
 6. Divide into bowls and top with mint, reserved chickpeas, red pepper flakes, and a drizzle of olive oil. Serve with yogurt and flatbread if desired.

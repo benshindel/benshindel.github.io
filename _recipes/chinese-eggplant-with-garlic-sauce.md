@@ -34,5 +34,5 @@ source_url: "https://omnivorescookbook.com/chinese-eggplant-with-garlic-sauce/"
 3. Coat eggplant evenly with 1 tablespoon cornstarch.
 4. Heat 2 tablespoons oil in a nonstick skillet over medium-high heat. Cook eggplant without overlapping until charred and soft, about 8-10 minutes, turning as needed. Remove from pan.
 5. Add remaining 1/2 teaspoon oil, ginger, and garlic to the skillet. Stir until fragrant.
-6. Return eggplant to skillet. Pour sauce over it and stir until evenly coated and sauce thickens.
+6. Return eggplant to skillet. Stir the sauce to fully dissolve the cornstarch, then pour over the eggplant. Stir immediately until evenly coated and sauce thickens.
 7. Serve hot with rice or noodles.

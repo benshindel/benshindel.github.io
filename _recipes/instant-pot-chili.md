@@ -34,11 +34,11 @@ source_url: "https://www.pressurecookrecipes.com/instant-pot-chili/"
 
 ## Instructions
 
-1. Using the Sauté More function, brown the ground beef with salt and pepper for 5-7 minutes until crisped. Remove and set aside, reserving any juices.
+1. Heat Instant Pot using the Sauté More function until hot. Add olive oil to coat the bottom. Season ground beef with salt and pepper, then add to pot. After about 5 minutes, drain the released juice into a bowl and reserve. Continue browning the beef another 5-7 minutes until crispy.
 2. Mix chicken stock, fish sauce, soy sauce, and cocoa powder in a measuring cup.
-3. Sauté onions, garlic, cumin, chili powder, and oregano in olive oil for 5 minutes until fragrant.
-4. Deglaze with half the stock mixture, scraping up brown bits from the bottom.
-5. Add reserved beef juices, remaining stock mixture, kidney beans, tomato paste, and crushed tomatoes. Stir to combine.
-6. Pressure cook on High for 10 minutes. Natural release.
-7. Stir in the browned beef. Reduce sauce if needed. Season with brown sugar, salt, pepper, and vinegar if using.
+3. Add onions, garlic, cumin, chili powder, and oregano to the pot with the beef. Sauté 5 minutes, stirring frequently, until fragrant.
+4. Pour in half the stock mixture and scrub the bottom with a wooden spoon to release all the browned bits.
+5. Add the reserved beef juice, remaining stock mixture, kidney beans, and tomato paste. Top with crushed tomatoes — do not stir (layering prevents a burn notice).
+6. Close lid, seal, and pressure cook on High for 10 minutes. Natural release.
+7. Open and stir everything together. If the chili is too runny, use the Sauté function to reduce. Season with brown sugar, salt, pepper, and vinegar if using.
 8. Serve with desired garnishes.
