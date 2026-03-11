@@ -38,6 +38,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
+  recipes:
+    output: true
+    permalink: /cookbook/:title/
 
 # Exclusions
 exclude:
