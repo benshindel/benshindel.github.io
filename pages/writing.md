@@ -12,6 +12,7 @@ I write about science, innovation, forecasting, and other things on my blog, [Th
 - [We Carried Out the Red/Blue Button Experiment with Life or Death Stakes](https://thebsdetector.substack.com/p/we-carried-out-the-redblue-button) May 2026
 - [Geopolitics Slop is Ascendant](https://thebsdetector.substack.com/p/geopolitics-slop-is-ascendant) Mar 2026
 - [The Coming Apocalypse for Scientific Publishing](https://thebsdetector.substack.com/p/the-coming-apocalypse-for-scientific) Feb 2026
+- [Betting on the Millennium Problems](https://news.manifold.markets/p/betting-on-the-millennium-problems) Dec 2025
 - [The Nobel Committee is Hungry for Regime Change](https://thebsdetector.substack.com/p/the-nobel-committee-is-hungry-for) Oct 2025
 - [Huel is Fine](https://thebsdetector.substack.com/p/huel-is-fine) Oct 2025
 - [My Brush with Superhuman Persuasion](https://thebsdetector.substack.com/p/my-brush-with-superhuman-persuasion) Oct 2025
