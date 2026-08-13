@@ -7,6 +7,12 @@ permalink: /writing/
 # Writing and Projects
 
 I write about science, innovation, forecasting, and other things on my blog, [The BS Detector](https://thebsdetector.substack.com/).  I also write a weekly newsletter for Manifold Markets, called [Above the Fold](https://news.manifold.markets/). Some of my favorite things I've written recently are:
+- [In Tenuous Defense of War Markets](https://thebsdetector.substack.com/p/in-tenuous-defense-of-war-markets) Jul 2026
+- [My Hantavirus Origin (Conspiracy) Theory](https://thebsdetector.substack.com/p/my-hantavirus-origin-conspiracy-theory) May 2026
+- [We Carried Out the Red/Blue Button Experiment with Life or Death Stakes](https://thebsdetector.substack.com/p/we-carried-out-the-redblue-button) May 2026
+- [Geopolitics Slop is Ascendant](https://thebsdetector.substack.com/p/geopolitics-slop-is-ascendant) Mar 2026
+- [The Coming Apocalypse for Scientific Publishing](https://thebsdetector.substack.com/p/the-coming-apocalypse-for-scientific) Feb 2026
+- [The Nobel Committee is Hungry for Regime Change](https://thebsdetector.substack.com/p/the-nobel-committee-is-hungry-for) Oct 2025
 - [Huel is Fine](https://thebsdetector.substack.com/p/huel-is-fine) Oct 2025
 - [My Brush with Superhuman Persuasion](https://thebsdetector.substack.com/p/my-brush-with-superhuman-persuasion) Oct 2025
 - [Government-Funded Alchemy](https://thebsdetector.substack.com/p/government-funded-alchemy) Jul 2025
