@@ -1,45 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Define separate arrays of SVG file paths for left and right images
+  // Footer animals (PNG masks in /assets/images/sprites/, made from the original SVG engravings)
   const leftSvgFiles = [
-    '/assets/images/svg/snail2.svg',
-    '/assets/images/svg/snail1.svg',
-    '/assets/images/svg/okapi1.svg',
-    '/assets/images/svg/lizard2.svg',
-    '/assets/images/svg/caterpillar1.svg',
-    '/assets/images/svg/caterpillar2.svg',
-    '/assets/images/svg/toad1.svg',
-    '/assets/images/svg/shrew1.svg'
+    'snail2',
+    'snail1',
+    'okapi1',
+    'lizard2',
+    'caterpillar1',
+    'caterpillar2',
+    'toad1',
+    'shrew1'
   ];
 
   const rightSvgFiles = [
-    '/assets/images/svg/crow1.svg',
-    '/assets/images/svg/crow2.svg',
-    '/assets/images/svg/pigeon1.svg',
-    '/assets/images/svg/lizard1.svg',
-    '/assets/images/svg/lizard3.svg',
-    '/assets/images/svg/crab1.svg',
-    '/assets/images/svg/crab2.svg',
-    '/assets/images/svg/mole1.svg'    
+    'crow1',
+    'crow2',
+    'pigeon1',
+    'lizard1',
+    'lizard3',
+    'crab1',
+    'crab2',
+    'mole1'    
   ];
   
   /**
-   * Sets a random SVG mask on a given container element from a provided array of SVG paths.
-   * @param {string} containerId - The ID of the HTML element to apply the mask to.
-   * @param {string[]} svgFileArray - The array of SVG file paths to choose from.
+   * Picks a random footer animal and hands the container two masks:
+   * --ink-mask (the engraved lines, used in light mode) and
+   * --paper-mask (the animal's silhouette minus the lines, used in dark mode,
+   * so the engraving reads as a positive print instead of a photo negative).
    */
-  function setRandomSvgMask(containerId, svgFileArray) {
+  function setRandomSvgMask(containerId, names) {
     const container = document.getElementById(containerId);
-    if (container && svgFileArray && svgFileArray.length > 0) {
-      const randomSvgPath = svgFileArray[Math.floor(Math.random() * svgFileArray.length)];
-      // Apply the selected SVG as a mask-image
-      // Using `-webkit-mask-image` for broader browser compatibility (Safari)
-      container.style.webkitMaskImage = `url('${randomSvgPath}')`;
-      container.style.maskImage = `url('${randomSvgPath}')`;
-    } else if (container) {
-      console.warn(`SVG file array for container '${containerId}' is empty or not provided.`);
-    } else {
-      console.warn(`Container with ID '${containerId}' not found.`);
-    }
+    if (!container || !names || names.length === 0) return;
+    const name = names[Math.floor(Math.random() * names.length)];
+    container.style.setProperty('--ink-mask', `url('/assets/images/sprites/${name}-ink.png')`);
+    container.style.setProperty('--paper-mask', `url('/assets/images/sprites/${name}-paper.png')`);
   }
 
   // Set a random SVG for the left container from the leftSvgFiles array

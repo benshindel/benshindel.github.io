@@ -441,6 +441,8 @@ body.dark-mode .site-footer {
   max-width: 150px;
   flex-shrink: 0;
   background-color: var(--text-color-light);
+  -webkit-mask-image: var(--ink-mask);
+  mask-image: var(--ink-mask);
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -452,6 +454,8 @@ body.dark-mode .site-footer {
 
 body.dark-mode .footer-deco-img {
   background-color: var(--text-color-dark);
+  -webkit-mask-image: var(--paper-mask);
+  mask-image: var(--paper-mask);
 }
 
 .site-footer a {
