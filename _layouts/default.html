@@ -17,6 +17,7 @@
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+  <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches))document.body.classList.add('dark-mode')}catch(e){}</script>
   {% include header.html %}
   <main class="content">
     {{ content }}

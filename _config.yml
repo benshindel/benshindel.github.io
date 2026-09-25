@@ -1,7 +1,8 @@
 # Site Settings
 title: "Ben Shindel"
-description: "Ben Shindel's personal website."
-url: "https://benshindel.github.io"  # Your site's base URL (if deployed)
+description: "Materials scientist and forecaster. Research on carbon capture and water remediation, forecasting, and writing on science and AI."
+tagline: "Materials scientist & forecaster"
+url: "https://www.benshindel.com"  # Canonical URL (used for link previews, sitemap, feed)
 baseurl: ""  # Leave empty if your site is deployed at the root
 
 # Author Information
@@ -24,6 +25,10 @@ plugins:
 
 # Defaults
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-card.jpg
   - scope:
       path: ""  # Apply to all files
       type: "posts"  # Only apply to posts
