@@ -203,8 +203,10 @@ body.home .wrap { max-width: 1480px; }
      reserve its full height, so the coins in each gutter can sit closer and the paper stays short */
   --clear: calc(var(--pad) + var(--dd) - var(--c) / 2);
   position: relative; z-index: 2; width: var(--c);
-  margin-top: calc(var(--c) * var(--dy, 0));
-  margin-bottom: calc(-1 * clamp(0px, var(--clear) * 3, var(--c) * .42));
+  /* --dyn: extra drop (in coin diameters) that only applies once the coin is on the paper, so that
+     coins on opposite edges don't pinch the same lines; it melts away as the coin moves onto the cloth */
+  margin-top: calc(var(--c) * var(--dy, 0) - clamp(0px, var(--clear) * 3, var(--c) * var(--dyn, 0)));
+  margin-bottom: calc(-1 * clamp(0px, var(--clear) * 3, var(--c) * .2));
   shape-outside: circle(50%) border-box; shape-margin: 3px;
 }
 .letter .coin.L { float: left;  clear: left;  margin-left: var(--pull);  margin-right: 2px; }
