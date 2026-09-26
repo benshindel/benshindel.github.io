@@ -45,7 +45,7 @@ body {
   font: clamp(16px, 1rem + .25vw, 20px)/1.55 var(--body);
   transition: background-color .7s, color .7s;
 }
-body.home { font-size: clamp(15px, min(1.22vw, 2.2vh), 20.5px); }
+body.home { font-size: clamp(15px, min(1.35vw, 2.45vh), 22px); }
 
 /* ---------------------------------------------------------------- the table and its cloths */
 .table {
@@ -150,25 +150,29 @@ a.coin:hover, a.coin:focus-visible { transform: translateY(-6px) rotate(0deg) sc
 a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
 
 /* ---------------------------------------------------------------- homepage */
-.home-grid {
-  flex: 1; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-  gap: clamp(20px, 4vw, 72px); margin-top: clamp(12px, 3vh, 40px); align-items: start;
+/* One column of text with every coin floated inside it, so the page scales smoothly at any width.
+   --coin sets the size of every coin; the three science coins travel together as one cluster. */
+body.home .wrap { max-width: calc(52em + 2 * clamp(18px, 5vw, 64px)); }
+.intro {
+  --coin: clamp(80px, min(13vw, 20vh), 180px);
+  flex: 1; margin-top: clamp(12px, 3vh, 40px);
 }
 .intro p { margin: 0 0 .85em; text-wrap: pretty; text-shadow: 0 1px 2px var(--halo); }
 .intro a, .page a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .7s; }
 .intro a:hover, .page a:hover { color: var(--link-hover); }
 .intro .email { font-style: italic; user-select: all; }
-.float { width: clamp(96px, min(12vw, 19vh), 168px); shape-outside: circle(50%); shape-margin: 12px; margin-block: .1em .4em; }
-.float.r { float: right; margin-left: clamp(12px, 1.6vw, 24px); }
-.float.l { float: left; margin-right: clamp(12px, 1.6vw, 24px); }
-.purse {
-  position: relative; justify-self: center; width: min(100%, 440px, calc((100vh - 170px) / 1.15));
-  aspect-ratio: 1 / 1.15; margin-top: clamp(0px, 3vh, 40px);
+.float { width: var(--coin); shape-outside: circle(50%); shape-margin: 12px; margin-block: .1em .4em; }
+.float.r { float: right; margin-left: clamp(10px, 1.6vw, 24px); }
+.float.l { float: left; margin-right: clamp(10px, 1.6vw, 24px); }
+.cluster {
+  position: relative; display: block; width: calc(var(--coin) * 1.9); aspect-ratio: 1 / .92;
+  shape-outside: ellipse(50% 50%); shape-margin: 10px; margin-block: .1em .4em;
 }
-.purse .coin { position: absolute; width: 40%; }
-.purse .c1 { left: 22%; top: 2%; }
-.purse .c2 { left: 56%; top: 30%; }
-.purse .c3 { left: 12%; top: 58%; }
+.cluster.r { float: right; margin-left: clamp(8px, 1.2vw, 18px); }
+.cluster .coin { position: absolute; width: 52.6%; }
+.cluster .k1 { left: 0; top: 6%; }
+.cluster .k2 { left: 47%; top: 0; }
+.cluster .k3 { left: 24%; top: 43%; }
 
 /* ---------------------------------------------------------------- sub-pages */
 .page { width: 100%; margin-top: clamp(14px, 3vh, 36px); }
@@ -219,13 +223,7 @@ a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
 .recipe-source { margin-top: 2em; padding-top: .8em; border-top: 1px solid var(--rule); font-size: .9em; color: var(--muted); font-style: italic; }
 
 /* ---------------------------------------------------------------- narrower screens */
-/* Everything above scales continuously; the only reflow is the coin cluster moving under the text. */
-@media (max-width: 760px) {
-  body.home { font-size: clamp(16px, 2.4vw, 18px); }
-  .home-grid { grid-template-columns: minmax(0, 1fr); }
-  .float { width: clamp(100px, 24vw, 150px); }
-  .purse { width: min(100%, 380px); margin-top: 8px; }
-}
+/* Everything scales continuously; there is no layout switch. */
 @media (max-width: 520px) {
   .nameplate { width: min(56vw, 240px); }
   .seal { width: clamp(100px, 30vw, 136px); margin-left: 1em; }

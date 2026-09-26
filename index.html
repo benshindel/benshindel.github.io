@@ -3,20 +3,18 @@ layout: home
 title: Ben Shindel
 ---
 {% assign c = '/assets/images/site/coins/coin-' %}
-<div class="home-grid">
-  <main class="intro">
-    <a class="coin float r" href="{{ '/forecasting/' | relative_url }}" style="--rot:-7deg" aria-label="Forecasting"><img src="{{ c | append: 'forecasting.webp' | relative_url }}" alt="" width="200" height="200"></a>
-    <p>Hi, I'm Ben. I'm a materials scientist who became a forecaster, and I like questions whose best answer is a probability.</p>
-    <p>I forecast professionally with the RAND Forecasting Initiative and <a href="https://www.metaculus.com/accounts/profile/123595/">Metaculus</a>, where I won the Summer 2026 Metaculus Cup, and I'm a member of Samotsvety. I write about science, AI, and claims that don't hold up on my blog, <a href="https://thebsdetector.substack.com/">The BS Detector</a>.</p>
-    <a class="coin float l" href="{{ '/writing/' | relative_url }}" style="--rot:5deg" aria-label="Writing"><img src="{{ c | append: 'writing.webp' | relative_url }}" alt="" width="200" height="200"></a>
-    <p>Before that, I spent five years at Northwestern on a PhD in materials science, building sorbents that pull heavy metals out of water and carbon dioxide out of the air, with a side project on what tea leaves do to the water you brew them in.</p>
-    <a class="coin float r" href="{{ '/tea/' | relative_url }}" style="--rot:-4deg" aria-label="Tea"><img src="{{ c | append: 'tea.webp' | relative_url }}" alt="" width="200" height="200"></a>
-    <p>I also organize gatherings for people who think about the future, like Manifest x DC and The Overhang. Otherwise I'm constructing <a href="https://crosshare.org/benshindel">crosswords</a>, collecting ancient coins, or playing basketball at my county gym.</p>
-    <p>Pick up a coin to read more, or write to me at <span class="email">benshindel@gmail.com</span>.</p>
-  </main>
-  <nav class="purse" aria-label="More">
-    <a class="coin c1" href="{{ '/dac/' | relative_url }}" style="--rot:6deg" aria-label="Carbon capture"><img src="{{ c | append: 'carbon.webp' | relative_url }}" alt="" width="200" height="200"></a>
-    <a class="coin c2" href="{{ '/research/' | relative_url }}" style="--rot:-9deg" aria-label="Research"><img src="{{ c | append: 'research.webp' | relative_url }}" alt="" width="200" height="200"></a>
-    <a class="coin c3" href="{{ '/community/' | relative_url }}" style="--rot:3deg" aria-label="Community"><img src="{{ c | append: 'community.webp' | relative_url }}" alt="" width="200" height="200"></a>
-  </nav>
-</div>
+<main class="intro">
+  <a class="coin float r" href="{{ '/forecasting/' | relative_url }}" style="--rot:-7deg" aria-label="Forecasting"><img src="{{ c | append: 'forecasting.webp' | relative_url }}" alt="" width="200" height="200"></a>
+  <p>Hi, I'm Ben. I'm a materials scientist who became a forecaster, and I like questions whose best answer is a probability.</p>
+  <a class="coin float l" href="{{ '/writing/' | relative_url }}" style="--rot:5deg" aria-label="Writing"><img src="{{ c | append: 'writing.webp' | relative_url }}" alt="" width="200" height="200"></a>
+  <p>I forecast professionally with the RAND Forecasting Initiative and <a href="https://www.metaculus.com/accounts/profile/123595/">Metaculus</a>, where I won the Summer 2026 Metaculus Cup, and I'm a member of Samotsvety. I write about science, AI, and claims that don't hold up on my blog, <a href="https://thebsdetector.substack.com/">The BS Detector</a>.</p>
+  <span class="cluster r">
+    <a class="coin k1" href="{{ '/research/' | relative_url }}" style="--rot:-9deg" aria-label="Research"><img src="{{ c | append: 'research.webp' | relative_url }}" alt="" width="200" height="200"></a>
+    <a class="coin k2" href="{{ '/dac/' | relative_url }}" style="--rot:6deg" aria-label="Carbon capture"><img src="{{ c | append: 'carbon.webp' | relative_url }}" alt="" width="200" height="200"></a>
+    <a class="coin k3" href="{{ '/tea/' | relative_url }}" style="--rot:-4deg" aria-label="Tea"><img src="{{ c | append: 'tea.webp' | relative_url }}" alt="" width="200" height="200"></a>
+  </span>
+  <p>Before that, I spent five years at Northwestern on a PhD in materials science, building sorbents that pull heavy metals out of water and carbon dioxide out of the air, with a side project on what tea leaves do to the water you brew them in.</p>
+  <a class="coin float l" href="{{ '/community/' | relative_url }}" style="--rot:3deg" aria-label="Community"><img src="{{ c | append: 'community.webp' | relative_url }}" alt="" width="200" height="200"></a>
+  <p>I also organize gatherings for people who think about the future, like Manifest x DC and The Overhang. Otherwise I'm constructing <a href="https://crosshare.org/benshindel">crosswords</a>, collecting ancient coins, or playing basketball at my county gym.</p>
+  <p>Pick up a coin to read more, or write to me at <span class="email">benshindel@gmail.com</span>.</p>
+</main>
