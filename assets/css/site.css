@@ -50,8 +50,7 @@ body.home { font-size: clamp(15px, min(1.22vw, 2.2vh), 20.5px); }
 /* ---------------------------------------------------------------- the table and its cloths */
 .table {
   position: relative; isolation: isolate; overflow: hidden;
-  max-width: 1760px; min-height: 100vh; min-height: 100dvh; margin-inline: auto;
-  box-shadow: 0 0 60px rgba(0, 0, 0, .22); display: flex; flex-direction: column;
+  min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;
 }
 .cloth { position: absolute; inset: 0; }
 .cloth.linen {
@@ -103,23 +102,28 @@ body.sub .wrap { max-width: calc(46rem + 2 * clamp(18px, 5vw, 64px)); }
 /* the oil lamp: click to light it (night) or put it out (day) */
 .lamp {
   appearance: none; border: 0; padding: 0; background: none; cursor: pointer; position: relative;
-  width: clamp(90px, 13vh, 124px); filter: var(--coin-shadow); transform: rotate(-8deg);
+  width: clamp(90px, 13vh, 124px); transform: rotate(-8deg);
 }
-.lamp img { display: block; width: 100%; height: auto; }
+.lamp-body { display: block; width: 100%; height: auto; filter: var(--coin-shadow); }
+/* the wick sits at 86.5% / 48% of the lamp image */
 .flame {
-  position: absolute; left: 86.5%; top: 48%; width: 20%; aspect-ratio: 1 / 2.1;
-  transform: translate(-50%, -92%) rotate(84deg); transform-origin: 50% 92%;
-  border-radius: 50% 50% 50% 50% / 64% 64% 36% 36%; opacity: 0; transition: opacity .4s;
-  background: radial-gradient(ellipse at 50% 72%, #fff8e0 0 18%, #ffd36b 34%, #ff9a2e 58%, rgba(255, 120, 30, 0) 72%);
-  mix-blend-mode: screen;
+  position: absolute; left: 62.7%; top: 2%; width: 85%; height: auto; pointer-events: none; filter: brightness(1.3);
+  opacity: 0; transition: opacity .5s ease; transform-origin: 28% 50%; mix-blend-mode: screen;
 }
-.flame::after { content: ""; position: absolute; inset: -120%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 190, 100, .45), rgba(255, 160, 70, 0) 60%); }
-:root[data-night="1"] .flame { opacity: 1; animation: dance 1.4s infinite ease-in-out; }
+.halo {
+  position: absolute; left: 86.5%; top: 48%; width: 260%; aspect-ratio: 1; pointer-events: none;
+  transform: translate(-50%, -50%); border-radius: 50%; opacity: 0; transition: opacity .8s ease; mix-blend-mode: screen;
+  background: radial-gradient(circle closest-side, rgba(255, 214, 140, .55) 0%, rgba(255, 184, 100, .26) 20%, rgba(255, 162, 72, .10) 46%, rgba(255, 150, 60, .03) 72%, rgba(255, 150, 60, 0) 100%);
+}
+:root[data-night="1"] .flame { opacity: 1; animation: dance 1.6s infinite ease-in-out; }
+:root[data-night="1"] .halo { opacity: 1; animation: breathe 2.8s infinite ease-in-out; }
 @keyframes dance {
-  0%, 100% { transform: translate(-50%, -92%) rotate(84deg) scaleY(1); }
-  30% { transform: translate(-50%, -92%) rotate(80deg) scaleY(1.08) scaleX(.94); }
-  60% { transform: translate(-50%, -92%) rotate(88deg) scaleY(.95); }
+  0%, 100% { transform: scale(1, 1) skewY(0deg); opacity: 1; }
+  23% { transform: scale(1.07, .95) skewY(-2deg); opacity: .94; }
+  48% { transform: scale(.94, 1.04) skewY(1.5deg); opacity: 1; }
+  74% { transform: scale(1.03, .97) skewY(-1deg); opacity: .96; }
 }
+@keyframes breathe { 0%, 100% { opacity: 1; } 35% { opacity: .82; } 60% { opacity: .95; } 80% { opacity: .86; } }
 .smoke { position: absolute; left: 84%; top: 36%; width: 26%; height: 70%; pointer-events: none; opacity: 0; transform: rotate(8deg); }
 .smoke.go { animation: smoke 2.2s ease-out; }
 .smoke path { fill: none; stroke: rgba(90, 80, 70, .55); stroke-width: 2; stroke-linecap: round; }
@@ -147,21 +151,24 @@ a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
 
 /* ---------------------------------------------------------------- homepage */
 .home-grid {
-  flex: 1; display: grid; grid-template-columns: minmax(0, 44rem) minmax(0, 1fr);
+  flex: 1; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
   gap: clamp(20px, 4vw, 72px); margin-top: clamp(12px, 3vh, 40px); align-items: start;
 }
 .intro p { margin: 0 0 .85em; text-wrap: pretty; text-shadow: 0 1px 2px var(--halo); }
 .intro a, .page a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .7s; }
 .intro a:hover, .page a:hover { color: var(--link-hover); }
 .intro .email { font-style: italic; user-select: all; }
-.float { width: clamp(104px, min(12vw, 19vh), 178px); shape-outside: circle(50%); shape-margin: 12px; margin-block: .1em .4em; }
+.float { width: clamp(96px, min(12vw, 19vh), 168px); shape-outside: circle(50%); shape-margin: 12px; margin-block: .1em .4em; }
 .float.r { float: right; margin-left: clamp(12px, 1.6vw, 24px); }
 .float.l { float: left; margin-right: clamp(12px, 1.6vw, 24px); }
-.purse { display: grid; grid-template-columns: repeat(6, 1fr); align-content: start; padding-top: clamp(0px, 3vh, 40px); }
-.purse .coin { width: clamp(130px, min(14vw, 25vh), 232px); }
-.purse .c1 { grid-column: 2 / span 3; }
-.purse .c2 { grid-column: 4 / span 3; margin-top: -13%; justify-self: end; }
-.purse .c3 { grid-column: 1 / span 3; margin-top: -9%; justify-self: center; }
+.purse {
+  position: relative; justify-self: center; width: min(100%, 440px, calc((100vh - 170px) / 1.15));
+  aspect-ratio: 1 / 1.15; margin-top: clamp(0px, 3vh, 40px);
+}
+.purse .coin { position: absolute; width: 40%; }
+.purse .c1 { left: 22%; top: 2%; }
+.purse .c2 { left: 56%; top: 30%; }
+.purse .c3 { left: 12%; top: 58%; }
 
 /* ---------------------------------------------------------------- sub-pages */
 .page { width: 100%; margin-top: clamp(14px, 3vh, 36px); }
@@ -186,7 +193,7 @@ a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
 
 /* the page's coin sits in the opening text, which wraps around it */
 .seal {
-  float: right; width: clamp(120px, 14vw, 190px); shape-outside: circle(50%); shape-margin: 14px;
+  float: right; width: clamp(104px, 13vw, 168px); shape-outside: circle(50%); shape-margin: 14px;
   margin: .2em 0 .5em 1.4em; transform: rotate(-7deg); filter: var(--coin-shadow);
 }
 .seal img { display: block; width: 100%; height: auto; }
@@ -212,26 +219,18 @@ a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
 .recipe-source { margin-top: 2em; padding-top: .8em; border-top: 1px solid var(--rule); font-size: .9em; color: var(--muted); font-style: italic; }
 
 /* ---------------------------------------------------------------- narrower screens */
-@media (max-width: 980px) {
-  body.home { font-size: clamp(16px, 2.2vw, 19px); }
+/* Everything above scales continuously; the only reflow is the coin cluster moving under the text. */
+@media (max-width: 760px) {
+  body.home { font-size: clamp(16px, 2.4vw, 18px); }
   .home-grid { grid-template-columns: minmax(0, 1fr); }
-  .float { width: clamp(112px, 20vw, 170px); }
-  .purse { grid-template-columns: repeat(3, 1fr); padding-top: 0; gap: 0 8px; }
-  .purse .coin { width: min(100%, 200px); justify-self: center; }
-  .purse .c1, .purse .c2, .purse .c3 { grid-column: auto; margin-top: 0; justify-self: center; }
-  .purse .c2 { margin-top: 14%; }
+  .float { width: clamp(100px, 24vw, 150px); }
+  .purse { width: min(100%, 380px); margin-top: 8px; }
 }
-@media (max-width: 620px) {
-  .float { width: clamp(112px, 33vw, 140px); shape-margin: 10px; }
-  .purse { grid-template-columns: repeat(2, 1fr); gap: 0 4px; }
-  .purse .coin { width: min(100%, 168px); }
-  .purse .c1 { justify-self: end; }
-  .purse .c2 { margin-top: 26%; justify-self: start; }
-  .purse .c3 { grid-column: 1 / -1; margin-top: -12%; }
+@media (max-width: 520px) {
   .nameplate { width: min(56vw, 240px); }
-  .seal { width: clamp(104px, 32vw, 140px); margin-left: 1em; }
+  .seal { width: clamp(100px, 30vw, 136px); margin-left: 1em; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .coin, .nameplate, .cloth.baize, .glow { transition: none; }
-  .flame, .glow, .smoke.go { animation: none !important; }
+  .coin, .nameplate, .cloth.baize, .glow, .flame, .halo { transition: none; }
+  .flame, .halo, .glow, .smoke.go { animation: none !important; }
 }

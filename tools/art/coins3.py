@@ -83,8 +83,8 @@ def leaf(d, x, y, L, W, ang, fill=255):
 
 # ---------------------------------------------------------------- the six coins
 def d_forecasting(e, leg, c, R):
-    """Greek silver tetradrachm: a paper fortune-teller, olive sprig, legend down the right side."""
-    d = ImageDraw.Draw(e); x, y = c[0] - R * .08, c[1] + R * .02; k = R * .6
+    """Greek silver tetradrachm: a paper fortune-teller, an augur's lituus, a crescent, legend down the right side."""
+    d = ImageDraw.Draw(e); x, y = c[0] - R * .02, c[1] + R * .04; k = R * .54
     petals = [[(x, y), (x - k, y), (x, y - k)], [(x, y), (x, y - k), (x + k, y)],
               [(x, y), (x + k, y), (x, y + k)], [(x, y), (x, y + k), (x - k, y)]]
     for i, p in enumerate(petals):
@@ -99,15 +99,22 @@ def d_forecasting(e, leg, c, R):
     for (sx, sy) in ((-1, -1), (1, -1), (1, 1), (-1, 1)):
         d.line([(x + sx * k * .5, y), (x, y + sy * k * .5)], fill=170, width=max(1, int(R * .012)))
         d.ellipse([x + sx * k * .28 - R * .025, y + sy * k * .28 - R * .025, x + sx * k * .28 + R * .025, y + sy * k * .28 + R * .025], fill=150)
-    # olive sprig upper left, crescent lower left
-    d.line([(c[0] - R * .78, c[1] - R * .38), (c[0] - R * .52, c[1] - R * .7)], fill=230, width=max(2, int(R * .02)))
-    for i in range(5):
-        t = i / 4
-        px, py = c[0] - R * .78 + t * R * .26, c[1] - R * .38 - t * R * .32
-        for s in (-1, 1):
-            leaf(d, px + s * R * .05, py + s * R * .02, R * .13, R * .045, -0.9 + s * 0.9, 240)
-    d.pieslice([c[0] - R * .8, c[1] + R * .5, c[0] - R * .56, c[1] + R * .74], 0, 360, fill=230)
-    d.ellipse([c[0] - R * .76, c[1] + R * .48, c[0] - R * .52, c[1] + R * .68], fill=0)
+    # an augur's lituus (the curved staff used to read omens) on the left, crescent lower left
+    w = max(2, int(R * .036))
+    cx_, cy_ = c[0] - R * .5, c[1] - R * .5
+    r0 = R * .13
+    top = (cx_ - r0, cy_)
+    d.line([(c[0] - R * .7, c[1] + R * .34), top], fill=240, width=w)
+    spiral = []
+    for i in range(120):
+        t = i / 119 * 2.25 * math.pi
+        r = r0 * (1 - t / (2.6 * math.pi))
+        a_ = math.pi + t
+        spiral.append((cx_ + r * math.cos(a_), cy_ + r * math.sin(a_)))
+    d.line(spiral, fill=240, width=w, joint="curve")
+    d.ellipse([c[0] - R * .7 - w * .8, c[1] + R * .34 - w * .8, c[0] - R * .7 + w * .8, c[1] + R * .34 + w * .8], fill=240)
+    d.pieslice([c[0] - R * .62, c[1] + R * .5, c[0] - R * .4, c[1] + R * .72], 0, 360, fill=230)
+    d.ellipse([c[0] - R * .58, c[1] + R * .48, c[0] - R * .36, c[1] + R * .66], fill=0)
     text_line(leg, c[0] + R * .66, c[1] + R * .02, "FORECASTING", F("greek", int(R * .17)), angle=-90, track=1.0)
 
 def d_writing(e, leg, c, R):
@@ -256,7 +263,7 @@ def d_moon(e, leg, c, R):
 COINS = {
     "Day":   dict(draw=d_sun, metal="gold", irregular=.3, offc=0, border="dots", era="toggle"),
     "Night": dict(draw=d_moon, metal="silver", irregular=.3, offc=0, border="dots", era="toggle"),
-    "Forecasting":    dict(draw=d_forecasting, metal="silver", irregular=.9, offc=.08, cracks=1, border="dots", era="Greek tetradrachm"),
+    "Forecasting":    dict(draw=d_forecasting, metal="silver", irregular=.9, offc=.025, cracks=1, border="dots", era="Greek tetradrachm"),
     "Writing":        dict(draw=d_writing, metal="bronze", irregular=.35, offc=.02, border="dots_line", era="Roman sestertius"),
     "Tea":            dict(draw=d_tea, metal="electrum", irregular=1.3, offc=.05, cracks=2, border="incuse", era="Archaic electrum"),
     "Carbon capture": dict(draw=d_carbon, metal="silver_bright", irregular=0, offc=0, border="crown", era="18th-century crown"),

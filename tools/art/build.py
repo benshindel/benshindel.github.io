@@ -32,6 +32,7 @@ for name, seed in SEEDS.items():
 relics2.tabula()                    # -> name-tabula.webp
 os.replace(os.path.join(SITE, "name-tabula.webp"), os.path.join(SITE, "nameplate.webp"))
 relics.oil_lamp()                   # -> lamp.webp
+relics.flame()                      # -> flame.webp
 frames.moulding_corners("palmette") # -> frame-bronze-palmette.webp
 os.replace(os.path.join(SITE, "frame-bronze-palmette.webp"), os.path.join(SITE, "frame.webp"))
 frames.mat_paper()                  # -> mat.jpg

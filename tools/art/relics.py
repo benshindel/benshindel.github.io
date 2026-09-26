@@ -215,3 +215,32 @@ if __name__ == "__main__":
     for f in (plate_brass, plate_ingot, plate_lead, plate_tessera):
         im = f(); print(f.__name__, im.size)
     im, wick = oil_lamp(); print("lamp", im.size, "wick at", wick)
+
+# ---------------------------------------------------------------- lamp flame (seen from above, leaning away from the nozzle)
+def flame(W=320, H=200, seed=6):
+    """A soft flame sprite pointing right. Alpha falls to zero well inside the canvas,
+    so there is never a hard edge when it is scaled or blended."""
+    yy, xx = np.mgrid[0:H, 0:W].astype(float)
+    cx, cy = W * .28, H * .5            # the wick
+    dx = (xx - cx) / W; dy = (yy - cy) / H
+    L = .55                              # flame length (fraction of W) downwind
+    t = np.clip(dx / L, 0, 1)
+    taper = (1 - t * t * (3 - 2 * t)) ** .8          # smooth narrowing toward the tip
+    ay = np.where(dx < 0, .16, .16 * taper + 1e-3)
+    ax = np.where(dx < 0, .07, .30)
+    d = np.sqrt((dx / ax) ** 2 + (dy / ay) ** 2)
+    core = np.exp(-(d / .45) ** 2)
+    body = np.exp(-(d / .95) ** 2)
+    rootblue = np.exp(-((dx + .01) / .03) ** 2 - (dy / .07) ** 2) * .45
+    rgb = (np.array([1.0, .97, .85]) * core[..., None]
+           + np.array([1.0, .62, .18]) * np.clip(body - core, 0, None)[..., None] * 1.25
+           + np.array([.40, .50, 1.0]) * rootblue[..., None])
+    a = np.clip(body * 1.1 + rootblue * .5, 0, 1)
+    # guarantee a clean fade well before the canvas edge
+    ex = np.minimum(xx, W - 1 - xx) / (W * .08); ey = np.minimum(yy, H - 1 - yy) / (H * .12)
+    a = a * np.clip(np.minimum(ex, ey), 0, 1)
+    rgb = np.clip(rgb / np.maximum(a[..., None], 1e-3), 0, 1)
+    out = np.dstack([rgb, a])
+    im = Image.fromarray((out * 255).astype(np.uint8), "RGBA")
+    im.save(OUTD + "flame.webp", quality=92, method=6)
+    return im, (cx / W, cy / H)
