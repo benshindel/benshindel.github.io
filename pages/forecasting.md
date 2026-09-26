@@ -2,6 +2,7 @@
 layout: default
 title: Forecasting
 permalink: /forecasting/
+coin: forecasting
 ---
 
 # Forecasting Work

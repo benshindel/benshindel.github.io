@@ -2,6 +2,7 @@
 layout: default
 title: CO2 Capture
 permalink: /dac/
+coin: carbon
 ---
 
 # Humidity-Driven Carbon Capture

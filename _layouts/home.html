@@ -3,15 +3,12 @@
 <head>
 {% include head.html %}
 </head>
-<body class="sub cookbook">
+<body class="home">
 <div class="table">
   {% include cloth.html %}
   <div class="wrap">
-    {% include masthead.html %}
-    <main class="page">
-      <h1 class="page-title">{{ page.title | default: "Cookbook" }}</h1>
-      {{ content }}
-    </main>
+    {% include masthead.html home=true %}
+    {{ content }}
     {% include colophon.html %}
   </div>
 </div>

@@ -30,6 +30,12 @@ defaults:
     values:
       image: /assets/images/og-card.jpg
   - scope:
+      path: ""
+      type: "recipes"
+    values:
+      noindex: true   # the cookbook is unlisted
+      sitemap: false
+  - scope:
       path: ""  # Apply to all files
       type: "posts"  # Only apply to posts
       values:
@@ -50,6 +56,7 @@ collections:
 # Exclusions
 exclude:
   - README.md  # Exclude README file from the build
+  - tools/     # Python art generators (not part of the site)
 
 # Miscellaneous
 paginate: 5  # Number of posts per page (if using pagination)

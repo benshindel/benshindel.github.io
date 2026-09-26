@@ -2,6 +2,8 @@
 layout: cookbook
 title: Cookbook
 permalink: /cookbook/
+noindex: true
+sitemap: false
 ---
 
 <ul class="recipe-list">

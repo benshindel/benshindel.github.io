@@ -1,0 +1,12 @@
+<header class="masthead">
+  {% if include.home %}<h1>{% endif %}
+  <a class="nameplate" href="{{ '/' | relative_url }}" aria-label="Ben Shindel, home">
+    <img src="{{ '/assets/images/site/nameplate.webp' | relative_url }}" alt="" width="782" height="158">
+  </a>
+  {% if include.home %}</h1>{% endif %}
+  <button class="lamp" id="lamp" type="button" aria-label="Light the lamp (switch to night)">
+    <img src="{{ '/assets/images/site/lamp.webp' | relative_url }}" alt="" width="205" height="118">
+    <span class="flame"></span>
+    <svg class="smoke" id="smoke" viewBox="0 0 40 100" aria-hidden="true"><path d="M20 98 C 8 80, 32 70, 18 52 S 30 24, 16 4"/></svg>
+  </button>
+</header>

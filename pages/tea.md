@@ -2,6 +2,7 @@
 layout: default
 title: Tea
 permalink: /tea/
+coin: tea
 ---
 
 # Investigating the Adsorptive Properties of Tea
@@ -22,6 +23,6 @@ While press coverage can be very flattering, I think the main takeaways from thi
 - What's unique about tea leaves is not that they have some special qualities that make them ideal for the adsorption of lead or other metals, but rather that humans have already been putting them into our water at high temperatures for thousands of years.  It's surprising that no one had previously thought to ask, "How effective has tea preparation been at removing bad things from our water?"
 
 <div style="text-align: center;">
-  <img src="/assets/images/teaglamour.png" alt="Me Posing with Teacup." style="max-width: 90%; width: 400px;">
+  <img src="/assets/images/teaglamour.jpg" alt="Me Posing with Teacup." style="max-width: 90%; width: 400px;">
   <figcaption>Posing on my balcony with a teacup. Despite my best efforts, I couldn't get the press to use this photo in their coverage (probably for good reasons).</figcaption>
 </div>
