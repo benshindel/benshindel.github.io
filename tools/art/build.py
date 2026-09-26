@@ -81,3 +81,35 @@ def paper(T=512, seed=21):
     Image.fromarray((np.clip(rgb, 0, 1) * 255).astype(np.uint8)).save(os.path.join(SITE, "paper.jpg"), quality=86)
 
 paper()
+
+# ---- link-preview card, favicon and touch icon (composited from the images above)
+def cards():
+    from PIL import ImageFilter
+    def shadowed(canvas, im, xy, off=(5, 9), blur=7, alpha=110):
+        a = im.split()[-1]
+        sh = Image.new("RGBA", im.size, (60, 45, 20, 0)); sh.putalpha(a.point(lambda v: v * alpha // 255))
+        pad = blur * 3
+        big = Image.new("RGBA", (im.width + 2 * pad, im.height + 2 * pad), (0, 0, 0, 0)); big.paste(sh, (pad, pad))
+        big = big.filter(ImageFilter.GaussianBlur(blur))
+        canvas.alpha_composite(big, (xy[0] - pad + off[0], xy[1] - pad + off[1])); canvas.alpha_composite(im, xy)
+    lin = Image.open(os.path.join(SITE, "linen.jpg")).convert("RGBA")
+    card = Image.new("RGBA", (1200, 630))
+    for x in range(0, 1200, 512):
+        for y in range(0, 630, 512): card.paste(lin, (x, y))
+    plate = Image.open(os.path.join(SITE, "nameplate.webp")).convert("RGBA")
+    plate = plate.resize((520, round(520 * plate.height / plate.width)), Image.LANCZOS).rotate(1.2, Image.BICUBIC, expand=True)
+    shadowed(card, plate, ((1200 - plate.width) // 2, 60))
+    order = ["forecasting", "writing", "tea", "carbon", "research", "community"]
+    rots = [-7, 5, -4, 6, -9, 3]; dys = [0, -22, 8, -14, 12, -6]
+    for i, (slug, r) in enumerate(zip(order, rots)):
+        c = Image.open(os.path.join(SITE, "coins", f"coin-{slug}.webp")).convert("RGBA")
+        c = c.resize((150, round(150 * c.height / c.width)), Image.LANCZOS).rotate(-r, Image.BICUBIC, expand=True)
+        cx = 115 + i * 194
+        shadowed(card, c, (cx - c.width // 2, 400 + dys[i] - c.height // 2))
+    card.convert("RGB").save(os.path.join(SITE, "..", "og-card.jpg"), quality=88)
+    fc = Image.open(os.path.join(SITE, "coins", "coin-forecasting.webp")).convert("RGBA")
+    s = max(fc.size); sq = Image.new("RGBA", (s, s)); sq.paste(fc, ((s - fc.width) // 2, (s - fc.height) // 2))
+    sq.resize((64, 64), Image.LANCZOS).save(os.path.join(SITE, "..", "favicon.png"))
+    sq.resize((180, 180), Image.LANCZOS).save(os.path.join(SITE, "apple-touch-icon.png"))
+
+cards()
