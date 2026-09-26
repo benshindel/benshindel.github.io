@@ -45,7 +45,6 @@ body {
   font: clamp(16px, 1rem + .25vw, 20px)/1.55 var(--body);
   transition: background-color .7s, color .7s;
 }
-body.home { font-size: clamp(15px, min(1.35vw, 2.45vh), 22px); }
 
 /* ---------------------------------------------------------------- the table and its cloths */
 .table {
@@ -149,30 +148,51 @@ footer.colophon {
 a.coin:hover, a.coin:focus-visible { transform: translateY(-6px) rotate(0deg) scale(1.045); filter: var(--coin-shadow-lift); }
 a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
 
-/* ---------------------------------------------------------------- homepage */
-/* One column of text with every coin floated inside it, so the page scales smoothly at any width.
-   --coin sets the size of every coin; the three science coins travel together as one cluster. */
-body.home .wrap { max-width: calc(52em + 2 * clamp(18px, 5vw, 64px)); }
-.intro {
-  --coin: clamp(80px, min(13vw, 20vh), 180px);
-  flex: 1; margin-top: clamp(12px, 3vh, 40px);
+/* ---------------------------------------------------------------- homepage: a letter on the table */
+/* The intro is a sheet of laid paper. The six coins lie on the cloth beside it; as the window
+   narrows and the cloth on either side runs out, they slide in until they rest on the paper's
+   edges, and the paper's margins widen so they never cover the words. Every size and offset is
+   continuous, so there is no breakpoint. */
+body.home .wrap { max-width: 1480px; }
+.intro a, .page a, .letter a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .7s; }
+.intro a:hover, .page a:hover, .letter a:hover { color: var(--link-hover); }
+.desk { flex: 1; container-type: inline-size; margin-top: clamp(14px, 3.5vh, 44px); padding-bottom: clamp(20px, 4vh, 48px); }
+.letter {
+  --c: clamp(58px, min(11cqw, 17.5vh), 150px);                    /* coin size */
+  --W: min(100cqw - 20px, 38rem);                                 /* paper width */
+  --g: calc((100cqw - var(--W)) / 2);                             /* cloth beside the paper */
+  --d: min(var(--c) * 1.02, var(--g) - var(--c) * .4);            /* coin centre, outside the paper edge (negative = on it) */
+  --paper-tint: #fffdf8;
+  --ink-on-paper: #2a2118;
+  position: relative; width: var(--W); margin-inline: auto; transform: rotate(-.5deg);
+  padding-block: clamp(22px, 4.5vh, 52px);
+  padding-inline: max(clamp(22px, 4.5cqw, 52px), calc(var(--c) * .5 - var(--d) + 12px));
+  color: var(--ink-on-paper);
+  background-color: var(--paper-tint);
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0) calc(33.3% - 1px), rgba(120,95,60,.10) 33.3%, rgba(255,255,255,.22) calc(33.3% + 1px), rgba(0,0,0,0) calc(33.3% + 3px)),
+    linear-gradient(to bottom, rgba(0,0,0,0) calc(66.6% - 1px), rgba(120,95,60,.10) 66.6%, rgba(255,255,255,.22) calc(66.6% + 1px), rgba(0,0,0,0) calc(66.6% + 3px)),
+    url("../images/site/paper.jpg");
+  background-size: auto, auto, 512px 512px;
+  background-blend-mode: normal, normal, multiply;
+  border-radius: 2px;
+  box-shadow: inset 0 0 40px rgba(130, 100, 60, .16), 0 1px 1px rgba(0,0,0,.18), 0 14px 28px rgba(40, 28, 10, .28);
+  transition: background-color .8s ease, box-shadow .8s ease;
+  font-size: clamp(15px, min(2.6cqw, 2.4vh), 19.5px); line-height: 1.55;
 }
-.intro p { margin: 0 0 .85em; text-wrap: pretty; text-shadow: 0 1px 2px var(--halo); }
-.intro a, .page a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .7s; }
-.intro a:hover, .page a:hover { color: var(--link-hover); }
-.intro .email { font-style: italic; user-select: all; }
-.float { width: var(--coin); shape-outside: circle(50%); shape-margin: 12px; margin-block: .1em .4em; }
-.float.r { float: right; margin-left: clamp(10px, 1.6vw, 24px); }
-.float.l { float: left; margin-right: clamp(10px, 1.6vw, 24px); }
-.cluster {
-  position: relative; display: block; width: calc(var(--coin) * 1.9); aspect-ratio: 1 / .92;
-  shape-outside: ellipse(50% 50%); shape-margin: 10px; margin-block: .1em .4em;
+:root[data-night="1"] .letter {
+  --paper-tint: #c9b28c;              /* the same paper, by lamplight */
+  box-shadow: inset 0 0 60px rgba(60, 35, 10, .35), 0 1px 1px rgba(0,0,0,.4), 0 18px 34px rgba(0, 0, 0, .55);
 }
-.cluster.r { float: right; margin-left: clamp(8px, 1.2vw, 18px); }
-.cluster .coin { position: absolute; width: 52.6%; }
-.cluster .k1 { left: 0; top: 6%; }
-.cluster .k2 { left: 47%; top: 0; }
-.cluster .k3 { left: 24%; top: 43%; }
+.letter p { margin: 0 0 .85em; text-wrap: pretty; }
+.letter p:last-of-type { margin-bottom: 0; }
+.letter .email { font-style: italic; user-select: all; }
+.letter a { color: #7b2e1b; }
+.letter a:hover { color: #a13d23; }
+.coins .coin { position: absolute; width: var(--c); top: calc(var(--y) - var(--c) / 2); z-index: 2; }
+/* the extra --far spreads them out on wide screens; it is capped by the cloth available */
+.coins .L { left:  calc(-1 * min(var(--d) * var(--far), var(--g) - var(--c) * .4) - var(--c) / 2); }
+.coins .R { right: calc(-1 * min(var(--d) * var(--far), var(--g) - var(--c) * .4) - var(--c) / 2); }
 
 /* ---------------------------------------------------------------- sub-pages */
 .page { width: 100%; margin-top: clamp(14px, 3vh, 36px); }

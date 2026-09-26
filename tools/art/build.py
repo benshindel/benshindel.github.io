@@ -66,3 +66,18 @@ def baize(T=640, seed=3):
 
 linen(); baize()
 print("rendered into", SITE)
+
+# ---- letter paper for the homepage (laid paper: fine laid lines, faint chain lines, fibres)
+def paper(T=512, seed=21):
+    rng = np.random.default_rng(seed)
+    yy, xx = np.mgrid[0:T, 0:T].astype(float)
+    laid = 0.5 + 0.5 * np.sin(2 * np.pi * yy / 4 + wn(rng, T, 20) * 0.6)          # 128 laid lines per tile
+    chain = np.exp(-((((xx + wn(rng, T, 40) * 3) % 128) - 64) / 1.6) ** 2)       # a chain line every 128px
+    fibres = nd.gaussian_filter(rng.standard_normal((T, T)), (0.5, 3.0), mode="wrap"); fibres /= np.abs(fibres).max()
+    fibres2 = nd.gaussian_filter(rng.standard_normal((T, T)), (3.0, 0.5), mode="wrap"); fibres2 /= np.abs(fibres2).max()
+    cloud = wn(rng, T, 50)
+    lum = 0.955 + 0.008 * laid - 0.018 * chain + 0.01 * fibres + 0.008 * fibres2 + 0.014 * cloud
+    rgb = lum[..., None] * np.array([1.0, 0.975, 0.925])
+    Image.fromarray((np.clip(rgb, 0, 1) * 255).astype(np.uint8)).save(os.path.join(SITE, "paper.jpg"), quality=86)
+
+paper()
