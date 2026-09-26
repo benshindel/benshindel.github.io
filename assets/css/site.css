@@ -149,25 +149,31 @@ a.coin:hover, a.coin:focus-visible { transform: translateY(-6px) rotate(0deg) sc
 a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
 
 /* ---------------------------------------------------------------- homepage: a letter on the table */
-/* The intro is a sheet of laid paper. The six coins lie on the cloth beside it; as the window
-   narrows and the cloth on either side runs out, they slide in until they rest on the paper's
-   edges, and the paper's margins widen so they never cover the words. Every size and offset is
+/* The intro is a sheet of laid paper. Each coin is floated beside its paragraph but pulled out
+   past the paper's edge with a negative margin, so on wide screens it lies on the cloth and the
+   text is untouched. As the window narrows and the cloth beside the paper runs out, the coins
+   slide onto the paper's edges and the text wraps around them. Every size and offset is
    continuous, so there is no breakpoint. */
 body.home .wrap { max-width: 1480px; }
-.intro a, .page a, .letter a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .7s; }
-.intro a:hover, .page a:hover, .letter a:hover { color: var(--link-hover); }
-.desk { flex: 1; container-type: inline-size; margin-top: clamp(14px, 3.5vh, 44px); padding-bottom: clamp(20px, 4vh, 48px); }
+.intro a, .page a, .letter a { text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .7s; }
+.page a { color: var(--link); }
+.page a:hover { color: var(--link-hover); }
+.desk {
+  flex: 1; container-type: inline-size;
+  margin-inline: calc(-1 * clamp(18px, 5vw, 64px));           /* the desk spans the full window */
+  margin-top: clamp(12px, 3vh, 40px); padding-bottom: clamp(14px, 2vh, 40px);
+}
 .letter {
-  --c: clamp(58px, min(11cqw, 17.5vh), 150px);                    /* coin size */
-  --W: min(100cqw - 20px, 38rem);                                 /* paper width */
-  --g: calc((100cqw - var(--W)) / 2);                             /* cloth beside the paper */
-  --d: min(var(--c) * 1.02, var(--g) - var(--c) * .4);            /* coin centre, outside the paper edge (negative = on it) */
+  --c: clamp(102px, min(11cqw, 17vh), 150px);                   /* coin size */
+  --W: min(100cqw - 16px, 38rem);                                /* paper width */
+  --g: calc((100cqw - var(--W)) / 2);                            /* cloth beside the paper */
+  --pad: clamp(16px, 5cqw, 52px);                                /* paper margin */
+  --edge: calc(var(--g) - var(--c) / 2);                   /* furthest a coin centre may sit: its rim just at the window edge */
+  --d: min(var(--c) * 1.02, var(--edge));                        /* coin centre outside the paper edge (negative = on it) */
   --paper-tint: #fffdf8;
-  --ink-on-paper: #2a2118;
   position: relative; width: var(--W); margin-inline: auto; transform: rotate(-.5deg);
-  padding-block: clamp(22px, 4.5vh, 52px);
-  padding-inline: max(clamp(22px, 4.5cqw, 52px), calc(var(--c) * .5 - var(--d) + 12px));
-  color: var(--ink-on-paper);
+  padding: clamp(20px, 4vh, 48px) var(--pad);
+  color: #2a2118;
   background-color: var(--paper-tint);
   background-image:
     linear-gradient(to bottom, rgba(0,0,0,0) calc(33.3% - 1px), rgba(120,95,60,.10) 33.3%, rgba(255,255,255,.22) calc(33.3% + 1px), rgba(0,0,0,0) calc(33.3% + 3px)),
@@ -178,8 +184,9 @@ body.home .wrap { max-width: 1480px; }
   border-radius: 2px;
   box-shadow: inset 0 0 40px rgba(130, 100, 60, .16), 0 1px 1px rgba(0,0,0,.18), 0 14px 28px rgba(40, 28, 10, .28);
   transition: background-color .8s ease, box-shadow .8s ease;
-  font-size: clamp(15px, min(2.6cqw, 2.4vh), 19.5px); line-height: 1.55;
+  font-size: clamp(15.5px, min(2.6cqw, 2.3vh), 19.5px); line-height: 1.55;
 }
+.letter::after { content: ""; display: block; clear: both; }
 :root[data-night="1"] .letter {
   --paper-tint: #c9b28c;              /* the same paper, by lamplight */
   box-shadow: inset 0 0 60px rgba(60, 35, 10, .35), 0 1px 1px rgba(0,0,0,.4), 0 18px 34px rgba(0, 0, 0, .55);
@@ -187,12 +194,21 @@ body.home .wrap { max-width: 1480px; }
 .letter p { margin: 0 0 .85em; text-wrap: pretty; }
 .letter p:last-of-type { margin-bottom: 0; }
 .letter .email { font-style: italic; user-select: all; }
-.letter a { color: #7b2e1b; }
-.letter a:hover { color: #a13d23; }
-.coins .coin { position: absolute; width: var(--c); top: calc(var(--y) - var(--c) / 2); z-index: 2; }
-/* the extra --far spreads them out on wide screens; it is capped by the cloth available */
-.coins .L { left:  calc(-1 * min(var(--d) * var(--far), var(--g) - var(--c) * .4) - var(--c) / 2); }
-.coins .R { right: calc(-1 * min(var(--d) * var(--far), var(--g) - var(--c) * .4) - var(--c) / 2); }
+.letter a:not(.coin) { color: #7b2e1b; }
+.letter a:not(.coin):hover { color: #a13d23; }
+.letter .coin {
+  --dd: min(var(--d) * var(--far, 1), var(--edge));
+  --pull: calc(-1 * (var(--pad) + var(--dd) + var(--c) / 2));
+  /* how far the coin's inner rim stays clear of the text; once it is clear, the coin needn't
+     reserve its full height, so the coins in each gutter can sit closer and the paper stays short */
+  --clear: calc(var(--pad) + var(--dd) - var(--c) / 2);
+  position: relative; z-index: 2; width: var(--c);
+  margin-top: calc(var(--c) * var(--dy, 0));
+  margin-bottom: calc(-1 * clamp(0px, var(--clear) * 3, var(--c) * .42));
+  shape-outside: circle(50%) border-box; shape-margin: 3px;
+}
+.letter .coin.L { float: left;  clear: left;  margin-left: var(--pull);  margin-right: 2px; }
+.letter .coin.R { float: right; clear: right; margin-right: var(--pull); margin-left: 2px; }
 
 /* ---------------------------------------------------------------- sub-pages */
 .page { width: 100%; margin-top: clamp(14px, 3vh, 36px); }
