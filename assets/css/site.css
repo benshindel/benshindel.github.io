@@ -207,15 +207,18 @@ body.home .wrap { max-width: 1480px; }
      Safari, so there are none.) Once the coin is clear of the text it needn't reserve its full
      height, so the coins in each gutter sit closer together. */
   position: relative; z-index: 2; width: var(--w);
-  height: calc(var(--c) - clamp(0px, var(--clear) * 3, var(--c) * .2));
+  height: calc(var(--top) + var(--c) - clamp(0px, var(--clear) * 3, var(--c) * .2));
   /* --dyn: extra drop (in coin diameters) that only applies once the coin is on the paper, so that
      coins on opposite edges don't pinch the same lines; it melts away as the coin moves onto the cloth */
-  margin-top: calc(var(--c) * var(--dy, 0) - clamp(0px, var(--clear) * 3, var(--c) * var(--dyn, 0)));
-  shape-margin: 4px;               /* the shape is positioned in the float's border box, so margin-top doesn't move it */
+  /* The drop is padding, not margin: Safari measures the wrap shape from the top of the margin box,
+     so a top margin would lift the text wrap above the coin. */
+  --top: max(0px, var(--c) * var(--dy, 0) - clamp(0px, var(--clear) * 3, var(--c) * var(--dyn, 0)));
+  padding-top: var(--top);
+  shape-margin: 4px;               
   transform: none; filter: none; border-radius: 0;
 }
 .letter .coin img {
-  position: absolute; top: 0; width: var(--c); max-width: none; height: auto; border-radius: 50%;
+  position: absolute; top: var(--top); width: var(--c); max-width: none; height: auto; border-radius: 50%;
   transform: rotate(var(--rot, 0deg)); filter: var(--coin-shadow);
   transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s ease;
 }
@@ -223,10 +226,10 @@ body.home .wrap { max-width: 1480px; }
 .letter a.coin:hover img, .letter a.coin:focus-visible img { transform: translateY(-6px) rotate(0deg) scale(1.045); filter: var(--coin-shadow-lift); }
 .letter a.coin:focus-visible img { outline: 2px solid var(--link); outline-offset: 4px; }
 .letter .coin.L { float: left;  clear: left;  margin-right: 4px;
-  shape-outside: circle(calc(var(--c) / 2) at calc(-1 * (var(--pad) + var(--dd))) calc(var(--c) / 2)) border-box; }
+  shape-outside: circle(calc(var(--c) / 2) at calc(-1 * (var(--pad) + var(--dd))) calc(var(--top) + var(--c) / 2)) border-box; }
 .letter .coin.L img { left: var(--pull); }
 .letter .coin.R { float: right; clear: right; margin-left: 4px;
-  shape-outside: circle(calc(var(--c) / 2) at calc(var(--w) + var(--clear) + var(--c) / 2) calc(var(--c) / 2)) border-box; }
+  shape-outside: circle(calc(var(--c) / 2) at calc(var(--w) + var(--clear) + var(--c) / 2) calc(var(--top) + var(--c) / 2)) border-box; }
 .letter .coin.R img { right: var(--pull); }
 
 /* ---------------------------------------------------------------- sub-pages */
