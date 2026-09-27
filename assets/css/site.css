@@ -72,9 +72,7 @@ body {
   background:
     radial-gradient(110% 80% at 35% 15%, rgba(190, 230, 190, .10), rgba(0, 0, 0, 0) 60%),
     radial-gradient(150% 120% at 50% 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .45)),
-    url("../images/site/cloth-shade.jpg") 0 0 / 100% 100%,
     url("../images/site/baize.jpg") 0 0 / 256px 256px;
-  background-blend-mode: normal, normal, soft-light, normal;
 }
 /* lamplight at night, centred on the lamp by site.js */
 .glow {
@@ -87,24 +85,21 @@ body {
 
 /* The light that falls on everything, paper and coins included: it sits above the page (and lets
    clicks through). By night it is the lamp's pool of warm light fading into the dark; by day a
-   faint falloff away from the window. Both carry a fine grain that ties the art together. */
+   faint falloff away from the window. */
 .light {
   position: absolute; inset: 0; z-index: 5; pointer-events: none; transition: opacity .9s ease;
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .15 0 0 0 0 .1 0 0 -.9 0 .5'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 .light.day {
   opacity: calc(1 - var(--night));
   background:
-    var(--grain) 0 0 / 200px 200px,
     radial-gradient(140% 110% at 8% 0%, rgba(255, 248, 232, .10), rgba(255, 248, 232, 0) 45%, rgba(70, 52, 25, .10) 100%);
 }
 .light.night {
   opacity: 0;
   background:
-    var(--grain) 0 0 / 200px 200px,
     radial-gradient(circle 1700px at var(--gx, 90%) var(--gy, 6%),
       rgba(255, 176, 96, .10) 0, rgba(255, 160, 80, .05) 10%, rgba(40, 20, 4, .08) 24%,
-      rgba(20, 10, 2, .28) 50%, rgba(8, 4, 0, .42) 100%);
+      rgba(20, 10, 2, .24) 50%, rgba(8, 4, 0, .34) 100%);
 }
 :root[data-night="1"] .light.night { opacity: 1; }
 .light.night { transition: opacity .9s ease; }

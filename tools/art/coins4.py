@@ -71,15 +71,30 @@ class Relief:
 # Every design gets (rel, c, R): the relief, the centre of the die and the die radius (ss px).
 # Heights are in fractions of R.
 
-def legend_arc(rel, c, R, text, kind, size, centre_deg, bottom=False, track=1.12, r=.8, height=.024):
-    im, _ = rel.layer()
-    text_arc(im, c[0], c[1], R * r, text, F(kind, int(R * size)), centre_deg, bottom=bottom, track=track)
-    rel.add(im, R * height, R * .010, dome=.3, dome_w=R * .02)
+# Legends are cut bolder than a die-sinker would, since they are read at a few hundred pixels: Cinzel
+# at its heaviest, the thin faces thickened, the letters a little taller and more crisply edged.
+def LF(kind, size):
+    size = int(size * 1.08)
+    if kind in ("greek", "roman"):
+        from PIL import ImageFont
+        f = ImageFont.truetype(os.path.join(HERE, "fonts", "Cinzel.ttf"), size); f.set_variation_by_axes([900]); return f
+    return F(kind, size)
 
-def legend_line(rel, x, y, R, text, kind, size, angle=0, track=1.12, height=.024):
+def _bold(im, kind, R):
+    from PIL import ImageFilter
+    k = 5 if kind in ("medieval", "modern") else 3
+    return im.filter(ImageFilter.MaxFilter(k))
+
+def legend_arc(rel, c, R, text, kind, size, centre_deg, bottom=False, track=1.12, r=.8, height=.03):
     im, _ = rel.layer()
-    text_line(im, x, y, text, F(kind, int(R * size)), angle=angle, track=track)
-    rel.add(im, R * height, R * .010, dome=.3, dome_w=R * .02)
+    text_arc(im, c[0], c[1], R * r, text, LF(kind, R * size), centre_deg, bottom=bottom, track=track)
+    rel.add(_bold(im, kind, R), R * height, R * .007, dome=.25, dome_w=R * .018)
+    rel.legend = np.maximum(getattr(rel, "legend", 0), np.asarray(im, float) / 255)
+
+def legend_line(rel, x, y, R, text, kind, size, angle=0, track=1.12, height=.03):
+    im, _ = rel.layer()
+    text_line(im, x, y, text, LF(kind, R * size), angle=angle, track=track)
+    rel.add(_bold(im, kind, R), R * height, R * .007, dome=.25, dome_w=R * .018)
 
 def beads(rel, c, Rr, n, r, height, R):
     im, d = rel.layer()
@@ -539,8 +554,15 @@ def make(slug, ss=3):
         alb = alb * (1 - crust[..., None]) + np.array(M["crust_col"]) * crust[..., None]
     # polished high points show clean, brighter metal
     alb = alb * (1 - top[..., None] * .35) + np.array(M["base"]) * 1.05 * top[..., None] * .35
+    # The design and lettering stand out the way they do on a handled coin: everything raised is
+    # rubbed bright and smooth, the field around it darker and duller with toning. This contrast in
+    # the metal itself is what keeps the legends legible under any light, including the lamp's.
+    raised = sstep(relief / (R * .014)) * (face > .5)
+    fieldk = (1 - raised) * sstep(inner / (R * .03))
+    alb = alb * (1 - .30 * fieldk[..., None])
+    alb = alb * (1 - raised[..., None] * .45) + np.array(M["base"]) * 1.1 * raised[..., None] * .45
     rough = (M["rough"] + .06 * smooth_noise(S, S, R * .15, rng) + .25 * hair * .3
-             - .10 * top + .30 * grime + .5 * crust)
+             - .10 * top - .12 * raised + .08 * fieldk + .30 * grime + .5 * crust)
     rough = np.where(wall_m > .5, M["rough"] + .15, rough)
     rough = np.clip(rough, .05, .95)
     alb = np.where(wall_m[..., None] > .5, alb * .85, alb)

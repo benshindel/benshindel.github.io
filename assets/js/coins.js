@@ -115,7 +115,7 @@
     var l = lampEl.getBoundingClientRect(), r = c.cv.getBoundingClientRect();
     var dx = (l.left + l.width * .88) - (r.left + r.width / 2), dy = (l.top + l.height * .30) - (r.top + r.height / 2);
     var d = Math.hypot(dx, dy) || 1;
-    var el = Math.atan2(260, d);                 // the flame stands a little above the table
+    var el = Math.max(.55, Math.atan2(420, d));  // high enough that the far coins' lettering still catches it
     return norm([dx / d * Math.cos(el), dy / d * Math.cos(el), Math.sin(el)]);
   }
 
