@@ -9,8 +9,10 @@
   <div class="wrap">
     {% include masthead.html %}
     <main class="page">
+      <div class="sheet">
       <h1 class="page-title">{{ page.title | default: "Cookbook" }}</h1>
       {{ content }}
+      </div>
     </main>
     {% include colophon.html %}
   </div>

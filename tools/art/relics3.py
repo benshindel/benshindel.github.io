@@ -253,3 +253,73 @@ if __name__ == "__main__":
     im, wick = lamp(); print("lamp", im.size, "wick at %.3f, %.3f" % wick)
     print("flame", flame().size)
     print("plate", tabula().size)
+
+# ---------------------------------------------------------------- the picture frame
+def frame(S=600, B=108, ss=2, seed=12):
+    """Bronze picture moulding for CSS border-image (slice = B). A mitred profile runs round all four
+    sides: an outer bead, a groove, an ogee rising to a flat with a fine bead, a cove, then the sight
+    bead and a small lip down to the mat. A cast palmette sits over each mitre. Statuary bronze, with
+    the beads and ornament rubbed bright."""
+    rng = np.random.default_rng(seed)
+    S2, B2 = S * ss, B * ss
+    yy, xx = np.mgrid[0:S2, 0:S2].astype(float)
+    dx, dy = np.minimum(xx, S2 - 1 - xx), np.minimum(yy, S2 - 1 - yy)
+    din = np.minimum(dx, dy)                                  # distance in from the outer edge: mitres come for free
+    m = sstep((B2 - din) / (.8 * ss)) * sstep((din + .5) / (.8 * ss))
+    t = np.clip(din / B2, 0, 1)
+    def bump(c, w): return np.sqrt(np.clip(1 - ((t - c) / w) ** 2, 0, 1))
+    ogee = sstep((t - .18) / .37)
+    cove = sstep((t - .7) / .16)
+    prof = (.10 * bump(.055, .055)                             # outer bead
+            + .07 + .15 * ogee * (1 - cove) + .02 * (1 - cove)  # ogee up to the flat, cove down again
+            + .025 * bump(.62, .025)                            # fine bead on the flat
+            + .10 * bump(.9, .05)                               # sight bead
+            - .06 * sstep((t - .955) / .03))                    # lip down to the mat
+    prof -= .03 * np.exp(-((t - .14) / .015) ** 2)             # a crisp groove after the outer bead
+    h = B2 * prof * m
+    # a hairline where the mitred pieces meet
+    mitre = (np.abs(dx - dy) < .9 * ss) & (din < B2 * .96)
+    h -= B2 * .012 * nd.gaussian_filter(mitre.astype(float), .5 * ss)
+    # a cast rosette over each mitre: eight petals round a domed boss, on a round plate
+    orn = Image.new("L", (S2, S2), 0); od = ImageDraw.Draw(orn)
+    boss = Image.new("L", (S2, S2), 0); bd = ImageDraw.Draw(boss)
+    for sx in (0, 1):
+        for sy in (0, 1):
+            cx = B2 * .5 if sx == 0 else S2 - 1 - B2 * .5
+            cy = B2 * .5 if sy == 0 else S2 - 1 - B2 * .5
+            R0 = B2 * .36
+            od.ellipse([cx - R0, cy - R0, cx + R0, cy + R0], fill=255)
+            for i in range(8):
+                a = i * math.pi / 4 + math.pi / 8
+                px, py = cx + R0 * .52 * math.cos(a), cy + R0 * .52 * math.sin(a)
+                pts = []
+                for k in np.linspace(0, 2 * math.pi, 24):
+                    u, v = R0 * .3 * math.cos(k), R0 * .15 * math.sin(k)
+                    pts.append((px + u * math.cos(a) - v * math.sin(a), py + u * math.sin(a) + v * math.cos(a)))
+                bd.polygon(pts, fill=255)
+            rb = R0 * .26
+            bd.ellipse([cx - rb, cy - rb, cx + rb, cy + rb], fill=255)
+    rel = Relief(S2, ss)
+    rel.add(orn, B2 * .05, B2 * .05, dome=.6, dome_w=B2 * .1)
+    rel.add(boss, B2 * .05, B2 * .03, dome=.9, dome_w=B2 * .05)
+    ornh = rel.h / 1.5
+    om = np.clip(ornh / (B2 * .02), 0, 1)
+    h = np.maximum(h, (B2 * .2 + ornh) * (om > 0)) * m + h * 0
+    h = np.where(om > 0, np.maximum(B2 * prof, B2 * .17) + ornh, h) * m
+    # veins in each leaf, and a little casting texture
+    h += B2 * .002 * smooth_noise(S2, S2, B2 * .3, rng)
+    n = normals(nd.gaussian_filter(h, .5 * ss))
+    base = np.array([.36, .27, .17])
+    alb = np.broadcast_to(base, (S2, S2, 3)).copy() * (1 + .12 * smooth_noise(S2, S2, B2 * .5, rng))[..., None]
+    cav = np.clip(nd.gaussian_filter(h, B2 * .04) - h, 0, None) / (B2 * .03)
+    alb *= (1 - .55 * np.clip(cav, 0, 1))[..., None]
+    beads = np.clip(bump(.055, .045) + bump(.9, .04) + bump(.62, .02), 0, 1)
+    rub = np.clip(beads * .8 + om * .9 + np.clip((prof - .2) / .05, 0, 1) * .3, 0, 1) * (1 - np.clip(cav * 2, 0, 1))
+    bright = np.array([.86, .68, .42])
+    alb = alb * (1 - rub[..., None] * .8) + bright * rub[..., None] * .8
+    rough = np.clip(.6 - .35 * rub, .15, .9)
+    rgb = shade(alb, n, rough, DAY)
+    A = down(m, ss)
+    rgb_o = down(rgb * m[..., None], ss) / np.maximum(A, 1e-4)[..., None]
+    im, _ = save_rgba(rgb_o, A, os.path.join(OUTD, "frame.webp"), crop=False, quality=88, method=6)
+    return im

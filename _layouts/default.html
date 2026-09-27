@@ -3,14 +3,32 @@
 <head>
 {% include head.html %}
 </head>
-<body class="sub">
+<body class="sub{% if page.sheet == false %} bare{% endif %}">
 <div class="table">
   {% include cloth.html %}
   <div class="wrap">
     {% include masthead.html %}
     <main class="page">
-      {% if page.coin %}<span class="seal"><img class="plain" src="{{ '/assets/images/site/coins/coin-' | append: page.coin | append: '.webp' | relative_url }}" alt="" width="200" height="200"></span>{% endif %}
+{%- if page.sheet == false %}
       {{ content }}
+{%- else %}
+{%- capture seal %}{% if page.coin %}{% assign cs = '/assets/images/site/coins/coin-' | append: page.coin %}<span class="seal" style="view-transition-name: coin"><img class="plain" src="{{ cs | append: '.webp' | relative_url }}" srcset="{{ cs | append: '.webp' | relative_url }} 1x, {{ cs | append: '-2x.webp' | relative_url }} 2x" alt="" width="200" height="200"></span>{% endif %}{% endcapture %}
+{%- comment %} The text is written on sheets of paper. Each figure (<figure class="plate">) is a framed
+  picture laid on the cloth between two sheets, so the content is split at every figure. {% endcomment %}
+{%- assign chunks = content | split: '<figure class="plate"' %}
+{%- for chunk in chunks %}
+{%- if forloop.first %}
+      <div class="sheet">{{ seal }}{{ chunk }}</div>
+{%- else %}
+{%- assign parts = chunk | split: '</figure>' %}
+      <figure class="plate"{{ parts[0] }}</figure>
+{%- assign rest = parts[1] | strip %}
+{%- if rest != "" %}
+      <div class="sheet">{{ parts[1] }}</div>
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
     </main>
     {% include colophon.html %}
   </div>

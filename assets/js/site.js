@@ -13,7 +13,7 @@
   var nightLight = document.querySelector('.light.night');
   var glow = document.querySelector('.glow');
   var halo = document.querySelector('.lamp .halo');
-  var shadowed = document.querySelectorAll('.letter .coin img, .seal, .nameplate, .letter, .page img:not(.plain)');
+  var shadowed = document.querySelectorAll('.letter .coin img, .seal, .nameplate, .letter, .page img:not(.plain), .page .sheet, .plate figcaption');
 
   function isNight() {
     return root.dataset.theme ? root.dataset.theme === 'dark' : !!(mq && mq.matches);
@@ -131,6 +131,33 @@
       if (wasNight) smoke();
     });
   }
+  // ---- page transitions (site.css): the coin you pick up on the homepage glides to that page's coin,
+  // and back again. Only that one coin is tagged, so the others simply fade with the rest of the page.
+  var homeCoins = document.querySelectorAll('.letter a.coin');
+  function tag(path) {
+    Array.prototype.forEach.call(homeCoins, function (a) {
+      var img = a.querySelector('img');
+      if (img) img.style.viewTransitionName = new URL(a.href, location.href).pathname === path ? 'coin' : '';
+    });
+  }
+  Array.prototype.forEach.call(homeCoins, function (a) {
+    a.addEventListener('click', function () {
+      var path = new URL(a.href, location.href).pathname;
+      tag(path);
+      try { sessionStorage.setItem('coin', path); } catch (e) {}
+    });
+  });
+  if (homeCoins.length) {
+    window.addEventListener('pagereveal', function (e) {
+      if (!e.viewTransition) return;
+      var from = null;
+      try { from = navigation.activation.from && new URL(navigation.activation.from.url).pathname; } catch (err) {}
+      if (!from) try { from = sessionStorage.getItem('coin'); } catch (err) {}
+      tag(from);
+      e.viewTransition.finished.then(function () { tag(null); });
+    });
+  }
+
   if (mq && mq.addEventListener) mq.addEventListener('change', sync);
   window.addEventListener('resize', place);
   window.addEventListener('load', function () {

@@ -10,7 +10,7 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
   var lampEl = document.getElementById('lamp');
-  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var DPR = Math.min(window.devicePixelRatio || 1, 3);
 
   var VS = 'attribute vec2 p;varying vec2 uv;void main(){uv=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}';
   var FS = [
@@ -45,7 +45,7 @@
   Array.prototype.forEach.call(holders, function (h) {
     var img = h.querySelector('img');
     if (!img) return;
-    var src = img.getAttribute('src').replace(/\.webp$/, '-mat.webp');
+    var src = img.getAttribute('src').replace(/\.webp$/, DPR > 1.4 ? '-mat-2x.webp' : '-mat.webp');
     var cv = document.createElement('canvas');
     cv.className = 'gl'; cv.setAttribute('aria-hidden', 'true');
     var gl = cv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });

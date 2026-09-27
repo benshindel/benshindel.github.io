@@ -2,6 +2,7 @@
 layout: default
 title: Boggle
 permalink: /boggle/
+sheet: false   # the game board is its own object on the table
 ---
 
 <!-- Include Google Fonts -->

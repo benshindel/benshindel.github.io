@@ -45,6 +45,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+/* the rough, hand-cut edge shared by every sheet of paper */
+:root { --deckle: polygon(0.00% 0.8px, 1.11% 0.5px, 2.22% 0.9px, 3.33% 0.1px, 4.44% 0.5px, 5.56% 0.3px, 6.67% 0.7px, 7.78% 0.2px, 8.89% 0.8px, 10.00% 0.5px, 11.11% 0.8px, 12.22% 0.4px, 13.33% 0.4px, 14.44% 0.7px, 15.56% 0.9px, 16.67% 0.3px, 17.78% 0.9px, 18.89% 0.8px, 20.00% 0.2px, 21.11% 0.5px, 22.22% 0.6px, 23.33% 0.8px, 24.44% 0.6px, 25.56% 0.1px, 26.67% 0.4px, 27.78% 0.4px, 28.89% 0.5px, 30.00% 0.9px, 31.11% 0.3px, 32.22% 0.2px, 33.33% 0.5px, 34.44% 0.6px, 35.56% 0.8px, 36.67% 0.5px, 37.78% 0.2px, 38.89% 0.8px, 40.00% 0.4px, 41.11% 0.6px, 42.22% 0.4px, 43.33% 0.2px, 44.44% 0.6px, 45.56% 0.7px, 46.67% 0.2px, 47.78% 0.4px, 48.89% 0.3px, 50.00% 0.2px, 51.11% 0.2px, 52.22% 0.9px, 53.33% 0.8px, 54.44% 0.3px, 55.56% 0.7px, 56.67% 0.0px, 57.78% 0.8px, 58.89% 0.5px, 60.00% 0.7px, 61.11% 0.2px, 62.22% 0.3px, 63.33% 0.3px, 64.44% 0.9px, 65.56% 0.4px, 66.67% 0.4px, 67.78% 0.9px, 68.89% 0.8px, 70.00% 0.4px, 71.11% 0.3px, 72.22% 0.7px, 73.33% 0.1px, 74.44% 0.4px, 75.56% 0.8px, 76.67% 0.8px, 77.78% 0.2px, 78.89% 0.1px, 80.00% 0.7px, 81.11% 0.6px, 82.22% 0.2px, 83.33% 0.5px, 84.44% 0.1px, 85.56% 0.6px, 86.67% 0.5px, 87.78% 0.6px, 88.89% 0.1px, 90.00% 0.6px, 91.11% 0.3px, 92.22% 0.4px, 93.33% 0.3px, 94.44% 0.6px, 95.56% 0.5px, 96.67% 0.6px, 97.78% 0.1px, 98.89% 0.2px, calc(100% - 0.1px) 0.00%, calc(100% - 0.3px) 1.11%, calc(100% - 0.4px) 2.22%, calc(100% - 0.1px) 3.33%, calc(100% - 0.6px) 4.44%, calc(100% - 0.4px) 5.56%, calc(100% - 0.5px) 6.67%, calc(100% - 0.5px) 7.78%, calc(100% - 0.8px) 8.89%, calc(100% - 0.5px) 10.00%, calc(100% - 0.1px) 11.11%, calc(100% - 0.1px) 12.22%, calc(100% - 0.6px) 13.33%, calc(100% - 0.3px) 14.44%, calc(100% - 0.7px) 15.56%, calc(100% - 0.5px) 16.67%, calc(100% - 0.3px) 17.78%, calc(100% - 0.7px) 18.89%, calc(100% - 0.2px) 20.00%, calc(100% - 0.3px) 21.11%, calc(100% - 0.3px) 22.22%, calc(100% - 0.4px) 23.33%, calc(100% - 0.8px) 24.44%, calc(100% - 0.7px) 25.56%, calc(100% - 0.7px) 26.67%, calc(100% - 0.6px) 27.78%, calc(100% - 0.0px) 28.89%, calc(100% - 0.3px) 30.00%, calc(100% - 0.5px) 31.11%, calc(100% - 0.8px) 32.22%, calc(100% - 0.3px) 33.33%, calc(100% - 0.5px) 34.44%, calc(100% - 0.8px) 35.56%, calc(100% - 0.3px) 36.67%, calc(100% - 0.7px) 37.78%, calc(100% - 0.5px) 38.89%, calc(100% - 0.5px) 40.00%, calc(100% - 0.6px) 41.11%, calc(100% - 0.4px) 42.22%, calc(100% - 0.1px) 43.33%, calc(100% - 0.8px) 44.44%, calc(100% - 0.9px) 45.56%, calc(100% - 0.7px) 46.67%, calc(100% - 0.3px) 47.78%, calc(100% - 0.6px) 48.89%, calc(100% - 0.7px) 50.00%, calc(100% - 0.1px) 51.11%, calc(100% - 0.7px) 52.22%, calc(100% - 0.1px) 53.33%, calc(100% - 0.8px) 54.44%, calc(100% - 0.2px) 55.56%, calc(100% - 0.9px) 56.67%, calc(100% - 0.2px) 57.78%, calc(100% - 0.5px) 58.89%, calc(100% - 0.7px) 60.00%, calc(100% - 0.9px) 61.11%, calc(100% - 0.6px) 62.22%, calc(100% - 0.8px) 63.33%, calc(100% - 0.4px) 64.44%, calc(100% - 0.7px) 65.56%, calc(100% - 0.3px) 66.67%, calc(100% - 0.8px) 67.78%, calc(100% - 0.7px) 68.89%, calc(100% - 0.3px) 70.00%, calc(100% - 0.7px) 71.11%, calc(100% - 0.1px) 72.22%, calc(100% - 0.8px) 73.33%, calc(100% - 0.6px) 74.44%, calc(100% - 0.3px) 75.56%, calc(100% - 0.6px) 76.67%, calc(100% - 0.7px) 77.78%, calc(100% - 0.6px) 78.89%, calc(100% - 0.8px) 80.00%, calc(100% - 0.4px) 81.11%, calc(100% - 0.3px) 82.22%, calc(100% - 0.3px) 83.33%, calc(100% - 0.3px) 84.44%, calc(100% - 0.4px) 85.56%, calc(100% - 0.7px) 86.67%, calc(100% - 0.8px) 87.78%, calc(100% - 0.6px) 88.89%, calc(100% - 0.7px) 90.00%, calc(100% - 0.9px) 91.11%, calc(100% - 0.6px) 92.22%, calc(100% - 0.1px) 93.33%, calc(100% - 0.6px) 94.44%, calc(100% - 0.0px) 95.56%, calc(100% - 0.6px) 96.67%, calc(100% - 0.9px) 97.78%, calc(100% - 0.4px) 98.89%, 100.00% calc(100% - 0.8px), 98.89% calc(100% - 0.0px), 97.78% calc(100% - 0.9px), 96.67% calc(100% - 0.2px), 95.56% calc(100% - 0.8px), 94.44% calc(100% - 0.3px), 93.33% calc(100% - 0.4px), 92.22% calc(100% - 0.1px), 91.11% calc(100% - 0.0px), 90.00% calc(100% - 0.7px), 88.89% calc(100% - 0.7px), 87.78% calc(100% - 0.1px), 86.67% calc(100% - 0.6px), 85.56% calc(100% - 0.2px), 84.44% calc(100% - 0.8px), 83.33% calc(100% - 0.1px), 82.22% calc(100% - 0.5px), 81.11% calc(100% - 0.8px), 80.00% calc(100% - 0.5px), 78.89% calc(100% - 0.6px), 77.78% calc(100% - 0.7px), 76.67% calc(100% - 0.6px), 75.56% calc(100% - 0.7px), 74.44% calc(100% - 0.2px), 73.33% calc(100% - 0.8px), 72.22% calc(100% - 0.5px), 71.11% calc(100% - 0.8px), 70.00% calc(100% - 0.6px), 68.89% calc(100% - 0.7px), 67.78% calc(100% - 0.9px), 66.67% calc(100% - 0.1px), 65.56% calc(100% - 0.8px), 64.44% calc(100% - 0.3px), 63.33% calc(100% - 0.7px), 62.22% calc(100% - 0.2px), 61.11% calc(100% - 0.4px), 60.00% calc(100% - 0.1px), 58.89% calc(100% - 0.7px), 57.78% calc(100% - 0.3px), 56.67% calc(100% - 0.4px), 55.56% calc(100% - 0.7px), 54.44% calc(100% - 0.3px), 53.33% calc(100% - 0.8px), 52.22% calc(100% - 0.5px), 51.11% calc(100% - 0.8px), 50.00% calc(100% - 0.7px), 48.89% calc(100% - 0.9px), 47.78% calc(100% - 0.6px), 46.67% calc(100% - 0.3px), 45.56% calc(100% - 0.5px), 44.44% calc(100% - 0.8px), 43.33% calc(100% - 0.8px), 42.22% calc(100% - 0.2px), 41.11% calc(100% - 0.2px), 40.00% calc(100% - 0.2px), 38.89% calc(100% - 0.6px), 37.78% calc(100% - 0.2px), 36.67% calc(100% - 0.6px), 35.56% calc(100% - 0.3px), 34.44% calc(100% - 0.8px), 33.33% calc(100% - 0.2px), 32.22% calc(100% - 0.8px), 31.11% calc(100% - 0.3px), 30.00% calc(100% - 0.0px), 28.89% calc(100% - 0.1px), 27.78% calc(100% - 0.7px), 26.67% calc(100% - 0.2px), 25.56% calc(100% - 0.2px), 24.44% calc(100% - 0.9px), 23.33% calc(100% - 0.4px), 22.22% calc(100% - 0.6px), 21.11% calc(100% - 0.5px), 20.00% calc(100% - 0.4px), 18.89% calc(100% - 0.8px), 17.78% calc(100% - 0.0px), 16.67% calc(100% - 0.3px), 15.56% calc(100% - 0.4px), 14.44% calc(100% - 0.6px), 13.33% calc(100% - 0.7px), 12.22% calc(100% - 0.0px), 11.11% calc(100% - 0.1px), 10.00% calc(100% - 0.2px), 8.89% calc(100% - 0.3px), 7.78% calc(100% - 0.7px), 6.67% calc(100% - 0.7px), 5.56% calc(100% - 0.8px), 4.44% calc(100% - 0.4px), 3.33% calc(100% - 0.4px), 2.22% calc(100% - 0.1px), 1.11% calc(100% - 0.8px), 0.8px 100.00%, 0.9px 98.89%, 0.7px 97.78%, 0.8px 96.67%, 0.5px 95.56%, 0.8px 94.44%, 0.3px 93.33%, 0.7px 92.22%, 0.7px 91.11%, 0.6px 90.00%, 0.8px 88.89%, 0.6px 87.78%, 0.2px 86.67%, 0.0px 85.56%, 0.3px 84.44%, 0.2px 83.33%, 0.8px 82.22%, 0.5px 81.11%, 0.7px 80.00%, 0.8px 78.89%, 0.7px 77.78%, 0.8px 76.67%, 0.5px 75.56%, 0.7px 74.44%, 0.9px 73.33%, 0.4px 72.22%, 0.6px 71.11%, 0.9px 70.00%, 0.2px 68.89%, 0.1px 67.78%, 0.4px 66.67%, 0.8px 65.56%, 0.5px 64.44%, 0.2px 63.33%, 0.9px 62.22%, 0.4px 61.11%, 0.4px 60.00%, 0.1px 58.89%, 0.4px 57.78%, 0.9px 56.67%, 0.4px 55.56%, 0.7px 54.44%, 0.8px 53.33%, 0.0px 52.22%, 0.6px 51.11%, 0.1px 50.00%, 0.5px 48.89%, 0.8px 47.78%, 0.3px 46.67%, 0.6px 45.56%, 0.3px 44.44%, 0.5px 43.33%, 0.7px 42.22%, 0.5px 41.11%, 0.3px 40.00%, 0.7px 38.89%, 0.1px 37.78%, 0.3px 36.67%, 0.7px 35.56%, 0.5px 34.44%, 0.1px 33.33%, 0.6px 32.22%, 0.8px 31.11%, 0.2px 30.00%, 0.8px 28.89%, 0.0px 27.78%, 0.9px 26.67%, 0.5px 25.56%, 0.2px 24.44%, 0.1px 23.33%, 0.4px 22.22%, 0.4px 21.11%, 0.5px 20.00%, 0.5px 18.89%, 0.1px 17.78%, 0.2px 16.67%, 0.1px 15.56%, 0.7px 14.44%, 0.1px 13.33%, 0.6px 12.22%, 0.1px 11.11%, 0.6px 10.00%, 0.4px 8.89%, 0.5px 7.78%, 0.7px 6.67%, 0.3px 5.56%, 0.6px 4.44%, 0.8px 3.33%, 0.7px 2.22%, 0.5px 1.11%); }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; background: var(--outside); color: var(--ink);
@@ -113,7 +115,7 @@ body {
   padding-inline: clamp(18px, 5vw, 64px);
   padding-block: clamp(16px, 3.2vh, 40px) clamp(14px, 2.5vh, 28px);
 }
-body.sub .wrap { max-width: calc(46rem + 2 * clamp(18px, 5vw, 64px)); }
+body.sub .wrap { max-width: calc(50rem + 2 * clamp(18px, 5vw, 64px)); }
 
 .masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: clamp(52px, 8vh, 80px); }
 .nameplate {
@@ -225,7 +227,7 @@ body.home .wrap { max-width: 1480px; }
   background-size: auto, 512px 512px;
   background-blend-mode: normal, multiply;
   box-shadow: inset 0 0 40px rgba(130, 100, 60, .14);
-  clip-path: polygon(0.00% 0.8px, 1.11% 0.5px, 2.22% 0.9px, 3.33% 0.1px, 4.44% 0.5px, 5.56% 0.3px, 6.67% 0.7px, 7.78% 0.2px, 8.89% 0.8px, 10.00% 0.5px, 11.11% 0.8px, 12.22% 0.4px, 13.33% 0.4px, 14.44% 0.7px, 15.56% 0.9px, 16.67% 0.3px, 17.78% 0.9px, 18.89% 0.8px, 20.00% 0.2px, 21.11% 0.5px, 22.22% 0.6px, 23.33% 0.8px, 24.44% 0.6px, 25.56% 0.1px, 26.67% 0.4px, 27.78% 0.4px, 28.89% 0.5px, 30.00% 0.9px, 31.11% 0.3px, 32.22% 0.2px, 33.33% 0.5px, 34.44% 0.6px, 35.56% 0.8px, 36.67% 0.5px, 37.78% 0.2px, 38.89% 0.8px, 40.00% 0.4px, 41.11% 0.6px, 42.22% 0.4px, 43.33% 0.2px, 44.44% 0.6px, 45.56% 0.7px, 46.67% 0.2px, 47.78% 0.4px, 48.89% 0.3px, 50.00% 0.2px, 51.11% 0.2px, 52.22% 0.9px, 53.33% 0.8px, 54.44% 0.3px, 55.56% 0.7px, 56.67% 0.0px, 57.78% 0.8px, 58.89% 0.5px, 60.00% 0.7px, 61.11% 0.2px, 62.22% 0.3px, 63.33% 0.3px, 64.44% 0.9px, 65.56% 0.4px, 66.67% 0.4px, 67.78% 0.9px, 68.89% 0.8px, 70.00% 0.4px, 71.11% 0.3px, 72.22% 0.7px, 73.33% 0.1px, 74.44% 0.4px, 75.56% 0.8px, 76.67% 0.8px, 77.78% 0.2px, 78.89% 0.1px, 80.00% 0.7px, 81.11% 0.6px, 82.22% 0.2px, 83.33% 0.5px, 84.44% 0.1px, 85.56% 0.6px, 86.67% 0.5px, 87.78% 0.6px, 88.89% 0.1px, 90.00% 0.6px, 91.11% 0.3px, 92.22% 0.4px, 93.33% 0.3px, 94.44% 0.6px, 95.56% 0.5px, 96.67% 0.6px, 97.78% 0.1px, 98.89% 0.2px, calc(100% - 0.1px) 0.00%, calc(100% - 0.3px) 1.11%, calc(100% - 0.4px) 2.22%, calc(100% - 0.1px) 3.33%, calc(100% - 0.6px) 4.44%, calc(100% - 0.4px) 5.56%, calc(100% - 0.5px) 6.67%, calc(100% - 0.5px) 7.78%, calc(100% - 0.8px) 8.89%, calc(100% - 0.5px) 10.00%, calc(100% - 0.1px) 11.11%, calc(100% - 0.1px) 12.22%, calc(100% - 0.6px) 13.33%, calc(100% - 0.3px) 14.44%, calc(100% - 0.7px) 15.56%, calc(100% - 0.5px) 16.67%, calc(100% - 0.3px) 17.78%, calc(100% - 0.7px) 18.89%, calc(100% - 0.2px) 20.00%, calc(100% - 0.3px) 21.11%, calc(100% - 0.3px) 22.22%, calc(100% - 0.4px) 23.33%, calc(100% - 0.8px) 24.44%, calc(100% - 0.7px) 25.56%, calc(100% - 0.7px) 26.67%, calc(100% - 0.6px) 27.78%, calc(100% - 0.0px) 28.89%, calc(100% - 0.3px) 30.00%, calc(100% - 0.5px) 31.11%, calc(100% - 0.8px) 32.22%, calc(100% - 0.3px) 33.33%, calc(100% - 0.5px) 34.44%, calc(100% - 0.8px) 35.56%, calc(100% - 0.3px) 36.67%, calc(100% - 0.7px) 37.78%, calc(100% - 0.5px) 38.89%, calc(100% - 0.5px) 40.00%, calc(100% - 0.6px) 41.11%, calc(100% - 0.4px) 42.22%, calc(100% - 0.1px) 43.33%, calc(100% - 0.8px) 44.44%, calc(100% - 0.9px) 45.56%, calc(100% - 0.7px) 46.67%, calc(100% - 0.3px) 47.78%, calc(100% - 0.6px) 48.89%, calc(100% - 0.7px) 50.00%, calc(100% - 0.1px) 51.11%, calc(100% - 0.7px) 52.22%, calc(100% - 0.1px) 53.33%, calc(100% - 0.8px) 54.44%, calc(100% - 0.2px) 55.56%, calc(100% - 0.9px) 56.67%, calc(100% - 0.2px) 57.78%, calc(100% - 0.5px) 58.89%, calc(100% - 0.7px) 60.00%, calc(100% - 0.9px) 61.11%, calc(100% - 0.6px) 62.22%, calc(100% - 0.8px) 63.33%, calc(100% - 0.4px) 64.44%, calc(100% - 0.7px) 65.56%, calc(100% - 0.3px) 66.67%, calc(100% - 0.8px) 67.78%, calc(100% - 0.7px) 68.89%, calc(100% - 0.3px) 70.00%, calc(100% - 0.7px) 71.11%, calc(100% - 0.1px) 72.22%, calc(100% - 0.8px) 73.33%, calc(100% - 0.6px) 74.44%, calc(100% - 0.3px) 75.56%, calc(100% - 0.6px) 76.67%, calc(100% - 0.7px) 77.78%, calc(100% - 0.6px) 78.89%, calc(100% - 0.8px) 80.00%, calc(100% - 0.4px) 81.11%, calc(100% - 0.3px) 82.22%, calc(100% - 0.3px) 83.33%, calc(100% - 0.3px) 84.44%, calc(100% - 0.4px) 85.56%, calc(100% - 0.7px) 86.67%, calc(100% - 0.8px) 87.78%, calc(100% - 0.6px) 88.89%, calc(100% - 0.7px) 90.00%, calc(100% - 0.9px) 91.11%, calc(100% - 0.6px) 92.22%, calc(100% - 0.1px) 93.33%, calc(100% - 0.6px) 94.44%, calc(100% - 0.0px) 95.56%, calc(100% - 0.6px) 96.67%, calc(100% - 0.9px) 97.78%, calc(100% - 0.4px) 98.89%, 100.00% calc(100% - 0.8px), 98.89% calc(100% - 0.0px), 97.78% calc(100% - 0.9px), 96.67% calc(100% - 0.2px), 95.56% calc(100% - 0.8px), 94.44% calc(100% - 0.3px), 93.33% calc(100% - 0.4px), 92.22% calc(100% - 0.1px), 91.11% calc(100% - 0.0px), 90.00% calc(100% - 0.7px), 88.89% calc(100% - 0.7px), 87.78% calc(100% - 0.1px), 86.67% calc(100% - 0.6px), 85.56% calc(100% - 0.2px), 84.44% calc(100% - 0.8px), 83.33% calc(100% - 0.1px), 82.22% calc(100% - 0.5px), 81.11% calc(100% - 0.8px), 80.00% calc(100% - 0.5px), 78.89% calc(100% - 0.6px), 77.78% calc(100% - 0.7px), 76.67% calc(100% - 0.6px), 75.56% calc(100% - 0.7px), 74.44% calc(100% - 0.2px), 73.33% calc(100% - 0.8px), 72.22% calc(100% - 0.5px), 71.11% calc(100% - 0.8px), 70.00% calc(100% - 0.6px), 68.89% calc(100% - 0.7px), 67.78% calc(100% - 0.9px), 66.67% calc(100% - 0.1px), 65.56% calc(100% - 0.8px), 64.44% calc(100% - 0.3px), 63.33% calc(100% - 0.7px), 62.22% calc(100% - 0.2px), 61.11% calc(100% - 0.4px), 60.00% calc(100% - 0.1px), 58.89% calc(100% - 0.7px), 57.78% calc(100% - 0.3px), 56.67% calc(100% - 0.4px), 55.56% calc(100% - 0.7px), 54.44% calc(100% - 0.3px), 53.33% calc(100% - 0.8px), 52.22% calc(100% - 0.5px), 51.11% calc(100% - 0.8px), 50.00% calc(100% - 0.7px), 48.89% calc(100% - 0.9px), 47.78% calc(100% - 0.6px), 46.67% calc(100% - 0.3px), 45.56% calc(100% - 0.5px), 44.44% calc(100% - 0.8px), 43.33% calc(100% - 0.8px), 42.22% calc(100% - 0.2px), 41.11% calc(100% - 0.2px), 40.00% calc(100% - 0.2px), 38.89% calc(100% - 0.6px), 37.78% calc(100% - 0.2px), 36.67% calc(100% - 0.6px), 35.56% calc(100% - 0.3px), 34.44% calc(100% - 0.8px), 33.33% calc(100% - 0.2px), 32.22% calc(100% - 0.8px), 31.11% calc(100% - 0.3px), 30.00% calc(100% - 0.0px), 28.89% calc(100% - 0.1px), 27.78% calc(100% - 0.7px), 26.67% calc(100% - 0.2px), 25.56% calc(100% - 0.2px), 24.44% calc(100% - 0.9px), 23.33% calc(100% - 0.4px), 22.22% calc(100% - 0.6px), 21.11% calc(100% - 0.5px), 20.00% calc(100% - 0.4px), 18.89% calc(100% - 0.8px), 17.78% calc(100% - 0.0px), 16.67% calc(100% - 0.3px), 15.56% calc(100% - 0.4px), 14.44% calc(100% - 0.6px), 13.33% calc(100% - 0.7px), 12.22% calc(100% - 0.0px), 11.11% calc(100% - 0.1px), 10.00% calc(100% - 0.2px), 8.89% calc(100% - 0.3px), 7.78% calc(100% - 0.7px), 6.67% calc(100% - 0.7px), 5.56% calc(100% - 0.8px), 4.44% calc(100% - 0.4px), 3.33% calc(100% - 0.4px), 2.22% calc(100% - 0.1px), 1.11% calc(100% - 0.8px), 0.8px 100.00%, 0.9px 98.89%, 0.7px 97.78%, 0.8px 96.67%, 0.5px 95.56%, 0.8px 94.44%, 0.3px 93.33%, 0.7px 92.22%, 0.7px 91.11%, 0.6px 90.00%, 0.8px 88.89%, 0.6px 87.78%, 0.2px 86.67%, 0.0px 85.56%, 0.3px 84.44%, 0.2px 83.33%, 0.8px 82.22%, 0.5px 81.11%, 0.7px 80.00%, 0.8px 78.89%, 0.7px 77.78%, 0.8px 76.67%, 0.5px 75.56%, 0.7px 74.44%, 0.9px 73.33%, 0.4px 72.22%, 0.6px 71.11%, 0.9px 70.00%, 0.2px 68.89%, 0.1px 67.78%, 0.4px 66.67%, 0.8px 65.56%, 0.5px 64.44%, 0.2px 63.33%, 0.9px 62.22%, 0.4px 61.11%, 0.4px 60.00%, 0.1px 58.89%, 0.4px 57.78%, 0.9px 56.67%, 0.4px 55.56%, 0.7px 54.44%, 0.8px 53.33%, 0.0px 52.22%, 0.6px 51.11%, 0.1px 50.00%, 0.5px 48.89%, 0.8px 47.78%, 0.3px 46.67%, 0.6px 45.56%, 0.3px 44.44%, 0.5px 43.33%, 0.7px 42.22%, 0.5px 41.11%, 0.3px 40.00%, 0.7px 38.89%, 0.1px 37.78%, 0.3px 36.67%, 0.7px 35.56%, 0.5px 34.44%, 0.1px 33.33%, 0.6px 32.22%, 0.8px 31.11%, 0.2px 30.00%, 0.8px 28.89%, 0.0px 27.78%, 0.9px 26.67%, 0.5px 25.56%, 0.2px 24.44%, 0.1px 23.33%, 0.4px 22.22%, 0.4px 21.11%, 0.5px 20.00%, 0.5px 18.89%, 0.1px 17.78%, 0.2px 16.67%, 0.1px 15.56%, 0.7px 14.44%, 0.1px 13.33%, 0.6px 12.22%, 0.1px 11.11%, 0.6px 10.00%, 0.4px 8.89%, 0.5px 7.78%, 0.7px 6.67%, 0.3px 5.56%, 0.6px 4.44%, 0.8px 3.33%, 0.7px 2.22%, 0.5px 1.11%);
+  clip-path: var(--deckle);
   transition: background-color .8s ease;
 }
 :root[data-night="1"] .letter { --paper-tint: #efe3cc; }   /* the same paper; the lamplight above does the rest */
@@ -275,26 +277,81 @@ body.home .wrap { max-width: 1480px; }
   shape-outside: circle(calc(var(--c) / 2) at calc(var(--w) + var(--clear) + var(--c) / 2) calc(var(--top) + var(--c) / 2)) border-box; }
 .letter .coin.R :is(img, canvas) { right: calc(var(--pull) - var(--m)); }
 
-/* ---------------------------------------------------------------- sub-pages */
+/* ---------------------------------------------------------------- sub-pages: written on sheets of paper */
+/* A page's text is on one or more sheets of the same laid paper as the homepage letter. A figure is a
+   framed picture laid on the cloth between two sheets, overlapping both, with its caption on a small
+   label tucked under the frame. (The layout splits the text at each figure.) A page can opt out
+   with `sheet: false` in its front matter, and its content then sits on the cloth. */
 .page { width: 100%; margin-top: clamp(14px, 3vh, 36px); }
-.page > :first-child { margin-top: 0; }
 .page h1, .page .page-title {
   font-family: var(--display); font-weight: 600; letter-spacing: .04em; line-height: 1.15;
   font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.4rem); margin: 0 0 .6em;
-  text-shadow: 0 1px 3px var(--halo);
 }
-.page h2, .page h3 { font-family: var(--display); font-weight: 600; letter-spacing: .04em; line-height: 1.2; margin: 1.4em 0 .5em; text-shadow: 0 1px 2px var(--halo); }
+.page h2, .page h3 { font-family: var(--display); font-weight: 600; letter-spacing: .04em; line-height: 1.2; margin: 1.4em 0 .5em; }
 .page h2 { font-size: 1.3em; }
 .page h3 { font-size: 1.05em; }
-.page p, .page li { text-shadow: 0 1px 2px var(--halo); }
 .page p { margin: 0 0 1em; }
 .page ul, .page ol { margin: 0 0 1.1em; padding-left: 1.3em; }
 .page li { margin: .3em 0; }
 .page ul li::marker { content: "◆  "; font-size: .6em; color: var(--muted); }
 .page ol li::marker { font-family: var(--display); font-size: .85em; color: var(--muted); }
 .page hr { border: 0; border-top: 1px solid var(--rule); margin: 2em 0; }
-.page figcaption { margin: .9em auto 0; max-width: 34rem; text-align: center; font-style: italic; font-size: .9em; color: var(--muted); text-shadow: 0 1px 2px var(--halo); }
 .page code { font-size: .9em; }
+/* straight on the cloth (sheet: false): a soft halo keeps the text off the weave */
+body.bare .page :is(h1, h2, h3, p, li, figcaption) { text-shadow: 0 1px 2px var(--halo); }
+
+.page .sheet {
+  --paper-tint: #fffdf8; --sx: 3; --sy: 5;
+  --muted: #7a6a55; --rule: rgba(90, 70, 40, .28); --link: #7b2e1b; --link-hover: #a13d23;
+  position: relative; z-index: 1; display: flow-root;
+  padding: clamp(24px, 4.5vw, 56px) clamp(20px, 5.5vw, 64px);
+  color: #2a2118; transform: rotate(-.3deg);
+}
+.page .sheet:nth-of-type(2n) { transform: rotate(.35deg); }
+.page .sheet::before {                 /* the paper, with its rough edge */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: url("../images/site/paper.jpg") 0 0 / 512px 512px, var(--paper-tint);
+  background-blend-mode: multiply;
+  box-shadow: inset 0 0 50px rgba(130, 100, 60, .13);
+  clip-path: var(--deckle);
+  transition: background-color .8s ease;
+}
+.page .sheet::after {                  /* its shadow on the cloth, away from the light */
+  content: ""; position: absolute; inset: 1px; z-index: -2; pointer-events: none;
+  box-shadow: calc(var(--sx) * .15px) calc(var(--sy) * .2px) 1.5px var(--sh-near),
+              calc(var(--sx) * 1.6px) calc(var(--sy) * 2px) 16px var(--sh-far);
+}
+:root[data-night="1"] .page .sheet { --paper-tint: #efe3cc; }
+:root[data-night="1"] .page .sheet::before { box-shadow: inset 0 0 60px rgba(60, 35, 10, .2); }
+.page .sheet > :first-child, .page .sheet > .seal + * { margin-top: 0; }
+.page .sheet > :last-child { margin-bottom: 0; }
+.page .sheet a { color: var(--link); }
+.page .sheet a:hover { color: var(--link-hover); }
+
+/* a figure: the framed picture on the cloth between two sheets, its label tucked under the frame */
+.page .plate {
+  --tilt: .8deg;
+  position: relative; z-index: 2; text-align: center;
+  margin: clamp(-30px, -2.4vw, -14px) auto; padding: 0 8px;
+  transform: rotate(var(--tilt));
+}
+.page .plate:nth-of-type(2n) { --tilt: -.7deg; }
+.page .plate img:not(.plain) { margin: 0; }
+.page .plate figcaption {
+  --sx: 3; --sy: 5; --paper-tint: #fbf6ea;
+  position: relative; z-index: -1; display: block; width: fit-content; max-width: min(30rem, 88%);
+  margin: -12px auto 0; padding: 20px 20px 12px;
+  background: url("../images/site/paper.jpg") 0 0 / 512px 512px, var(--paper-tint);
+  background-blend-mode: multiply;
+  font-style: italic; font-size: .86em; line-height: 1.4; color: #3d3328; text-align: center;
+  transform: rotate(calc(-1 * var(--tilt) - .9deg)) translateX(6%);
+  box-shadow: inset 0 0 18px rgba(130, 100, 60, .12),
+              calc(var(--sx) * .15px) calc(var(--sy) * .2px) 1.5px var(--sh-near),
+              calc(var(--sx) * 1px) calc(var(--sy) * 1.2px) 8px var(--sh-far);
+  transition: background-color .8s ease;
+}
+:root[data-night="1"] .page .plate figcaption { --paper-tint: #efe3cc; }
+.page .plate:last-child { margin-bottom: 12px; }
 
 /* the page's coin sits in the opening text, which wraps around it */
 .seal {
@@ -309,10 +366,10 @@ body.home .wrap { max-width: 1480px; }
 .page img:not(.plain) {
   display: inline-block; max-width: 100%; height: auto; vertical-align: middle;
   border: clamp(18px, 3vw, 32px) solid transparent;
-  border-image: url("../images/site/frame.webp") 72 stretch;
+  border-image: url("../images/site/frame.webp") 108 stretch;
   padding: clamp(8px, 1.4vw, 14px);
   background: url("../images/site/mat.jpg") 0 0 / 256px padding-box;
-  margin: 1.4em 0 .2em;
+  margin: 1.4em 0 .4em;
 }
 
 /* ---------------------------------------------------------------- cookbook (unlisted) */
@@ -322,6 +379,18 @@ body.home .wrap { max-width: 1480px; }
 .recipe-list a { font-size: 1.08em; }
 .recipe-back { display: inline-block; margin-bottom: .8em; font-size: .9em; }
 .recipe-source { margin-top: 2em; padding-top: .8em; border-top: 1px solid var(--rule); font-size: .9em; color: var(--muted); font-style: italic; }
+
+/* ---------------------------------------------------------------- moving between pages */
+/* Browsers that support cross-document view transitions (Chrome, Edge, Safari 18.2+) animate page
+   changes: the coin you pick up glides to where that page's coin lies on its first sheet (and back
+   again), the name plate and lamp stay put, and everything else cross-fades. Others just navigate. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+.nameplate { view-transition-name: nameplate; }
+.lamp { view-transition-name: lamp; }
+::view-transition-group(*) { animation-duration: .5s; animation-timing-function: cubic-bezier(.3, .7, .2, 1); }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; }
 
 /* ---------------------------------------------------------------- narrower screens */
 /* Everything scales continuously; there is no layout switch. */

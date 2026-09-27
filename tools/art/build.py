@@ -23,15 +23,14 @@ import coins4, relics3, frames, textures
 
 # ---- coins: static daylight image + material sheet for each
 for slug in coins4.COINS:
-    coins4.save(slug, coins4.make(slug), os.path.join(SITE, "coins"))
+    coins4.save_all(slug, os.path.join(SITE, "coins"))
 
 # ---- lamp, flame, name plate, picture frame
 im, wick = relics3.lamp()
 print("lamp wick at %.3f, %.3f of the image (the .flame and .halo positions in site.css)" % wick)
 relics3.flame()
 relics3.tabula()
-frames.moulding_corners("palmette") # -> frame-bronze-palmette.webp
-os.replace(os.path.join(SITE, "frame-bronze-palmette.webp"), os.path.join(SITE, "frame.webp"))
+relics3.frame()                     # -> frame.webp (border-image slice 108 in site.css)
 frames.mat_paper()                  # -> mat.jpg
 
 # ---- cloths, paper, and the large-scale shading laid over the cloth

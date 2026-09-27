@@ -9,6 +9,7 @@
   <div class="wrap">
     {% include masthead.html %}
     <main class="page recipe-page">
+      <div class="sheet">
       <a href="{{ '/cookbook/' | relative_url }}" class="recipe-back">&larr; Cookbook</a>
       <h1 class="page-title">{{ page.title }}</h1>
       <div class="recipe-content">
@@ -23,6 +24,7 @@
         {% endif %}
       </div>
       {% endif %}
+      </div>
     </main>
     {% include colophon.html %}
   </div>

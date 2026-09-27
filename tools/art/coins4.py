@@ -452,12 +452,12 @@ def shade(alb, n, rough, L):
     return np.where(col > .8, .8 + over / (1 + over * 2.5), col)
 
 # ---------------------------------------------------------------- build one coin
-def make(slug, ss=3):
+def make(slug, ss=3, size=OUT_S):
     spec = COINS[slug]
     M = METALS[spec["metal"]]
     rng = np.random.default_rng(spec["seed"])
-    S = OUT_S * ss
-    R = R_OUT * ss
+    S = size * ss
+    R = R_OUT * size / OUT_S * ss
     c = S / 2 - WALL * R * .5            # centre the coin plus its wall
     yy, xx = np.mgrid[0:S, 0:S].astype(float)
     th = np.arctan2(yy - c, xx - S / 2)
@@ -581,22 +581,29 @@ def make(slug, ss=3):
     r_o = down(rough)
     return dict(alpha=A, lit=lit_o, alb=alb_o, n=n_o, rough=r_o)
 
-def save(slug, res, out):
+def save(slug, res, out, suffix=""):
     A = res["alpha"][..., None]
     lit = np.dstack([np.clip(res["lit"], 0, 1), A])
-    Image.fromarray((lit * 255 + .5).astype(np.uint8), "RGBA").save(os.path.join(out, f"coin-{slug}.webp"), quality=84, method=6)
+    Image.fromarray((lit * 255 + .5).astype(np.uint8), "RGBA").save(os.path.join(out, f"coin-{slug}{suffix}.webp"), quality=84, method=6)
     left = np.dstack([np.clip(res["alb"], 0, 1), A])
     right = np.dstack([res["n"][..., 0] * .5 + .5, res["n"][..., 1] * .5 + .5, res["rough"], np.ones_like(A)])
     # where the coin isn't, keep the normal flat so compression doesn't bleed odd values in
     right[..., :2] = np.where(A > 0, right[..., :2], .5)
     sheet = np.concatenate([left, right], axis=1)
     Image.fromarray((np.clip(sheet, 0, 1) * 255 + .5).astype(np.uint8), "RGBA").save(
-        os.path.join(out, f"coin-{slug}-mat.webp"), quality=86, method=6, exact=True)
+        os.path.join(out, f"coin-{slug}-mat{suffix}.webp"), quality=86, method=6, exact=True)
+
+# Two sizes: 340 px for ordinary screens, 520 px ("-2x") for high-density ones and for the coins'
+# hover lift; the page picks with srcset, coins.js picks the matching material sheet.
+LARGE = 520
+def save_all(slug, out):
+    save(slug, make(slug), out)
+    save(slug, make(slug, ss=2, size=LARGE), out, "-2x")
 
 if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "out")
     os.makedirs(out, exist_ok=True)
     only = sys.argv[2:] or list(COINS)
     for slug in only:
-        save(slug, make(slug), out)
+        save_all(slug, out)
         print(slug)
