@@ -13,9 +13,8 @@
   --halo: rgba(246, 240, 226, .85);
   --rule: rgba(90, 70, 40, .28);
   --night: 0;
-  --coin-shadow: drop-shadow(3px 6px 5px rgba(70, 55, 30, .40));
-  --coin-shadow-lift: drop-shadow(8px 16px 12px rgba(70, 55, 30, .36));
-  --frame-shadow: drop-shadow(3px 8px 8px rgba(60, 45, 20, .35));
+  --sh-near: rgba(60, 45, 25, .45);   /* contact shadow */
+  --sh-far: rgba(70, 55, 30, .26);    /* soft shadow further out */
   --display: Cinzel, "Trajan Pro", Georgia, serif;
   --body: "EB Garamond", Garamond, Georgia, serif;
 }
@@ -24,18 +23,25 @@
     color-scheme: dark;
     --outside: #0b140e; --ink: #eee6d2; --muted: #bdb49c; --link: #e3be6f; --link-hover: #f3d38d;
     --halo: rgba(0, 0, 0, .55); --rule: rgba(220, 210, 180, .22); --night: 1;
-    --coin-shadow: drop-shadow(4px 8px 7px rgba(0, 0, 0, .65));
-    --coin-shadow-lift: drop-shadow(9px 18px 14px rgba(0, 0, 0, .6));
-    --frame-shadow: drop-shadow(3px 9px 9px rgba(0, 0, 0, .55));
+    --sh-near: rgba(0, 0, 0, .7); --sh-far: rgba(0, 0, 0, .45);
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --outside: #0b140e; --ink: #eee6d2; --muted: #bdb49c; --link: #e3be6f; --link-hover: #f3d38d;
   --halo: rgba(0, 0, 0, .55); --rule: rgba(220, 210, 180, .22); --night: 1;
-  --coin-shadow: drop-shadow(4px 8px 7px rgba(0, 0, 0, .65));
-  --coin-shadow-lift: drop-shadow(9px 18px 14px rgba(0, 0, 0, .6));
-  --frame-shadow: drop-shadow(3px 9px 9px rgba(0, 0, 0, .55));
+  --sh-near: rgba(0, 0, 0, .7); --sh-far: rgba(0, 0, 0, .45);
+}
+
+/* Shadows. By day the light is a window to the upper left, so everything casts down and to the
+   right. At night site.js sets --sx/--sy on each object so its shadow points away from the lamp
+   (longer the farther it is). Each shadow is two layers: a tight dark one where the object meets
+   the table and a soft one further out. --lift raises an object off the table on hover. */
+.letter .coin img, .seal, .nameplate, .lamp-body, .page img:not(.plain) {
+  --sx: 3; --sy: 5; --lift: 1;
+  filter:
+    drop-shadow(calc(var(--sx) * .25px * var(--lift)) calc(var(--sy) * .25px * var(--lift)) calc(.8px * var(--lift)) var(--sh-near))
+    drop-shadow(calc(var(--sx) * 1px * var(--lift)) calc(var(--sy) * 1px * var(--lift)) calc(5px * var(--lift)) var(--sh-far));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -57,27 +63,53 @@ body {
   background:
     radial-gradient(120% 90% at 30% 15%, rgba(255, 250, 238, .45), rgba(255, 250, 238, 0) 60%),
     radial-gradient(150% 120% at 50% 50%, rgba(0, 0, 0, 0) 55%, rgba(90, 70, 40, .22)),
-    url("../images/site/linen.jpg") 0 0 / 512px 512px;
+    url("../images/site/cloth-shade.jpg") 0 0 / 100% 100%,
+    url("../images/site/linen.jpg") 0 0 / 256px 256px;
+  background-blend-mode: normal, normal, soft-light, normal;
 }
 .cloth.baize {
   z-index: -3; opacity: var(--night); transition: opacity .8s ease;
   background:
     radial-gradient(110% 80% at 35% 15%, rgba(190, 230, 190, .10), rgba(0, 0, 0, 0) 60%),
-    radial-gradient(150% 120% at 50% 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .55)),
-    url("../images/site/baize.jpg") 0 0 / 640px 640px;
+    radial-gradient(150% 120% at 50% 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .45)),
+    url("../images/site/cloth-shade.jpg") 0 0 / 100% 100%,
+    url("../images/site/baize.jpg") 0 0 / 256px 256px;
+  background-blend-mode: normal, normal, soft-light, normal;
 }
 /* lamplight at night, centred on the lamp by site.js */
 .glow {
   position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1s ease;
   background:
     radial-gradient(circle at var(--gx, 90%) var(--gy, 6%), rgba(255, 196, 120, .34), rgba(255, 170, 90, .12) 22%, rgba(0, 0, 0, 0) 48%),
-    radial-gradient(170% 140% at var(--gx, 90%) var(--gy, 6%), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, .5));
+    radial-gradient(170% 140% at var(--gx, 90%) var(--gy, 6%), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, .3));
 }
-:root[data-night="1"] .glow { opacity: 1; animation: flicker 3.2s infinite; }
-@keyframes flicker {
-  0%, 100% { filter: brightness(1); } 22% { filter: brightness(1.08); }
-  41% { filter: brightness(.94); } 63% { filter: brightness(1.05); } 80% { filter: brightness(.97); }
+:root[data-night="1"] .glow { opacity: 1; }
+
+/* The light that falls on everything, paper and coins included: it sits above the page (and lets
+   clicks through). By night it is the lamp's pool of warm light fading into the dark; by day a
+   faint falloff away from the window. Both carry a fine grain that ties the art together. */
+.light {
+  position: absolute; inset: 0; z-index: 5; pointer-events: none; transition: opacity .9s ease;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .15 0 0 0 0 .1 0 0 -.9 0 .5'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
 }
+.light.day {
+  opacity: calc(1 - var(--night));
+  background:
+    var(--grain) 0 0 / 200px 200px,
+    radial-gradient(140% 110% at 8% 0%, rgba(255, 248, 232, .10), rgba(255, 248, 232, 0) 45%, rgba(70, 52, 25, .10) 100%);
+}
+.light.night {
+  opacity: 0;
+  background:
+    var(--grain) 0 0 / 200px 200px,
+    radial-gradient(circle 1700px at var(--gx, 90%) var(--gy, 6%),
+      rgba(255, 176, 96, .10) 0, rgba(255, 160, 80, .05) 10%, rgba(40, 20, 4, .08) 24%,
+      rgba(20, 10, 2, .28) 50%, rgba(8, 4, 0, .42) 100%);
+}
+:root[data-night="1"] .light.night { opacity: 1; }
+.light.night { transition: opacity .9s ease; }
+/* these three are flickered every frame at night: keep them on their own layers so that's cheap */
+.light.night, .glow, .halo { will-change: opacity; }
 
 /* ---------------------------------------------------------------- page frame */
 .wrap {
@@ -91,10 +123,10 @@ body.sub .wrap { max-width: calc(46rem + 2 * clamp(18px, 5vw, 64px)); }
 .masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: clamp(52px, 8vh, 80px); }
 .nameplate {
   display: inline-block; width: clamp(190px, min(22vw, 36vh), 330px); line-height: 0;
-  filter: var(--coin-shadow); transform: rotate(-1.2deg);
+  transform: rotate(-1.2deg);
   transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s;
 }
-.nameplate:hover { transform: rotate(0) translateY(-3px); filter: var(--coin-shadow-lift); }
+.nameplate:hover { transform: rotate(0) translateY(-3px); --lift: 1.8; }
 .nameplate img { width: 100%; height: auto; }
 .masthead h1 { margin: 0; line-height: 0; }
 
@@ -103,33 +135,29 @@ body.sub .wrap { max-width: calc(46rem + 2 * clamp(18px, 5vw, 64px)); }
   appearance: none; border: 0; padding: 0; background: none; cursor: pointer; position: relative;
   width: clamp(90px, 13vh, 124px); transform: rotate(-8deg);
 }
-.lamp-body { display: block; width: 100%; height: auto; filter: var(--coin-shadow); }
-/* the wick sits at 86.5% / 48% of the lamp image */
+.lamp-body { display: block; width: 100%; height: auto; }
+/* the wick sits at 88% / 50% of the lamp image; the flame stands upright on it (counter to the lamp's tilt) */
 .flame {
-  position: absolute; left: 62.7%; top: 2%; width: 85%; height: auto; pointer-events: none; filter: brightness(1.3);
-  opacity: 0; transition: opacity .5s ease; transform-origin: 28% 50%; mix-blend-mode: screen;
+  position: absolute; left: 88%; top: 50%; width: 34%; height: auto; pointer-events: none;
+  opacity: 0; transition: opacity .5s ease; transform-origin: 50% 84%; mix-blend-mode: screen;
+  transform: translate(-50%, -84%) rotate(8deg);
 }
 .halo {
-  position: absolute; left: 86.5%; top: 48%; width: 260%; aspect-ratio: 1; pointer-events: none;
+  position: absolute; left: 88%; top: 44%; width: 260%; aspect-ratio: 1; pointer-events: none;
   transform: translate(-50%, -50%); border-radius: 50%; opacity: 0; transition: opacity .8s ease; mix-blend-mode: screen;
   background: radial-gradient(circle closest-side, rgba(255, 214, 140, .55) 0%, rgba(255, 184, 100, .26) 20%, rgba(255, 162, 72, .10) 46%, rgba(255, 150, 60, .03) 72%, rgba(255, 150, 60, 0) 100%);
 }
-:root[data-night="1"] .flame { opacity: 1; animation: dance 1.6s infinite ease-in-out; }
-:root[data-night="1"] .halo { opacity: 1; animation: breathe 2.8s infinite ease-in-out; }
+:root[data-night="1"] .flame { opacity: 1; animation: dance 2.3s infinite ease-in-out; }
+:root[data-night="1"] .halo { opacity: 1; }
+/* the flame leans and stretches in the draught (the light's brightness is flickered by site.js) */
 @keyframes dance {
-  0%, 100% { transform: scale(1, 1) skewY(0deg); opacity: 1; }
-  23% { transform: scale(1.07, .95) skewY(-2deg); opacity: .94; }
-  48% { transform: scale(.94, 1.04) skewY(1.5deg); opacity: 1; }
-  74% { transform: scale(1.03, .97) skewY(-1deg); opacity: .96; }
+  0%, 100% { transform: translate(-50%, -84%) rotate(8deg) scale(1, 1); }
+  17% { transform: translate(-50%, -84%) rotate(5deg) scale(1.05, .95); }
+  36% { transform: translate(-50%, -84%) rotate(10.5deg) scale(.95, 1.06); }
+  58% { transform: translate(-50%, -84%) rotate(7deg) scale(1.02, .97); }
+  79% { transform: translate(-50%, -84%) rotate(9.5deg) scale(.97, 1.04); }
 }
-@keyframes breathe { 0%, 100% { opacity: 1; } 35% { opacity: .82; } 60% { opacity: .95; } 80% { opacity: .86; } }
-.smoke { position: absolute; left: 84%; top: 36%; width: 26%; height: 70%; pointer-events: none; opacity: 0; transform: rotate(8deg); }
-.smoke.go { animation: smoke 2.2s ease-out; }
-.smoke path { fill: none; stroke: rgba(90, 80, 70, .55); stroke-width: 2; stroke-linecap: round; }
-@keyframes smoke {
-  0% { opacity: 0; transform: translateY(0) rotate(8deg); } 15% { opacity: .9; }
-  100% { opacity: 0; transform: translateY(-40%) rotate(8deg) scale(1.3); }
-}
+canvas.smoke { position: absolute; z-index: 6; pointer-events: none; }
 
 :is(a, button):focus-visible { outline: 2px solid var(--link); outline-offset: 4px; border-radius: 4px; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -140,13 +168,14 @@ footer.colophon {
 }
 
 /* ---------------------------------------------------------------- coins */
-.coin {
-  display: block; border-radius: 50%; transform: rotate(var(--rot, 0deg)); filter: var(--coin-shadow);
-  transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s ease;
-}
+.coin { display: block; border-radius: 50%; }
 .coin img { display: block; width: 100%; height: auto; }
-a.coin:hover, a.coin:focus-visible { transform: translateY(-6px) rotate(0deg) scale(1.045); filter: var(--coin-shadow-lift); }
 a.coin:focus-visible { outline-offset: 6px; border-radius: 50%; }
+/* the live-lit coin (coins.js) sits exactly over the static one and fades in once it has drawn */
+canvas.gl { opacity: 0; transition: opacity .5s ease; pointer-events: none; }
+canvas.gl.on { opacity: 1; }
+/* the lamp's own shadow falls away from its flame */
+:root[data-night="1"] .lamp-body { --sx: -5; --sy: 3; }
 
 /* ---------------------------------------------------------------- homepage: a letter on the table */
 /* The intro is a sheet of laid paper. Each coin is floated beside its paragraph but pulled out
@@ -171,25 +200,41 @@ body.home .wrap { max-width: 1480px; }
   --edge: calc(var(--g) - var(--c) / 2);                   /* furthest a coin centre may sit: its rim just at the window edge */
   --d: min(var(--c) * 1.02, var(--edge));                        /* coin centre outside the paper edge (negative = on it) */
   --paper-tint: #fffdf8;
-  position: relative; width: var(--W); margin-inline: auto; transform: rotate(-.5deg);
+  --sx: 3; --sy: 5;
+  position: relative; z-index: 0; width: var(--W); margin-inline: auto; transform: rotate(-.5deg);
   padding: clamp(20px, 4vh, 48px) var(--pad);
   color: #2a2118;
-  background-color: var(--paper-tint);
-  background-image:
-    linear-gradient(to bottom, rgba(0,0,0,0) calc(33.3% - 1px), rgba(120,95,60,.10) 33.3%, rgba(255,255,255,.22) calc(33.3% + 1px), rgba(0,0,0,0) calc(33.3% + 3px)),
-    linear-gradient(to bottom, rgba(0,0,0,0) calc(66.6% - 1px), rgba(120,95,60,.10) 66.6%, rgba(255,255,255,.22) calc(66.6% + 1px), rgba(0,0,0,0) calc(66.6% + 3px)),
-    url("../images/site/paper.jpg");
-  background-size: auto, auto, 512px 512px;
-  background-blend-mode: normal, normal, multiply;
-  border-radius: 2px;
-  box-shadow: inset 0 0 40px rgba(130, 100, 60, .16), 0 1px 1px rgba(0,0,0,.18), 0 14px 28px rgba(40, 28, 10, .28);
-  transition: background-color .8s ease, box-shadow .8s ease;
   font-size: clamp(15.5px, min(2.6cqw, 2.3vh), 19.5px); line-height: 1.55;
 }
-:root[data-night="1"] .letter {
-  --paper-tint: #c9b28c;              /* the same paper, by lamplight */
-  box-shadow: inset 0 0 60px rgba(60, 35, 10, .35), 0 1px 1px rgba(0,0,0,.4), 0 18px 34px rgba(0, 0, 0, .55);
+/* The sheet itself is its own layer under the text, so that its shadow can follow its rough,
+   hand-cut edge (a shadow on .letter would also shadow the coins a second time). */
+.letter .sheet {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  filter:
+    drop-shadow(calc(var(--sx) * .15px) calc(var(--sy) * .2px) 1px var(--sh-near))
+    drop-shadow(calc(var(--sx) * 1.6px) calc(var(--sy) * 2px) 12px var(--sh-far));
+  transition: filter .35s ease;
 }
+.letter .sheet::before {
+  content: ""; position: absolute; inset: 0;
+  background-color: var(--paper-tint);
+  /* folded in three: the top panel tips toward the light, the bottom one away; the creases are a
+     valley and a ridge, each lit on one face and shaded on the other */
+  background-image:
+    linear-gradient(to bottom,
+      rgba(255, 255, 255, .07) 0, rgba(255, 255, 255, .02) 33.2%,
+      rgba(90, 70, 40, .07) calc(33.33% - 1.5px), rgba(255, 255, 255, .28) calc(33.33% + .5px), rgba(255, 255, 255, 0) calc(33.33% + 5px),
+      rgba(0, 0, 0, 0) 50%, rgba(80, 60, 30, .02) calc(66.67% - 5px), rgba(255, 255, 255, .2) calc(66.67% - .5px),
+      rgba(90, 70, 40, .10) calc(66.67% + 1.5px), rgba(90, 70, 40, .045) calc(66.67% + 6px), rgba(90, 70, 40, .07) 100%),
+    url("../images/site/paper.jpg");
+  background-size: auto, 512px 512px;
+  background-blend-mode: normal, multiply;
+  box-shadow: inset 0 0 40px rgba(130, 100, 60, .14);
+  clip-path: polygon(0.00% 0.8px, 1.11% 0.5px, 2.22% 0.9px, 3.33% 0.1px, 4.44% 0.5px, 5.56% 0.3px, 6.67% 0.7px, 7.78% 0.2px, 8.89% 0.8px, 10.00% 0.5px, 11.11% 0.8px, 12.22% 0.4px, 13.33% 0.4px, 14.44% 0.7px, 15.56% 0.9px, 16.67% 0.3px, 17.78% 0.9px, 18.89% 0.8px, 20.00% 0.2px, 21.11% 0.5px, 22.22% 0.6px, 23.33% 0.8px, 24.44% 0.6px, 25.56% 0.1px, 26.67% 0.4px, 27.78% 0.4px, 28.89% 0.5px, 30.00% 0.9px, 31.11% 0.3px, 32.22% 0.2px, 33.33% 0.5px, 34.44% 0.6px, 35.56% 0.8px, 36.67% 0.5px, 37.78% 0.2px, 38.89% 0.8px, 40.00% 0.4px, 41.11% 0.6px, 42.22% 0.4px, 43.33% 0.2px, 44.44% 0.6px, 45.56% 0.7px, 46.67% 0.2px, 47.78% 0.4px, 48.89% 0.3px, 50.00% 0.2px, 51.11% 0.2px, 52.22% 0.9px, 53.33% 0.8px, 54.44% 0.3px, 55.56% 0.7px, 56.67% 0.0px, 57.78% 0.8px, 58.89% 0.5px, 60.00% 0.7px, 61.11% 0.2px, 62.22% 0.3px, 63.33% 0.3px, 64.44% 0.9px, 65.56% 0.4px, 66.67% 0.4px, 67.78% 0.9px, 68.89% 0.8px, 70.00% 0.4px, 71.11% 0.3px, 72.22% 0.7px, 73.33% 0.1px, 74.44% 0.4px, 75.56% 0.8px, 76.67% 0.8px, 77.78% 0.2px, 78.89% 0.1px, 80.00% 0.7px, 81.11% 0.6px, 82.22% 0.2px, 83.33% 0.5px, 84.44% 0.1px, 85.56% 0.6px, 86.67% 0.5px, 87.78% 0.6px, 88.89% 0.1px, 90.00% 0.6px, 91.11% 0.3px, 92.22% 0.4px, 93.33% 0.3px, 94.44% 0.6px, 95.56% 0.5px, 96.67% 0.6px, 97.78% 0.1px, 98.89% 0.2px, calc(100% - 0.1px) 0.00%, calc(100% - 0.3px) 1.11%, calc(100% - 0.4px) 2.22%, calc(100% - 0.1px) 3.33%, calc(100% - 0.6px) 4.44%, calc(100% - 0.4px) 5.56%, calc(100% - 0.5px) 6.67%, calc(100% - 0.5px) 7.78%, calc(100% - 0.8px) 8.89%, calc(100% - 0.5px) 10.00%, calc(100% - 0.1px) 11.11%, calc(100% - 0.1px) 12.22%, calc(100% - 0.6px) 13.33%, calc(100% - 0.3px) 14.44%, calc(100% - 0.7px) 15.56%, calc(100% - 0.5px) 16.67%, calc(100% - 0.3px) 17.78%, calc(100% - 0.7px) 18.89%, calc(100% - 0.2px) 20.00%, calc(100% - 0.3px) 21.11%, calc(100% - 0.3px) 22.22%, calc(100% - 0.4px) 23.33%, calc(100% - 0.8px) 24.44%, calc(100% - 0.7px) 25.56%, calc(100% - 0.7px) 26.67%, calc(100% - 0.6px) 27.78%, calc(100% - 0.0px) 28.89%, calc(100% - 0.3px) 30.00%, calc(100% - 0.5px) 31.11%, calc(100% - 0.8px) 32.22%, calc(100% - 0.3px) 33.33%, calc(100% - 0.5px) 34.44%, calc(100% - 0.8px) 35.56%, calc(100% - 0.3px) 36.67%, calc(100% - 0.7px) 37.78%, calc(100% - 0.5px) 38.89%, calc(100% - 0.5px) 40.00%, calc(100% - 0.6px) 41.11%, calc(100% - 0.4px) 42.22%, calc(100% - 0.1px) 43.33%, calc(100% - 0.8px) 44.44%, calc(100% - 0.9px) 45.56%, calc(100% - 0.7px) 46.67%, calc(100% - 0.3px) 47.78%, calc(100% - 0.6px) 48.89%, calc(100% - 0.7px) 50.00%, calc(100% - 0.1px) 51.11%, calc(100% - 0.7px) 52.22%, calc(100% - 0.1px) 53.33%, calc(100% - 0.8px) 54.44%, calc(100% - 0.2px) 55.56%, calc(100% - 0.9px) 56.67%, calc(100% - 0.2px) 57.78%, calc(100% - 0.5px) 58.89%, calc(100% - 0.7px) 60.00%, calc(100% - 0.9px) 61.11%, calc(100% - 0.6px) 62.22%, calc(100% - 0.8px) 63.33%, calc(100% - 0.4px) 64.44%, calc(100% - 0.7px) 65.56%, calc(100% - 0.3px) 66.67%, calc(100% - 0.8px) 67.78%, calc(100% - 0.7px) 68.89%, calc(100% - 0.3px) 70.00%, calc(100% - 0.7px) 71.11%, calc(100% - 0.1px) 72.22%, calc(100% - 0.8px) 73.33%, calc(100% - 0.6px) 74.44%, calc(100% - 0.3px) 75.56%, calc(100% - 0.6px) 76.67%, calc(100% - 0.7px) 77.78%, calc(100% - 0.6px) 78.89%, calc(100% - 0.8px) 80.00%, calc(100% - 0.4px) 81.11%, calc(100% - 0.3px) 82.22%, calc(100% - 0.3px) 83.33%, calc(100% - 0.3px) 84.44%, calc(100% - 0.4px) 85.56%, calc(100% - 0.7px) 86.67%, calc(100% - 0.8px) 87.78%, calc(100% - 0.6px) 88.89%, calc(100% - 0.7px) 90.00%, calc(100% - 0.9px) 91.11%, calc(100% - 0.6px) 92.22%, calc(100% - 0.1px) 93.33%, calc(100% - 0.6px) 94.44%, calc(100% - 0.0px) 95.56%, calc(100% - 0.6px) 96.67%, calc(100% - 0.9px) 97.78%, calc(100% - 0.4px) 98.89%, 100.00% calc(100% - 0.8px), 98.89% calc(100% - 0.0px), 97.78% calc(100% - 0.9px), 96.67% calc(100% - 0.2px), 95.56% calc(100% - 0.8px), 94.44% calc(100% - 0.3px), 93.33% calc(100% - 0.4px), 92.22% calc(100% - 0.1px), 91.11% calc(100% - 0.0px), 90.00% calc(100% - 0.7px), 88.89% calc(100% - 0.7px), 87.78% calc(100% - 0.1px), 86.67% calc(100% - 0.6px), 85.56% calc(100% - 0.2px), 84.44% calc(100% - 0.8px), 83.33% calc(100% - 0.1px), 82.22% calc(100% - 0.5px), 81.11% calc(100% - 0.8px), 80.00% calc(100% - 0.5px), 78.89% calc(100% - 0.6px), 77.78% calc(100% - 0.7px), 76.67% calc(100% - 0.6px), 75.56% calc(100% - 0.7px), 74.44% calc(100% - 0.2px), 73.33% calc(100% - 0.8px), 72.22% calc(100% - 0.5px), 71.11% calc(100% - 0.8px), 70.00% calc(100% - 0.6px), 68.89% calc(100% - 0.7px), 67.78% calc(100% - 0.9px), 66.67% calc(100% - 0.1px), 65.56% calc(100% - 0.8px), 64.44% calc(100% - 0.3px), 63.33% calc(100% - 0.7px), 62.22% calc(100% - 0.2px), 61.11% calc(100% - 0.4px), 60.00% calc(100% - 0.1px), 58.89% calc(100% - 0.7px), 57.78% calc(100% - 0.3px), 56.67% calc(100% - 0.4px), 55.56% calc(100% - 0.7px), 54.44% calc(100% - 0.3px), 53.33% calc(100% - 0.8px), 52.22% calc(100% - 0.5px), 51.11% calc(100% - 0.8px), 50.00% calc(100% - 0.7px), 48.89% calc(100% - 0.9px), 47.78% calc(100% - 0.6px), 46.67% calc(100% - 0.3px), 45.56% calc(100% - 0.5px), 44.44% calc(100% - 0.8px), 43.33% calc(100% - 0.8px), 42.22% calc(100% - 0.2px), 41.11% calc(100% - 0.2px), 40.00% calc(100% - 0.2px), 38.89% calc(100% - 0.6px), 37.78% calc(100% - 0.2px), 36.67% calc(100% - 0.6px), 35.56% calc(100% - 0.3px), 34.44% calc(100% - 0.8px), 33.33% calc(100% - 0.2px), 32.22% calc(100% - 0.8px), 31.11% calc(100% - 0.3px), 30.00% calc(100% - 0.0px), 28.89% calc(100% - 0.1px), 27.78% calc(100% - 0.7px), 26.67% calc(100% - 0.2px), 25.56% calc(100% - 0.2px), 24.44% calc(100% - 0.9px), 23.33% calc(100% - 0.4px), 22.22% calc(100% - 0.6px), 21.11% calc(100% - 0.5px), 20.00% calc(100% - 0.4px), 18.89% calc(100% - 0.8px), 17.78% calc(100% - 0.0px), 16.67% calc(100% - 0.3px), 15.56% calc(100% - 0.4px), 14.44% calc(100% - 0.6px), 13.33% calc(100% - 0.7px), 12.22% calc(100% - 0.0px), 11.11% calc(100% - 0.1px), 10.00% calc(100% - 0.2px), 8.89% calc(100% - 0.3px), 7.78% calc(100% - 0.7px), 6.67% calc(100% - 0.7px), 5.56% calc(100% - 0.8px), 4.44% calc(100% - 0.4px), 3.33% calc(100% - 0.4px), 2.22% calc(100% - 0.1px), 1.11% calc(100% - 0.8px), 0.8px 100.00%, 0.9px 98.89%, 0.7px 97.78%, 0.8px 96.67%, 0.5px 95.56%, 0.8px 94.44%, 0.3px 93.33%, 0.7px 92.22%, 0.7px 91.11%, 0.6px 90.00%, 0.8px 88.89%, 0.6px 87.78%, 0.2px 86.67%, 0.0px 85.56%, 0.3px 84.44%, 0.2px 83.33%, 0.8px 82.22%, 0.5px 81.11%, 0.7px 80.00%, 0.8px 78.89%, 0.7px 77.78%, 0.8px 76.67%, 0.5px 75.56%, 0.7px 74.44%, 0.9px 73.33%, 0.4px 72.22%, 0.6px 71.11%, 0.9px 70.00%, 0.2px 68.89%, 0.1px 67.78%, 0.4px 66.67%, 0.8px 65.56%, 0.5px 64.44%, 0.2px 63.33%, 0.9px 62.22%, 0.4px 61.11%, 0.4px 60.00%, 0.1px 58.89%, 0.4px 57.78%, 0.9px 56.67%, 0.4px 55.56%, 0.7px 54.44%, 0.8px 53.33%, 0.0px 52.22%, 0.6px 51.11%, 0.1px 50.00%, 0.5px 48.89%, 0.8px 47.78%, 0.3px 46.67%, 0.6px 45.56%, 0.3px 44.44%, 0.5px 43.33%, 0.7px 42.22%, 0.5px 41.11%, 0.3px 40.00%, 0.7px 38.89%, 0.1px 37.78%, 0.3px 36.67%, 0.7px 35.56%, 0.5px 34.44%, 0.1px 33.33%, 0.6px 32.22%, 0.8px 31.11%, 0.2px 30.00%, 0.8px 28.89%, 0.0px 27.78%, 0.9px 26.67%, 0.5px 25.56%, 0.2px 24.44%, 0.1px 23.33%, 0.4px 22.22%, 0.4px 21.11%, 0.5px 20.00%, 0.5px 18.89%, 0.1px 17.78%, 0.2px 16.67%, 0.1px 15.56%, 0.7px 14.44%, 0.1px 13.33%, 0.6px 12.22%, 0.1px 11.11%, 0.6px 10.00%, 0.4px 8.89%, 0.5px 7.78%, 0.7px 6.67%, 0.3px 5.56%, 0.6px 4.44%, 0.8px 3.33%, 0.7px 2.22%, 0.5px 1.11%);
+  transition: background-color .8s ease;
+}
+:root[data-night="1"] .letter { --paper-tint: #efe3cc; }   /* the same paper; the lamplight above does the rest */
+:root[data-night="1"] .letter .sheet::before { box-shadow: inset 0 0 60px rgba(60, 35, 10, .2); }
 /* no text-wrap: pretty/balance next to the coins: Safari's version ignores right-hand floats and runs the text under them */
 .letter p { margin: 0 0 .85em; }
 .letter p:last-of-type { margin-bottom: 0; }
@@ -217,20 +262,23 @@ body.home .wrap { max-width: 1480px; }
   shape-margin: 4px;               
   transform: none; filter: none; border-radius: 0;
 }
-.letter .coin img {
-  position: absolute; top: var(--top); width: var(--c); max-width: none; height: auto; border-radius: 50%;
-  transform: rotate(var(--rot, 0deg)); filter: var(--coin-shadow);
-  transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s ease;
+.letter .coin img, .letter .coin canvas {
+  /* the images carry a little transparent margin (room for the coin's edge): enlarge them by that much */
+  --m: calc(var(--c) * .05);
+  position: absolute; top: calc(var(--top) - var(--m)); width: calc(var(--c) + 2 * var(--m)); max-width: none; height: auto; aspect-ratio: 1; border-radius: 50%;
+  transform: rotate(var(--rot, 0deg));
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s ease, opacity .5s ease;
 }
-.letter a.coin:hover, .letter a.coin:focus-visible { transform: none; filter: none; outline: none; }
-.letter a.coin:hover img, .letter a.coin:focus-visible img { transform: translateY(-6px) rotate(0deg) scale(1.045); filter: var(--coin-shadow-lift); }
+.letter a.coin:hover, .letter a.coin:focus-visible { outline: none; }
+.letter a.coin:hover :is(img, canvas), .letter a.coin:focus-visible :is(img, canvas) { transform: translateY(-6px) rotate(0deg) scale(1.045); }
+.letter a.coin:hover img, .letter a.coin:focus-visible img { --lift: 2.2; }
 .letter a.coin:focus-visible img { outline: 2px solid var(--link); outline-offset: 4px; }
 .letter .coin.L { float: left;  clear: left;  margin-right: 4px;
   shape-outside: circle(calc(var(--c) / 2) at calc(-1 * (var(--pad) + var(--dd))) calc(var(--top) + var(--c) / 2)) border-box; }
-.letter .coin.L img { left: var(--pull); }
+.letter .coin.L :is(img, canvas) { left: calc(var(--pull) - var(--m)); }
 .letter .coin.R { float: right; clear: right; margin-left: 4px;
   shape-outside: circle(calc(var(--c) / 2) at calc(var(--w) + var(--clear) + var(--c) / 2) calc(var(--top) + var(--c) / 2)) border-box; }
-.letter .coin.R img { right: var(--pull); }
+.letter .coin.R :is(img, canvas) { right: calc(var(--pull) - var(--m)); }
 
 /* ---------------------------------------------------------------- sub-pages */
 .page { width: 100%; margin-top: clamp(14px, 3vh, 36px); }
@@ -256,9 +304,10 @@ body.home .wrap { max-width: 1480px; }
 /* the page's coin sits in the opening text, which wraps around it */
 .seal {
   float: right; width: clamp(104px, 13vw, 168px); shape-outside: circle(50%); shape-margin: 14px;
-  margin: .2em 0 .5em 1.4em; transform: rotate(-7deg); filter: var(--coin-shadow);
+  margin: .2em 0 .5em 1.4em; transform: rotate(-7deg); position: relative;
 }
-.seal img { display: block; width: 100%; height: auto; }
+.seal img { display: block; width: 110%; max-width: none; height: auto; margin: -5%; }
+.seal canvas { position: absolute; inset: -5%; width: 110%; height: 110%; }
 
 /* every picture in a page gets the bronze moulding with palmette corners and a mat.
    Add class="plain" to an image to leave it unframed. */
@@ -268,7 +317,6 @@ body.home .wrap { max-width: 1480px; }
   border-image: url("../images/site/frame.webp") 72 stretch;
   padding: clamp(8px, 1.4vw, 14px);
   background: url("../images/site/mat.jpg") 0 0 / 256px padding-box;
-  filter: var(--frame-shadow);
   margin: 1.4em 0 .2em;
 }
 
@@ -287,6 +335,6 @@ body.home .wrap { max-width: 1480px; }
   .seal { width: clamp(100px, 30vw, 136px); margin-left: 1em; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .coin, .nameplate, .cloth.baize, .glow, .flame, .halo { transition: none; }
-  .flame, .halo, .glow, .smoke.go { animation: none !important; }
+  .coin, .coin img, .nameplate, .cloth.baize, .glow, .light, .flame, .halo { transition: none; }
+  .flame, .halo, .glow { animation: none !important; }
 }
